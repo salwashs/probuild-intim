@@ -1,0 +1,372 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
+  overflow: hidden;
+}
+
+// Background
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.45);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 70% 80% at 60% 40%, rgba(26, 95, 214, 0.2) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(13,17,23,0.3) 0%, rgba(13,17,23,0.7) 60%, rgba(13,17,23,0.95) 100%);
+  }
+
+  &__noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+  }
+}
+
+// Grid lines
+.gridLines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  pointer-events: none;
+
+  span {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+// Content
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+// Eyebrow
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-full;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: fadeInUp 0.7s ease 0.1s forwards;
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $red;
+    box-shadow: 0 0 8px rgba($red, 0.8);
+    animation: pulse 2s ease infinite;
+  }
+
+  &__badge {
+    padding: 0.2rem 0.6rem;
+    background: rgba($red, 0.25);
+    border: 1px solid rgba($red, 0.35);
+    border-radius: $radius-full;
+    color: lighten($red, 20%);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+// Headline
+.headline {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-display;
+  color: $white;
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+
+  &__top {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 0.25rem;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease 0.2s forwards;
+  }
+
+  &__main {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease 0.3s forwards;
+  }
+
+  &__accent {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #E8303A 0%, #FF6B72 50%, #E8303A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: fadeInUp 0.7s ease 0.35s forwards, shimmer 4s linear 1.5s infinite;
+    opacity: 0;
+
+    @keyframes shimmer {
+      from { background-position: 0% center; }
+      to { background-position: 200% center; }
+    }
+  }
+
+  &__sub {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease 0.45s forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Description
+.description {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 56ch;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeInUp 0.7s ease 0.55s forwards;
+}
+
+// CTA buttons
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeInUp 0.7s ease 0.65s forwards;
+}
+
+.cta__primary {
+  font-size: 0.95rem;
+  padding: 1rem 2rem;
+}
+
+.cta__outline {
+  font-size: 0.95rem;
+  padding: 1rem 2rem;
+}
+
+// Countdown
+.countdownWrap {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease 0.75s forwards;
+}
+
+.countdownLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 68px;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-md;
+    backdrop-filter: blur(8px);
+  }
+
+  &__number {
+    font-family: $font-display;
+    font-size: 2rem;
+    font-weight: 800;
+    color: $white;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &__sep {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: -0.75rem;
+    animation: blink 1s ease infinite;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+// Stats badges
+.badges {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin-top: 4rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: $radius-lg;
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  animation: fadeInUp 0.7s ease 0.9s forwards;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 0.5rem;
+  min-width: 120px;
+
+  &__value {
+    font-family: $font-display;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    color: $white;
+    letter-spacing: -0.03em;
+  }
+
+  &__label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.2rem;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+
+    @media (max-width: $bp-sm) {
+      display: none;
+    }
+  }
+}
+
+// Scroll down indicator
+.scrollDown {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.2s forwards;
+  z-index: 1;
+
+  @media (max-width: $bp-md) {
+    display: none;
+  }
+
+  &__line {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+    animation: scrollLine 1.5s ease infinite;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    animation: scrollLine 1.5s ease 0.3s infinite;
+  }
+}
+
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.4; transform: translateY(-4px); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}

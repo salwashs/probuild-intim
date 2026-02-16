@@ -1,0 +1,64 @@
+// Color Palette
+$white: #FFFFFF;
+$off-white: #F8F9FA;
+$light-gray: #F2F4F6;
+$mid-gray: #E5E8EC;
+$text-dark: #0D1117;
+$text-body: #3A4452;
+$text-muted: #7A8899;
+
+// Accent Colors (subtle, logo-inspired)
+$red: #E8303A;
+$red-light: #FFF0F1;
+$green: #2D9C6E;
+$green-light: #EDFAF4;
+$blue: #1A5FD6;
+$blue-light: #EEF4FF;
+$yellow: #F5A623;
+$yellow-light: #FFF9ED;
+
+// Brand gradient
+$gradient-hero: linear-gradient(135deg, #0D1117 0%, #1A2638 60%, #0D1117 100%);
+$gradient-red: linear-gradient(135deg, $red 0%, #C0202A 100%);
+$gradient-blue: linear-gradient(135deg, $blue 0%, #0E3F9E 100%);
+
+// Typography
+$font-display: 'Syne', sans-serif;
+$font-body: 'DM Sans', sans-serif;
+
+// Spacing
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2.5rem;
+$space-xl: 4rem;
+$space-xxl: 7rem;
+
+// Border
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-xl: 32px;
+$radius-full: 9999px;
+
+// Shadow
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 6px 24px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.16);
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// Breakpoints
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1440px;
+
+// Container
+$container-max: 1240px;
+$container-pad: 1.5rem;
