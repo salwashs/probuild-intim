@@ -10,10 +10,11 @@ export const eventInfo = {
   date: '1-4 Juli 2026',
   // Countdown target date
   targetDate: new Date('2026-07-01T08:00:00'),
-  venue: 'Makassar, Phinisi Point (PHIPO)',
-  venueAddress: 'Jl. Benyamin Sueb, Kemayoran, Jakarta Pusat',
+  location: 'Makassar',
+  venue: 'Phinisi Point (PHIPO)',
+  venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
   description:
-    'Event pameran konstruksi dan arsitektur terbesar di Indonesia yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
+    'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
 };
 
 // =====================

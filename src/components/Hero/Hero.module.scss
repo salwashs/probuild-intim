@@ -20,15 +20,13 @@
     height: 100%;
     object-fit: cover;
     object-position: center 30%;
-    filter: brightness(0.45);
+    filter: brightness(0.95);
   }
 
   &__overlay {
     position: absolute;
     inset: 0;
-    background: 
-      radial-gradient(ellipse 70% 80% at 60% 40%, rgba(26, 95, 214, 0.2) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(13,17,23,0.3) 0%, rgba(13,17,23,0.7) 60%, rgba(13,17,23,0.95) 100%);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   &__noise {
@@ -55,7 +53,7 @@
     display: block;
     width: 1px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(13, 17, 23, 0.05);
   }
 }
 
@@ -66,16 +64,30 @@
   max-width: 800px;
 }
 
+// container
+.containerHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: $container-pad;
+  overflow: hidden;
+  width: 100%;
+
+  @media (min-width: $bp-lg) {
+    padding-inline: 2.5rem;
+  }
+}
+
 // Eyebrow
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgb(255 255 255 / 22%);
+  border: 1px solid rgba(13, 17, 23, 0.1);
   border-radius: $radius-full;
-  color: rgba(255, 255, 255, 0.75);
+  color: $text-dark;
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -92,23 +104,18 @@
     box-shadow: 0 0 8px color.change($red, $alpha: 0.8);
     animation: pulse 2s ease infinite;
   }
-
-  &__badge {
-    padding: 0.2rem 0.6rem;
-    background: color.change($red, $alpha: 0.25);
-    border: 1px solid color.change($red, $alpha: 0.35);
-    border-radius: $radius-full;
-    color: color.adjust($red, $lightness: 20%);
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.85); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
 }
 
 // Headline
@@ -116,19 +123,29 @@
   display: flex;
   flex-direction: column;
   font-family: $font-display;
-  color: $white;
+  color: $text-dark;
   margin-bottom: 1.5rem;
   line-height: 1.05;
+  text-align: center;
 
   &__top {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: $red-10;
     margin-bottom: 0.25rem;
     opacity: 0;
     animation: fadeInUp 0.7s ease 0.2s forwards;
+    text-align: center;
+  }
+
+  &__mainAccent {
+    @media (min-width: $bp-md) {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
   }
 
   &__main {
@@ -143,51 +160,64 @@
     font-size: clamp(3.5rem, 7vw, 6rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #E8303A 0%, #FF6B72 50%, #E8303A 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% auto;
-    animation: fadeInUp 0.7s ease 0.35s forwards, shimmer 4s linear 1.5s infinite;
     opacity: 0;
-
-    @keyframes shimmer {
-      from { background-position: 0% center; }
-      to { background-position: 200% center; }
-    }
+    animation: fadeInUp 0.7s ease 0.3s forwards;
   }
 
   &__sub {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(3.5rem, 7vw, 6rem);
     font-weight: 500;
-    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: $text-muted;
     margin-top: 0.5rem;
     opacity: 0;
     animation: fadeInUp 0.7s ease 0.45s forwards;
   }
 }
 
+.main__red {
+  color: $red-50;
+}
+
+.main__green {
+  color: $green-50;
+}
+
+.main__blue {
+  color: $blue-50;
+}
+
+.main__yellow {
+  color: $orange-50;
+}
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // Description
 .description {
   font-size: clamp(1rem, 1.8vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.65);
+  color: $text-body;
   max-width: 56ch;
   line-height: 1.7;
   margin-bottom: 2.5rem;
   opacity: 0;
   animation: fadeInUp 0.7s ease 0.55s forwards;
+  text-align: center;
 }
 
 // CTA buttons
 .ctas {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
@@ -198,11 +228,22 @@
 .cta__primary {
   font-size: 0.95rem;
   padding: 1rem 2rem;
+
+  @media (max-width: $bp-sm) {
+    width: 100%;
+  }
 }
 
 .cta__outline {
   font-size: 0.95rem;
   padding: 1rem 2rem;
+  border-color: $text-muted;
+  color: $text-dark;
+  background-color: $white;
+
+  @media (max-width: $bp-sm) {
+    width: 100%;
+  }
 }
 
 // Countdown
@@ -217,34 +258,67 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: $text-muted;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .countdown {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @media (min-width: $bp-sm) {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
 
   &__unit {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
-    min-width: 68px;
-    padding: 0.875rem 1rem;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: $radius-md;
-    backdrop-filter: blur(8px);
+    min-width: 100px;
+    padding: 1.5rem 1rem;
+    background: $white;
+    border: 1px solid transparent;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+
+    &--red {
+      border-color: color.change($red, $alpha: 0.3);
+      .countdown__number {
+        color: $red;
+      }
+    }
+
+    &--blue {
+      border-color: color.change($blue, $alpha: 0.3);
+      .countdown__number {
+        color: $blue;
+      }
+    }
+
+    &--green {
+      border-color: color.change($green, $alpha: 0.3);
+      .countdown__number {
+        color: $green;
+      }
+    }
+
+    &--yellow {
+      border-color: color.change($orange-50, $alpha: 0.3);
+      .countdown__number {
+        color: $orange-50;
+      }
+    }
   }
 
   &__number {
     font-family: $font-display;
     font-size: 2rem;
     font-weight: 800;
-    color: $white;
-    letter-spacing: -0.05em;
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
@@ -254,40 +328,8 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: $text-muted;
   }
-
-  &__sep {
-    font-family: $font-display;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.3);
-    margin-top: -0.75rem;
-    animation: blink 1s ease infinite;
-  }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-
-// Stats badges
-.badges {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0;
-  margin-top: 4rem;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: $radius-lg;
-  backdrop-filter: blur(12px);
-  opacity: 0;
-  animation: fadeInUp 0.7s ease 0.9s forwards;
 }
 
 .badge {
@@ -302,7 +344,7 @@
     font-family: $font-display;
     font-size: clamp(1.3rem, 2.5vw, 1.75rem);
     font-weight: 800;
-    color: $white;
+    color: $text-dark;
     letter-spacing: -0.03em;
   }
 
@@ -311,14 +353,14 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: $text-muted;
     margin-top: 0.2rem;
   }
 
   &__divider {
     width: 1px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(13, 17, 23, 0.1);
 
     @media (max-width: $bp-sm) {
       display: none;
@@ -350,23 +392,32 @@
     display: block;
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+    background: linear-gradient(to bottom, transparent, $text-muted);
     animation: scrollLine 1.5s ease infinite;
   }
 
   svg {
     width: 20px;
     height: 20px;
-    color: rgba(255, 255, 255, 0.5);
+    color: $text-muted;
     animation: scrollLine 1.5s ease 0.3s infinite;
   }
 }
 
 @keyframes scrollLine {
-  0%, 100% { opacity: 0.4; transform: translateY(-4px); }
-  50% { opacity: 1; transform: translateY(4px); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(-4px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }

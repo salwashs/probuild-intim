@@ -32,14 +32,14 @@
       color: $text-body;
 
       &:hover {
-        color: $red;
+        color: $green-50;
       }
     }
 
     .cta {
-      background: $red-50;
+      background: $green-50;
       color: $white;
-      border-color: $red-50;
+      border-color: $green-50;
     }
 
     .toggle span {
@@ -82,7 +82,7 @@
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: $white;
+      color: $text-dark;
       transition: color 0.4s;
     }
 
@@ -92,7 +92,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
+      color: $text-muted;
       transition: color 0.4s;
     }
   }
@@ -112,7 +112,7 @@
     padding: 0.5rem 0.875rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: $text-body;
     border-radius: $radius-full;
     transition:
       color $transition-fast,
@@ -244,7 +244,7 @@
     margin-top: 1rem;
     padding: 0.875rem;
     text-align: center;
-    background: $red;
+    background: $green-50;
     color: $white;
     border-radius: $radius-md;
     font-weight: 600;
@@ -253,7 +253,7 @@
     transition: $transition-fast;
 
     &:hover {
-      background: color.adjust($red, $lightness: -8%);
+      background: color.adjust($green-50, $lightness: -8%);
     }
   }
 }
