@@ -57,8 +57,8 @@
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba($text-dark, 0.75) 0%,
-      rgba($text-dark, 0.2) 40%,
+      color.change($text-dark, $alpha: 0.75) 0%,
+      color.change($text-dark, $alpha: 0.2) 40%,
       transparent 70%
     );
     opacity: 0;
@@ -110,7 +110,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba($text-dark, 0.96);
+  background: color.change($text-dark, $alpha: 0.96);
   backdrop-filter: blur(20px);
   display: flex;
   align-items: center;

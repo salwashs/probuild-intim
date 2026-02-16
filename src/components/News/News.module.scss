@@ -81,7 +81,7 @@
   &__imgOverlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba($text-dark, 0.5), transparent);
+    background: linear-gradient(to top, color.change($text-dark, $alpha: 0.5), transparent);
     opacity: 0;
     transition: opacity $transition-base;
   }

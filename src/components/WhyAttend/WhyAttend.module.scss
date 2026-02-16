@@ -170,7 +170,7 @@
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba($red, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, color.change($red, $alpha: 0.2) 0%, transparent 70%);
   }
 
   @media (min-width: $bp-md) {

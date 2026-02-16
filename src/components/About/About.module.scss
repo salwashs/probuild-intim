@@ -54,7 +54,7 @@
     position: absolute;
     inset: -1px;
     border-radius: $radius-xl;
-    background: linear-gradient(135deg, rgba($red, 0.3), rgba($blue, 0.2), transparent 60%);
+    background: linear-gradient(135deg, color.change($red, $alpha: 0.3), color.change($blue, $alpha: 0.2), transparent 60%);
     z-index: 0;
   }
 }
@@ -116,14 +116,14 @@
   height: 10px;
   border-radius: 50%;
   background: $green;
-  box-shadow: 0 0 0 3px rgba($green, 0.2);
+  box-shadow: 0 0 0 3px color.change($green, $alpha: 0.2);
   flex-shrink: 0;
   animation: pulse 2s ease infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba($green, 0.2); }
-  50% { box-shadow: 0 0 0 7px rgba($green, 0.08); }
+  0%, 100% { box-shadow: 0 0 0 3px color.change($green, $alpha: 0.2); }
+  50% { box-shadow: 0 0 0 7px color.change($green, $alpha: 0.08); }
 }
 
 // Decorative elements
@@ -135,7 +135,7 @@
   height: 80px;
   border-radius: $radius-md;
   background: $red-light;
-  border: 2px solid rgba($red, 0.2);
+  border: 2px solid color.change($red, $alpha: 0.2);
   z-index: 0;
 
   @media (max-width: $bp-md) {

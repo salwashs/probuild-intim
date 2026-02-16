@@ -29,7 +29,7 @@
   inset: 0;
   z-index: 1;
   background: 
-    linear-gradient(135deg, rgba($text-dark, 0.5) 0%, rgba($blue, 0.2) 50%, rgba($text-dark, 0.7) 100%);
+    linear-gradient(135deg, color.change($text-dark, $alpha: 0.5) 0%, color.change($blue, $alpha: 0.2) 50%, color.change($text-dark, $alpha: 0.7) 100%);
 }
 
 .content {
@@ -72,7 +72,7 @@
 
   em {
     font-style: normal;
-    background: linear-gradient(135deg, $red, lighten($red, 15%));
+    background: linear-gradient(135deg, $red, color.adjust($red, $lightness: 15%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

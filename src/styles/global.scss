@@ -206,11 +206,11 @@ ul, ol {
   &--primary {
     background: $red;
     color: $white;
-    box-shadow: 0 4px 20px rgba($red, 0.35);
+    box-shadow: 0 4px 20px color.change($red, $alpha: 0.35);
 
     &:hover {
-      background: darken($red, 6%);
-      box-shadow: 0 8px 28px rgba($red, 0.45);
+      background: color.adjust($red, $lightness: -6%);
+      box-shadow: 0 8px 28px color.change($red, $alpha: 0.45);
       transform: translateY(-2px);
     }
   }
@@ -242,10 +242,10 @@ ul, ol {
   &--blue {
     background: $blue;
     color: $white;
-    box-shadow: 0 4px 20px rgba($blue, 0.3);
+    box-shadow: 0 4px 20px color.change($blue, $alpha: 0.3);
 
     &:hover {
-      background: darken($blue, 6%);
+      background: color.adjust($blue, $lightness: -6%);
       transform: translateY(-2px);
     }
   }
@@ -286,7 +286,7 @@ ul, ol {
   }
   &--yellow {
     background: $yellow-light;
-    color: darken($yellow, 15%);
+    color: color.adjust($yellow, $lightness: -15%);
   }
 }
 
@@ -415,12 +415,12 @@ ul, ol {
   border-radius: 3px;
 
   &:hover {
-    background: darken($mid-gray, 10%);
+    background: color.adjust($mid-gray, $lightness: -10%);
   }
 }
 
 // Selection
 ::selection {
-  background: rgba($red, 0.15);
+  background: color.change($red, $alpha: 0.15);
   color: $text-dark;
 }

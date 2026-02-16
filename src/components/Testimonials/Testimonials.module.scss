@@ -100,15 +100,15 @@
 
   &__active {
     border-color: $blue;
-    box-shadow: 0 0 0 4px rgba($blue, 0.08), $shadow-md;
+    box-shadow: 0 0 0 4px color.change($blue, $alpha: 0.08), $shadow-md;
 
     .card__quote {
-      color: rgba($blue, 0.1);
+      color: color.change($blue, $alpha: 0.1);
     }
   }
 
   &:hover:not(.card__active) {
-    border-color: darken($mid-gray, 8%);
+    border-color: color.adjust($mid-gray, $lightness: -8%);
     box-shadow: $shadow-sm;
   }
 
@@ -210,6 +210,6 @@
   }
 
   &:hover:not(.dot__active) {
-    background: darken($mid-gray, 15%);
+    background: color.adjust($mid-gray, $lightness: -15%);
   }
 }

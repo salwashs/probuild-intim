@@ -10,7 +10,7 @@
   transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
 
   &.scrolled {
-    background: rgba($white, 0.95);
+    background: color.change($white, $alpha: 0.95);
     backdrop-filter: blur(16px);
     padding: 0.875rem 0;
     box-shadow: 0 1px 0 $mid-gray, 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -187,7 +187,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background: rgba($text-dark, 0.97);
+  background: color.change($text-dark, $alpha: 0.97);
   backdrop-filter: blur(20px);
 
   &__open {
@@ -236,7 +236,7 @@
     transition: $transition-fast;
 
     &:hover {
-      background: darken($red, 8%);
+      background: color.adjust($red, $lightness: -8%);
     }
   }
 }
