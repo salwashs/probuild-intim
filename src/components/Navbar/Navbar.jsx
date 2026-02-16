@@ -28,11 +28,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className={styles.logo} onClick={() => setMobileOpen(false)}>
           <span className={styles.logo__icon}>
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#E8303A" />
-              <path d="M6 24L11 10L16 18L21 13L26 24H6Z" fill="white" />
-              <circle cx="21" cy="10" r="3" fill="white" fillOpacity="0.6" />
-            </svg>
+            <img src="/images/logo-probuild.png" alt="Logo" />
           </span>
           <span className={styles.logo__text}>
             <strong>{eventInfo.name}</strong>

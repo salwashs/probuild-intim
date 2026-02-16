@@ -3,16 +3,17 @@
 // =====================
 
 export const eventInfo = {
-  name: 'KONSTRUKSI EXPO',
-  edition: '2025',
-  tagline: 'Build The Future',
-  fullName: 'Indonesia Construction & Architecture Expo 2025',
-  date: 'November 14–17, 2025',
+  name: 'ProBuild INTIM',
+  edition: '2026',
+  tagline: 'Indonesia Construction & Architecture Expo',
+  fullName: 'Indonesia Construction & Architecture Expo 2026',
+  date: '1-4 Juli 2026',
   // Countdown target date
-  targetDate: new Date('2025-11-14T08:00:00'),
-  venue: 'Jakarta International Expo (JIExpo)',
+  targetDate: new Date('2026-07-01T08:00:00'),
+  venue: 'Makassar, Phinisi Point (PHIPO)',
   venueAddress: 'Jl. Benyamin Sueb, Kemayoran, Jakarta Pusat',
-  description: 'Event pameran konstruksi dan arsitektur terbesar di Indonesia yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
+  description:
+    'Event pameran konstruksi dan arsitektur terbesar di Indonesia yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
 };
 
 // =====================
@@ -34,28 +35,32 @@ export const whyAttend = [
     icon: 'building',
     color: 'red',
     title: 'Networking Premium',
-    description: 'Terhubung langsung dengan ratusan decision-maker, developer, arsitek, dan kontraktor top Indonesia dalam satu atap.',
+    description:
+      'Terhubung langsung dengan ratusan decision-maker, developer, arsitek, dan kontraktor top Indonesia dalam satu atap.',
   },
   {
     id: 2,
     icon: 'lightbulb',
     color: 'blue',
     title: 'Inovasi Terkini',
-    description: 'Saksikan peluncuran produk dan teknologi konstruksi terbaru yang akan membentuk industri bangunan masa depan.',
+    description:
+      'Saksikan peluncuran produk dan teknologi konstruksi terbaru yang akan membentuk industri bangunan masa depan.',
   },
   {
     id: 3,
     icon: 'chart',
     color: 'green',
     title: 'Peluang Bisnis Nyata',
-    description: 'Platform paling efektif untuk menghasilkan leads berkualitas tinggi dan memperluas jangkauan pasar Anda secara masif.',
+    description:
+      'Platform paling efektif untuk menghasilkan leads berkualitas tinggi dan memperluas jangkauan pasar Anda secara masif.',
   },
   {
     id: 4,
     icon: 'seminar',
     color: 'yellow',
     title: 'Seminar & Workshop',
-    description: 'Akses lebih dari 30 sesi seminar eksklusif dipandu pakar industri, arsitek ternama, dan tokoh properti nasional.',
+    description:
+      'Akses lebih dari 30 sesi seminar eksklusif dipandu pakar industri, arsitek ternama, dan tokoh properti nasional.',
   },
 ];
 
@@ -133,7 +138,8 @@ export const testimonials = [
     position: 'Direktur Utama',
     company: 'PT. Mitra Bangun Nusantara',
     avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80',
-    quote: 'Mengikuti Konstruksi Expo adalah keputusan terbaik tahun ini. Dalam 4 hari pameran, kami berhasil mengumpulkan lebih dari 200 prospek bisnis berkualitas. Return-nya jauh melebihi ekspektasi.',
+    quote:
+      'Mengikuti Konstruksi Expo adalah keputusan terbaik tahun ini. Dalam 4 hari pameran, kami berhasil mengumpulkan lebih dari 200 prospek bisnis berkualitas. Return-nya jauh melebihi ekspektasi.',
     rating: 5,
   },
   {
@@ -142,7 +148,8 @@ export const testimonials = [
     position: 'Principal Architect',
     company: 'Studio DP Architects',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80',
-    quote: 'Event yang sangat well-organized. Saya bisa bertemu klien potensial, belajar dari sesi seminar eksklusif, dan melihat inovasi material terbaru sekaligus. Sudah jadi agenda tahunan saya.',
+    quote:
+      'Event yang sangat well-organized. Saya bisa bertemu klien potensial, belajar dari sesi seminar eksklusif, dan melihat inovasi material terbaru sekaligus. Sudah jadi agenda tahunan saya.',
     rating: 5,
   },
   {
@@ -151,7 +158,8 @@ export const testimonials = [
     position: 'Head of Procurement',
     company: 'PT. Agung Podomoro Land',
     avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=100&q=80',
-    quote: 'Kami sebagai buyer menemukan vendor-vendor reliable baru yang tidak kami temukan melalui channel biasa. Konstruksi Expo benar-benar menjembatani ekosistem industri konstruksi Indonesia.',
+    quote:
+      'Kami sebagai buyer menemukan vendor-vendor reliable baru yang tidak kami temukan melalui channel biasa. Konstruksi Expo benar-benar menjembatani ekosistem industri konstruksi Indonesia.',
     rating: 5,
   },
   {
@@ -160,7 +168,8 @@ export const testimonials = [
     position: 'CEO',
     company: 'CV. Bangunan Prima Jaya',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80',
-    quote: 'Sebagai kontraktor menengah, expo ini memberi akses ke informasi harga material terbaru, regulasi terkini, dan networking dengan developer besar. Investasi yang sangat worthwhile.',
+    quote:
+      'Sebagai kontraktor menengah, expo ini memberi akses ke informasi harga material terbaru, regulasi terkini, dan networking dengan developer besar. Investasi yang sangat worthwhile.',
     rating: 5,
   },
 ];
@@ -175,7 +184,8 @@ export const articles = [
     category: 'Tren',
     categoryColor: 'green',
     title: 'Green Building Jadi Tren Wajib: Regulasi Baru Kemenpupr untuk Konstruksi Berkelanjutan',
-    excerpt: 'Pemerintah Indonesia melalui Kementerian PUPR menerbitkan regulasi baru yang mewajibkan proyek konstruksi skala besar memenuhi standar green building. Ini menjadi peluang sekaligus tantangan bagi pelaku industri.',
+    excerpt:
+      'Pemerintah Indonesia melalui Kementerian PUPR menerbitkan regulasi baru yang mewajibkan proyek konstruksi skala besar memenuhi standar green building. Ini menjadi peluang sekaligus tantangan bagi pelaku industri.',
     image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&q=80',
     author: 'Tim Editorial KonstruksiExpo',
     date: '12 September 2025',
@@ -188,7 +198,8 @@ export const articles = [
     category: 'Teknologi',
     categoryColor: 'blue',
     title: 'BIM 7D Siap Merevolusi Cara Indonesia Membangun: Dari Desain Hingga Demolisi',
-    excerpt: 'Building Information Modeling kini hadir dalam dimensi ke-7 yang mencakup manajemen fasilitas sepanjang siklus hidup bangunan. Beberapa kontraktor besar Indonesia mulai mengadopsi teknologi ini.',
+    excerpt:
+      'Building Information Modeling kini hadir dalam dimensi ke-7 yang mencakup manajemen fasilitas sepanjang siklus hidup bangunan. Beberapa kontraktor besar Indonesia mulai mengadopsi teknologi ini.',
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
     author: 'Rizky Aditya Pratama',
     date: '8 September 2025',
@@ -200,8 +211,10 @@ export const articles = [
     slug: 'material-inovatif-masa-depan',
     category: 'Material',
     categoryColor: 'red',
-    title: 'Self-Healing Concrete dan Aerogel Insulation: Material Futuristik yang Mulai Masuk Pasar Indonesia',
-    excerpt: 'Dua material inovatif yang sebelumnya hanya ada di laboratorium riset kini mulai tersedia di pasar komersial Indonesia. Harganya masih premium, namun nilai jangka panjangnya sangat menjanjikan.',
+    title:
+      'Self-Healing Concrete dan Aerogel Insulation: Material Futuristik yang Mulai Masuk Pasar Indonesia',
+    excerpt:
+      'Dua material inovatif yang sebelumnya hanya ada di laboratorium riset kini mulai tersedia di pasar komersial Indonesia. Harganya masih premium, namun nilai jangka panjangnya sangat menjanjikan.',
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
     author: 'Dr. Siti Rahayu Wulandari',
     date: '5 September 2025',
@@ -243,5 +256,4 @@ export const navLinks = [
   { label: 'Galeri', href: '#gallery' },
   { label: 'Sponsor', href: '#sponsors' },
   { label: 'Artikel', href: '#news' },
-  { label: 'Booking Stand', href: '#booking' },
 ];
