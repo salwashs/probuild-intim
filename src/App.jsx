@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
+import BoothPage from './pages/BoothPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
 
@@ -39,6 +40,7 @@ function AppContent() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/tentang-kami' element={<AboutPage />} />
+        <Route path='/booth' element={<BoothPage />} />
         <Route path='/artikel' element={<ArticlesPage />} />
         <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
       </Routes>
