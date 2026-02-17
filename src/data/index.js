@@ -17,6 +17,7 @@ export const eventInfo = {
     'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
   exhibitor: 100,
   targetVisitor: 15000,
+  speakers: 20,
 };
 
 // =====================
@@ -355,8 +356,9 @@ export const productCategories = [
 // NAVIGATION
 // =====================
 export const navLinks = [
-  { label: 'Tentang', href: '/tentang-kami', isRoute: true },
+  { label: 'Tentang Kami', href: '/tentang-kami', isRoute: true },
   { label: 'Keunggulan', href: '#why-attend', isRoute: false },
   { label: 'Mitra dan Sponsor', href: '#sponsors', isRoute: false },
+  { label: 'Booth', href: '/booth', isRoute: true },
   { label: 'Artikel', href: '/artikel', isRoute: true },
 ];
