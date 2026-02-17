@@ -161,6 +161,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Event Features Section */}
+      <section className={`section ${styles.featuresSection}`}>
+        <div className='container'>
+          <div className={styles.featuresHeader}>
+            <h2 className='section__title'>Fitur Utama Event</h2>
+            <div className={styles.featuresUnderline} />
+          </div>
+
+          <div className={styles.featuresGrid}>
+            {features.map((feature, index) => (
+              <div key={index} className={`${styles.featureCard} reveal delay-${index + 1}`}>
+                <div
+                  className={`${styles.featureCard__icon} ${styles[`featureCard__icon--${feature.color}`]}`}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className={styles.featureCard__title}>{feature.title}</h3>
+                <p className={styles.featureCard__desc}>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Event Agenda Section */}
       <section className={`section ${styles.agendaSection} `}>
         <div className='container'>
@@ -259,30 +283,6 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Event Features Section */}
-      <section className={`section ${styles.featuresSection}`}>
-        <div className='container'>
-          <div className={styles.featuresHeader}>
-            <h2 className='section__title'>Fitur Utama Event</h2>
-            <div className={styles.featuresUnderline} />
-          </div>
-
-          <div className={styles.featuresGrid}>
-            {features.map((feature, index) => (
-              <div key={index} className={`${styles.featureCard} reveal delay-${index + 1}`}>
-                <div
-                  className={`${styles.featureCard__icon} ${styles[`featureCard__icon--${feature.color}`]}`}
-                >
-                  {feature.icon}
-                </div>
-                <h3 className={styles.featureCard__title}>{feature.title}</h3>
-                <p className={styles.featureCard__desc}>{feature.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
