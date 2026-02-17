@@ -67,12 +67,16 @@ export default function Hero() {
       <div className={styles.containerHero}>
         <div className={styles.content}>
           {/* Eyebrow */}
-          <div className={styles.eyebrow}>
+          <a
+            className={styles.eyebrow}
+            href='https://maps.app.goo.gl/zYf5uwPERH5E6ymn6'
+            target='_blank'
+          >
             <span className={styles.eyebrow__dot} />
             <span>
-              {eventInfo.venue} • {eventInfo.date}
+              {eventInfo.location} • {eventInfo.date}
             </span>
-          </div>
+          </a>
 
           {/* Headline */}
           <div className={styles.headline}>
@@ -97,8 +101,9 @@ export default function Hero() {
 
           {/* Description */}
           <p className={styles.description}>
-            Platform pertemuan 500+ exhibitor, 40.000 profesional, dan inovator industri konstruksi
-            terbesar se-Indonesia Timur dalam 4 hari transformasi.
+            Platform pertemuan {eventInfo.exhibitor}+ exhibitor,{' '}
+            {eventInfo.targetVisitor?.toLocaleString('id-ID')} profesional, dan inovator industri
+            konstruksi terbesar se-Indonesia Timur dalam 4 hari transformasi.
           </p>
 
           {/* CTA Buttons */}
@@ -120,12 +125,12 @@ export default function Hero() {
               Booking Stand
             </a>
             <a
-              href='#booking'
+              href='/booking'
               className={`btn btn--outline ${styles.cta__outline}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleScroll('#booking');
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   handleScroll('#booking');
+              // }}
             >
               Apa itu ProBuild INTIM?
             </a>

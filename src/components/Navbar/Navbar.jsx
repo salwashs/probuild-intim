@@ -26,13 +26,23 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <a href="#" className={styles.logo} onClick={() => setMobileOpen(false)}>
+        <a href='#' className={styles.logo} onClick={() => setMobileOpen(false)}>
           <span className={styles.logo__icon}>
-            <img src="/images/logo-probuild.png" alt="Logo" />
+            <img src='/images/logo-probuild.png' alt='Logo' />
           </span>
           <span className={styles.logo__text}>
-            <strong>{eventInfo.name}</strong>
-            <em>{eventInfo.edition}</em>
+            <strong>
+              <span className={styles.textRed}>Pro</span>
+              <span className={styles.textGreen}>Build</span>{' '}
+              <span className={styles.textBlue}>INT</span>
+              <span className={styles.textOrange}>IM</span>
+            </strong>
+            <em>
+              <span className={styles.textRed}>2</span>
+              <span className={styles.textGreen}>0</span>
+              <span className={styles.textBlue}>2</span>
+              <span className={styles.textOrange}>6</span>
+            </em>
           </span>
         </a>
 
@@ -55,21 +65,21 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#booking"
+          href='#booking'
           className={styles.cta}
           onClick={(e) => {
             e.preventDefault();
             handleNavClick('#booking');
           }}
         >
-          Booking Stand
+          Registransi
         </a>
 
         {/* Mobile Toggle */}
         <button
           className={`${styles.toggle} ${mobileOpen ? styles.open : ''}`}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          aria-label='Toggle menu'
         >
           <span />
           <span />
@@ -94,14 +104,14 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#booking"
+            href='#booking'
             className={styles.mobile__cta}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick('#booking');
             }}
           >
-            Booking Stand
+            Registrasi
           </a>
         </nav>
       </div>

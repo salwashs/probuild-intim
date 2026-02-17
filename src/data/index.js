@@ -7,14 +7,16 @@ export const eventInfo = {
   edition: '2026',
   tagline: 'Indonesia Construction & Architecture Expo',
   fullName: 'Indonesia Construction & Architecture Expo 2026',
-  date: '1-4 Juli 2026',
+  date: '2-5 Juli 2026',
   // Countdown target date
-  targetDate: new Date('2026-07-01T08:00:00'),
+  targetDate: new Date('2026-07-02T09:00:00'),
   location: 'Makassar',
   venue: 'Phinisi Point (PHIPO)',
   venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
   description:
     'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
+  exhibitor: 100,
+  targetVisitor: 15000,
 };
 
 // =====================
@@ -356,6 +358,6 @@ export const navLinks = [
   { label: 'Tentang', href: '#about' },
   { label: 'Keunggulan', href: '#why-attend' },
   { label: 'Galeri', href: '#gallery' },
-  { label: 'Sponsor', href: '#sponsors' },
+  { label: 'Mitra dan Sponsor', href: '#sponsors' },
   { label: 'Artikel', href: '#news' },
 ];

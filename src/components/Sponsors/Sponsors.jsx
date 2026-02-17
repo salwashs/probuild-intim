@@ -85,11 +85,16 @@ export default function Sponsors() {
     <section className={styles.section} id='sponsors'>
       <div className='container'>
         {/* Header */}
-        <div className={`reveal ${styles.header}`}>
-          <h2>
-            Didukung <span className='text-primary'>Terbaik</span>
+        <div className='section__header reveal' style={{ marginBottom: '2rem' }}>
+          <span className='section__label'>Mitra dan Sponsor</span>
+          <h2 className='section__title'>
+            <span className='text-primary'>
+              Didukung Oleh yang <span className={styles.accent}>Terbaik</span>
+            </span>
           </h2>
-          <p className='text-muted'>Mitra strategis yang mendukung kesuksesan Konstruksi Expo.</p>
+          <p className='section__subtitle'>
+            Mitra strategis yang mendukung kesuksesan ProBuild INTIM 2026.
+          </p>
         </div>
 
         {/* 1. Main Sponsor (Carousel/Single) */}
@@ -132,7 +137,7 @@ export default function Sponsors() {
         )}
 
         {/* 3. Supporting Sponsor (Grid) */}
-        {supporting.length > 0 && (
+        {/* {supporting.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
               <h3>Sponsor Lainnya & Media Partners</h3>
@@ -149,7 +154,7 @@ export default function Sponsors() {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* CTA */}
         <div className={`reveal ${styles.cta}`}>

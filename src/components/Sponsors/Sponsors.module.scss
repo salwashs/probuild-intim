@@ -36,10 +36,14 @@
       display: block;
       width: 40px;
       height: 2px;
-      background: $blue;
+      background: $orange-50;
       margin: 0.5rem auto 0;
     }
   }
+}
+
+.accent {
+  color: $red-50;
 }
 
 // Logo Container (replaces .logoCard as wrapper)
@@ -155,7 +159,7 @@
 .secondaryName {
   font-size: 1.1rem; // Highlighted size
   font-weight: 800; // Bold / Highlighted
-  color: $blue; // Highlight color
+  color: $blue-50; // Highlight color
   letter-spacing: -0.02em;
   line-height: 1.2;
 }

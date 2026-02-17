@@ -5,7 +5,7 @@ import styles from './About.module.scss';
 const highlights = [
   { icon: '🏗️', number: 100, suffix: '+', label: 'Exhibitor Terpilih', color: 'red' },
   { icon: '👥', number: 15000, suffix: '+', label: 'Target Pengunjung', color: 'blue' },
-  { icon: '📐', number: 20, suffix: '+', label: 'Pembicara Ahli', color: 'green' },
+  { icon: '🎓', number: 20, suffix: '+', label: 'Pembicara Ahli', color: 'green' },
   { icon: '📅', number: 4, suffix: ' Hari', label: 'Durasi Event', color: 'yellow' },
 ];
 
@@ -76,14 +76,16 @@ export default function About() {
             </h2>
             <p className={styles.body}>
               <strong>ProBuild 2026</strong> adalah pameran konstruksi B2B terbesar di Indonesia
-              Timur, mempertemukan 100+ exhibitor, 15.000+ pengunjung profesional, dan 20+ pembicara
-              ahli dari seluruh Indonesia. Fokus pada inovasi infrastruktur, material bangunan,
-              teknologi digital konstruksi (BIM, AI), dan proyek strategis nasional serta
+              Timur, mempertemukan {eventInfo.exhibitor}+ exhibitor,{' '}
+              {eventInfo.targetVisitor?.toLocaleString('id-ID')}+ pengunjung profesional, dan 20+
+              pembicara ahli dari seluruh Indonesia. Fokus pada inovasi infrastruktur, material
+              bangunan, teknologi digital konstruksi (BIM, AI), dan proyek strategis nasional serta
               pengembangan kawasan timur Indonesia.
             </p>
             <p className={styles.body}>
-              <strong>Target 2026</strong>, 15.000+ pengunjung, didukung Dinas Bina Marga & Bina
-              Konstruksi (DBMBK), BJKW VI dan 10+ asosiasi industri.
+              <strong>Target 2026</strong>, {eventInfo.targetVisitor?.toLocaleString('id-ID')}+
+              pengunjung, didukung Dinas Bina Marga & Bina Konstruksi (DBMBK) Provinsi Sulawesi
+              Selatan, BJKW VI Makassar dan 10+ asosiasi industri.
             </p>
 
             {/* Tags */}
@@ -94,6 +96,7 @@ export default function About() {
               <span className='tag tag--yellow'>Interior</span>
               <span className='tag tag--red'>Smart Building</span>
               <span className='tag tag--blue'>Green Construction</span>
+              <span className='tag tag--green'>Infrastruktur</span>
             </div>
 
             <a
