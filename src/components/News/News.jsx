@@ -1,34 +1,35 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { articles } from '../../data';
 import styles from './News.module.scss';
-import ArticleDetail from './ArticleDetail';
 
 const colorMap = { red: 'red', blue: 'blue', green: 'green' };
 
 export default function News() {
-  const [selected, setSelected] = useState(null);
-
-  if (selected) {
-    return <ArticleDetail article={selected} onBack={() => setSelected(null)} />;
-  }
-
   return (
-    <section className={`section ${styles.section}`} id="news">
-      <div className="container">
+    <section className={`section ${styles.section}`} id='news'>
+      <div className='container'>
         <div className={`${styles.header} reveal`}>
           <div>
-            <span className="section__label">Artikel & Berita</span>
-            <h2 className="section__title">
-              Update Terkini<br />
+            <span className='section__label'>Artikel & Berita</span>
+            <h2 className='section__title'>
+              Update Terkini
+              <br />
               <span className={styles.accent}>Industri Konstruksi</span>
             </h2>
           </div>
-          <a href="#news" className={`btn btn--outline-dark ${styles.viewAll}`} onClick={(e) => e.preventDefault()}>
+          <Link to='/artikel' className={`btn btn--outline-dark ${styles.viewAll}`}>
             Semua Artikel
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+            <svg
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='2.5'
+              width='18'
+              height='18'
+            >
+              <path d='M5 12h14M12 5l7 7-7 7' />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className={`${styles.grid}`}>
@@ -42,7 +43,7 @@ export default function News() {
                   src={article.image}
                   alt={article.title}
                   className={styles.card__img}
-                  loading="lazy"
+                  loading='lazy'
                 />
                 <div className={styles.card__imgOverlay} />
               </div>
@@ -53,16 +54,16 @@ export default function News() {
                     {article.category}
                   </span>
                   <span className={styles.card__date}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M16 2v4M8 2v4M3 10h18" />
+                    <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                      <rect x='3' y='4' width='18' height='18' rx='2' />
+                      <path d='M16 2v4M8 2v4M3 10h18' />
                     </svg>
                     {article.date}
                   </span>
                   <span className={styles.card__read}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 6v6l4 2" />
+                    <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                      <circle cx='12' cy='12' r='10' />
+                      <path d='M12 6v6l4 2' />
                     </svg>
                     {article.readTime}
                   </span>
@@ -73,20 +74,18 @@ export default function News() {
 
                 <div className={styles.card__footer}>
                   <div className={styles.card__author}>
-                    <div className={styles.card__authorAvatar}>
-                      {article.author.charAt(0)}
-                    </div>
+                    <div className={styles.card__authorAvatar}>{article.author.charAt(0)}</div>
                     <span>{article.author}</span>
                   </div>
-                  <button
+                  <Link
+                    to={`/artikel/${article.slug}`}
                     className={`btn btn--outline-dark ${styles.card__btn}`}
-                    onClick={() => setSelected(article)}
                   >
                     Baca
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                      <path d='M5 12h14M12 5l7 7-7 7' />
                     </svg>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>

@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { navLinks, eventInfo } from '../../data';
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +17,44 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (link) => {
     setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+
+    if (link.isRoute) {
+      // Navigate to route
+      navigate(link.href);
+    } else {
+      // Handle hash navigation
+      if (location.pathname !== '/') {
+        // If not on home page, navigate to home first then scroll
+        navigate('/');
+        setTimeout(() => {
+          const target = document.querySelector(link.href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const target = document.querySelector(link.href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  const handleBookingClick = (e) => {
+    e.preventDefault();
+    setMobileOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -26,7 +62,7 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <a href='#' className={styles.logo} onClick={() => setMobileOpen(false)}>
+        <Link to='/' className={styles.logo} onClick={() => setMobileOpen(false)}>
           <span className={styles.logo__icon}>
             <img src='/images/logo-probuild.png' alt='Logo' />
           </span>
@@ -44,7 +80,7 @@ export default function Navbar() {
               <span className={styles.textOrange}>6</span>
             </em>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.nav}>
@@ -54,7 +90,7 @@ export default function Navbar() {
               className={styles.nav__link}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick(link.href);
+                handleNavClick(link);
               }}
               href={link.href}
             >
@@ -64,15 +100,8 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <a
-          href='#booking'
-          className={styles.cta}
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavClick('#booking');
-          }}
-        >
-          Registransi
+        <a href='#booking' className={styles.cta} onClick={handleBookingClick}>
+          Registrasi
         </a>
 
         {/* Mobile Toggle */}
@@ -96,21 +125,14 @@ export default function Navbar() {
               className={styles.mobile__link}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick(link.href);
+                handleNavClick(link);
               }}
               href={link.href}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href='#booking'
-            className={styles.mobile__cta}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#booking');
-            }}
-          >
+          <a href='#booking' className={styles.mobile__cta} onClick={handleBookingClick}>
             Registrasi
           </a>
         </nav>

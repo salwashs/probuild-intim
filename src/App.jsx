@@ -1,18 +1,13 @@
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/global.scss';
 
 import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import WhyAttend from './components/WhyAttend/WhyAttend';
-import Parallax from './components/Parallax/Parallax';
-import Gallery from './components/Gallery/Gallery';
-import ProjectPreparation from './components/ProjectPreparation/ProjectPreparation';
-import Sponsors from './components/Sponsors/Sponsors';
-import Testimonials from './components/Testimonials/Testimonials';
-import News from './components/News/News';
-import BookingForm from './components/BookingForm/BookingForm';
 import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import ArticlesPage from './pages/ArticlesPage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
 
 export default function App() {
   useEffect(() => {
@@ -36,21 +31,15 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <WhyAttend />
-        <Parallax />
-        <ProjectPreparation />
-        {/* <Gallery /> */}
-        <Sponsors />
-        {/* <Testimonials /> */}
-        <News />
-        <BookingForm />
-      </main>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/tentang-kami' element={<AboutPage />} />
+        <Route path='/artikel' element={<ArticlesPage />} />
+        <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
