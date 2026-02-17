@@ -124,14 +124,7 @@ export default function Hero() {
               </svg>
               Booking Stand
             </a>
-            <a
-              href='/booking'
-              className={`btn btn--outline ${styles.cta__outline}`}
-              // onClick={(e) => {
-              //   e.preventDefault();
-              //   handleScroll('#booking');
-              // }}
-            >
+            <a href='/tentang-kami' className={`btn btn--outline ${styles.cta__outline}`}>
               Apa itu ProBuild INTIM?
             </a>
           </div>

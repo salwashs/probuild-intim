@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './styles/global.scss';
 
 import Navbar from './components/Navbar/Navbar';
@@ -9,7 +9,9 @@ import AboutPage from './pages/AboutPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+
   useEffect(() => {
     // Global scroll reveal observer
     const observer = new IntersectionObserver(
@@ -24,14 +26,15 @@ export default function App() {
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
+    // Re-observe elements whenever route changes
     const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]); // Re-run when route changes
 
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -40,6 +43,14 @@ export default function App() {
         <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
       </Routes>
       <Footer />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
