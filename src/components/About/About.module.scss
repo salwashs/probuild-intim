@@ -42,7 +42,7 @@
 }
 
 // Image column
-.imageCol {}
+// .imageCol {}
 
 .imageWrap {
   position: relative;
@@ -54,7 +54,12 @@
     position: absolute;
     inset: -1px;
     border-radius: $radius-xl;
-    background: linear-gradient(135deg, color.change($red, $alpha: 0.3), color.change($blue, $alpha: 0.2), transparent 60%);
+    background: linear-gradient(
+      135deg,
+      color.change($red, $alpha: 0.3),
+      color.change($blue, $alpha: 0.2),
+      transparent 60%
+    );
     z-index: 0;
   }
 }
@@ -122,8 +127,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px color.change($green, $alpha: 0.2); }
-  50% { box-shadow: 0 0 0 7px color.change($green, $alpha: 0.08); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color.change($green, $alpha: 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color.change($green, $alpha: 0.08);
+  }
 }
 
 // Decorative elements
@@ -205,10 +215,18 @@
     }
   }
 
-  &--red::before { background: $red; }
-  &--blue::before { background: $blue; }
-  &--green::before { background: $green; }
-  &--yellow::before { background: $yellow; }
+  &--red::before {
+    background: $red;
+  }
+  &--blue::before {
+    background: $blue;
+  }
+  &--green::before {
+    background: $green;
+  }
+  &--yellow::before {
+    background: $yellow;
+  }
 
   &__icon {
     font-size: 1.75rem;
