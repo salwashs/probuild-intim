@@ -35,33 +35,33 @@ export const whyAttend = [
     id: 1,
     icon: 'building',
     color: 'red',
-    title: 'Networking Premium',
+    title: 'Exclusive Industry Networking',
     description:
-      'Terhubung langsung dengan ratusan decision-maker, developer, arsitek, dan kontraktor top Indonesia dalam satu atap.',
+      'ProBuild menghadirkan ruang networking premium yang dirancang untuk mempertemukan Anda dengan mitra bernilai tinggi dalam atmosfer profesional dan berkelas.',
   },
   {
     id: 2,
     icon: 'lightbulb',
     color: 'blue',
-    title: 'Inovasi Terkini',
+    title: 'Future-Defining Innovation',
     description:
-      'Saksikan peluncuran produk dan teknologi konstruksi terbaru yang akan membentuk industri bangunan masa depan.',
+      'Jadilah yang pertama menyaksikan teknologi, material, dan solusi konstruksi generasi terbaru.',
   },
   {
     id: 3,
     icon: 'chart',
     color: 'green',
-    title: 'Peluang Bisnis Nyata',
+    title: 'High-Value Business Opportunities',
     description:
-      'Platform paling efektif untuk menghasilkan leads berkualitas tinggi dan memperluas jangkauan pasar Anda secara masif.',
+      'Dengan sistem business matching terkurasi dan akses ke buyer utama, partisipasi Anda bukan hanya eksposur—melainkan investasi untuk pertumbuhan bisnis jangka panjang.',
   },
   {
     id: 4,
     icon: 'seminar',
     color: 'yellow',
-    title: 'Seminar & Workshop',
+    title: 'Executive-Level Insight & Forum',
     description:
-      'Akses lebih dari 30 sesi seminar eksklusif dipandu pakar industri, arsitek ternama, dan tokoh properti nasional.',
+      'Dapatkan perspektif langsung dari tokoh industri, regulator, dan pemimpin proyek nasional dalam forum diskusi berkelas.',
   },
 ];
 
