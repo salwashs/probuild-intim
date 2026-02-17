@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { navLinks, eventInfo } from '../../data';
+import { navLinks } from '../../data';
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {

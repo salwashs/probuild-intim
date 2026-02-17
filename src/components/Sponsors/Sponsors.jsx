@@ -160,12 +160,9 @@ export default function Sponsors() {
         <div className={`reveal ${styles.cta}`}>
           <p>Ingin brand Anda tampil di sini?</p>
           <a
-            href='#booking'
+            href='https://wa.me/6285705852676?text=Halo%20Saya%20tertarik%20jadi%20sponsor%20ProBuild%20INTIM%202026'
+            target='_blank'
             className='btn btn--primary'
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
-            }}
           >
             Jadi Sponsor
           </a>

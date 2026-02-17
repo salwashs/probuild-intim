@@ -69,16 +69,6 @@ export default function Parallax() {
                 <path d='M5 12h14M12 5l7 7-7 7' />
               </svg>
             </a>
-            <a
-              href='#gallery'
-              className={`btn btn--outline ${styles.ctaOutline}`}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#gallery')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Lihat Galeri
-            </a>
           </div>
 
           {/* Features row */}

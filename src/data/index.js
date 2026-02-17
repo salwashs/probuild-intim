@@ -357,7 +357,6 @@ export const productCategories = [
 export const navLinks = [
   { label: 'Tentang', href: '/tentang-kami', isRoute: true },
   { label: 'Keunggulan', href: '#why-attend', isRoute: false },
-  { label: 'Galeri', href: '#gallery', isRoute: false },
   { label: 'Mitra dan Sponsor', href: '#sponsors', isRoute: false },
   { label: 'Artikel', href: '/artikel', isRoute: true },
 ];
