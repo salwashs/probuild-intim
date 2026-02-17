@@ -68,6 +68,62 @@ export const whyAttend = [
 // =====================
 // GALLERY
 // =====================
+export const galleryPreparation = [
+  {
+    id: 1,
+    thumb: '/images/preparation/1.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 2,
+    thumb: '/images/preparation/2.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 3,
+    thumb: '/images/preparation/3.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 4,
+    thumb: '/images/preparation/4.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 5,
+    thumb: '/images/preparation/5.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 6,
+    thumb: '/images/preparation/6.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 7,
+    thumb: '/images/preparation/7.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 8,
+    thumb: '/images/preparation/8.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 9,
+    thumb: '/images/preparation/9.jpeg',
+    alt: 'Project Preparation',
+  },
+  {
+    id: 10,
+    thumb: '/images/preparation/10.jpeg',
+    alt: 'Project Preparation',
+  },
+];
+
+// =====================
+// GALLERY
+// =====================
 export const galleryImages = [
   {
     id: 1,
