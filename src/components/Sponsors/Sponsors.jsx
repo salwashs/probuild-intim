@@ -1,89 +1,168 @@
+import { useState, useEffect } from 'react';
 import { sponsors } from '../../data';
 import styles from './Sponsors.module.scss';
 
-// Generate a colored placeholder logo for each sponsor
-function SponsorLogo({ sponsor }) {
-  const colors = {
-    platinum: '#1A5FD6',
-    gold: '#F5A623',
-    silver: '#7A8899',
-    bronze: '#2D9C6E',
-  };
+// Helper to generate placeholder or show image
+// Helper to generate placeholder or show image
+function SponsorLogo({ sponsor, className, variant = 'supporting' }) {
+  // Simple hashing for placeholder color if needed, or random
+  const colors = ['#1A5FD6', '#F5A623', '#7A8899', '#2D9C6E'];
+  const color = colors[sponsor.id % colors.length];
 
-  const abbrev = sponsor.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  const color = colors[sponsor.tier];
+  const abbrev = sponsor.name
+    ? sponsor.name
+        .split(' ')
+        .map((w) => w[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase()
+    : 'SP';
+
+  const logoContent = sponsor.logo ? (
+    <img src={sponsor.logo} alt={sponsor.name} />
+  ) : (
+    <div style={{ textAlign: 'center', width: '100%' }}>
+      <div
+        style={{
+          fontSize: '1.5rem',
+          fontWeight: '800',
+          color: color,
+          marginBottom: '0.25rem',
+        }}
+      >
+        {abbrev}
+      </div>
+      {/* If simple placeholder, we might show name inside if not showing outside */}
+      {variant === 'supporting' && (
+        <div style={{ fontSize: '0.7rem', color: '#666' }}>{sponsor.name}</div>
+      )}
+    </div>
+  );
 
   return (
-    <div
-      className={styles.logo}
-      style={{ '--logo-color': color }}
-      title={sponsor.name}
-    >
-      <span className={styles.logo__abbrev}>{abbrev}</span>
-      <span className={styles.logo__name}>{sponsor.name}</span>
+    <div className={`${className} ${styles.logoContainer}`} title={sponsor.name}>
+      <div className={styles.logoImageWrapper} style={!sponsor.logo ? { borderColor: color } : {}}>
+        {logoContent}
+      </div>
+
+      {variant === 'main' && <div className={styles.mainName}>{sponsor.name}</div>}
+
+      {variant === 'secondary' && (
+        <div className={styles.secondaryInfo}>
+          <div className={styles.secondaryName}>{sponsor.name}</div>
+          {sponsor.fullName && <div className={styles.secondaryFullName}>{sponsor.fullName}</div>}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function Sponsors() {
-  // Duplicate sponsors for infinite loop
-  const loop = [...sponsors, ...sponsors, ...sponsors];
+  const { main, secondary, supporting } = sponsors;
+
+  // --- Main Sponsor Logic ---
+  const [activeMainIndex, setActiveMainIndex] = useState(0);
+
+  useEffect(() => {
+    if (main.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setActiveMainIndex((prev) => (prev + 1) % main.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [main.length]);
+
+  const currentMain = main[activeMainIndex];
+
+  // --- Secondary Sponsor Logic ---
+  // Duplicate for seamless marquee
+  // If list is short, duplicate more times to fill width
+  const secondaryLoop =
+    secondary.length > 0 ? [...secondary, ...secondary, ...secondary, ...secondary] : [];
 
   return (
-    <section className={`section section--light ${styles.section}`} id="sponsors">
-      <div className="container">
-        <div className="section__header reveal">
-          <span className="section__label">Sponsor & Mitra</span>
-          <h2 className="section__title">
-            Didukung Pemain <span className={styles.accent}>Terbaik</span> Industri
+    <section className={styles.section} id='sponsors'>
+      <div className='container'>
+        {/* Header */}
+        <div className={`reveal ${styles.header}`}>
+          <h2>
+            Didukung <span className='text-primary'>Terbaik</span>
           </h2>
-          <p className="section__subtitle">
-            Bergabung bersama merek-merek terkemuka yang telah mempercayakan promosi mereka di Konstruksi Expo.
-          </p>
+          <p className='text-muted'>Mitra strategis yang mendukung kesuksesan Konstruksi Expo.</p>
         </div>
 
-        {/* Tier labels */}
-        <div className={`${styles.tiers} reveal`}>
-          {[
-            { label: 'Platinum Sponsor', color: '#1A5FD6', count: 2 },
-            { label: 'Gold Sponsor', color: '#F5A623', count: 3 },
-            { label: 'Silver Sponsor', color: '#7A8899', count: 3 },
-            { label: 'Bronze Sponsor', color: '#2D9C6E', count: 2 },
-          ].map((t) => (
-            <div key={t.label} className={styles.tier}>
-              <span className={styles.tier__dot} style={{ background: t.color }} />
-              <span className={styles.tier__label}>{t.label}</span>
-              <span className={styles.tier__count}>{t.count}</span>
+        {/* 1. Main Sponsor (Carousel/Single) */}
+        {main.length > 0 && (
+          <div className='reveal'>
+            <div className={styles.subHeader}>
+              <h3>Pendukung Utama Nasional</h3>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Carousel - full width */}
-      <div className={`${styles.carouselWrap} reveal`}>
-        <div className={styles.carousel}>
-          <div className={styles.track}>
-            {loop.map((s, i) => (
-              <div key={`${s.id}-${i}`} className={styles.slide}>
-                <SponsorLogo sponsor={s} />
-              </div>
-            ))}
+            <div className={styles.mainWrapper}>
+              <SponsorLogo
+                key={currentMain.id}
+                sponsor={currentMain}
+                className={styles.mainCard}
+                variant='main'
+              />
+            </div>
           </div>
-        </div>
-        {/* Fade masks */}
-        <div className={`${styles.mask} ${styles.mask__left}`} />
-        <div className={`${styles.mask} ${styles.mask__right}`} />
-      </div>
+        )}
 
-      <div className="container">
-        <div className={`${styles.cta} reveal`}>
-          <p>Tertarik menjadi sponsor Konstruksi Expo 2025?</p>
+        {/* 2. Secondary Sponsor (Marquee) */}
+        {secondary.length > 0 && (
+          <div className='reveal'>
+            <div className={styles.subHeader}>
+              <h3>Asosiasi & Mitra Pendukung</h3>
+            </div>
+
+            <div className={styles.secondaryWrapper}>
+              <div className={styles.secondaryTrack}>
+                {secondaryLoop.map((s, i) => (
+                  <SponsorLogo
+                    key={`${s.id}-${i}`}
+                    sponsor={s}
+                    className={styles.secondaryCard}
+                    variant='secondary'
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 3. Supporting Sponsor (Grid) */}
+        {supporting.length > 0 && (
+          <div className='reveal'>
+            <div className={styles.subHeader}>
+              <h3>Sponsor Lainnya & Media Partners</h3>
+            </div>
+
+            <div className={styles.supportingWrapper}>
+              {supporting.map((s, i) => (
+                <SponsorLogo
+                  key={s.id}
+                  sponsor={s}
+                  className={styles.supportingCard}
+                  variant='supporting'
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className={`reveal ${styles.cta}`}>
+          <p>Ingin brand Anda tampil di sini?</p>
           <a
-            href="#booking"
-            className="btn btn--primary"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' }); }}
+            href='#booking'
+            className='btn btn--primary'
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
-            Hubungi Kami
+            Jadi Sponsor
           </a>
         </div>
       </div>

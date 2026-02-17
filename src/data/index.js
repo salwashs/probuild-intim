@@ -66,7 +66,7 @@ export const whyAttend = [
 ];
 
 // =====================
-// GALLERY
+// GALLERY PREPARATION
 // =====================
 export const galleryPreparation = [
   {
@@ -172,18 +172,63 @@ export const galleryImages = [
 // =====================
 // SPONSORS
 // =====================
-export const sponsors = [
-  { id: 1, name: 'Holcim Indonesia', tier: 'platinum', logo: null },
-  { id: 2, name: 'Semen Indonesia', tier: 'platinum', logo: null },
-  { id: 3, name: 'Wika Gedung', tier: 'gold', logo: null },
-  { id: 4, name: 'PP Properti', tier: 'gold', logo: null },
-  { id: 5, name: 'Ciputra Group', tier: 'gold', logo: null },
-  { id: 6, name: 'Summarecon', tier: 'silver', logo: null },
-  { id: 7, name: 'Jaya Kontruksi', tier: 'silver', logo: null },
-  { id: 8, name: 'Intiland', tier: 'silver', logo: null },
-  { id: 9, name: 'Tata Metal', tier: 'bronze', logo: null },
-  { id: 10, name: 'KMK Global', tier: 'bronze', logo: null },
-];
+export const sponsors = {
+  main: [
+    {
+      id: 1,
+      type: 'Pendukung Utama Nasional',
+      name: 'Kementrian Pekerjaan Umum Republik Indonesia',
+      logo: '/images/sponsors/kemenpu.png',
+    },
+  ],
+  secondary: [
+    {
+      id: 1,
+      type: 'Asosiasi Penyelenggara',
+      name: 'PERTAPIN',
+      fullName: 'Perkumpulan Tenaga Ahli Profesional Indonesia Sulawesi Selatan',
+      logo: '/images/sponsors/pertapin.png',
+    },
+    {
+      id: 2,
+      type: 'Asosiasi Penyelenggara',
+      name: 'PERKOPINDO',
+      fullName: 'Perkumpulan Kontraktor Profesional Indonesia Sulawesi Selatan',
+      logo: '/images/sponsors/perkopindo.png',
+    },
+    {
+      id: 3,
+      type: 'Event Organizer',
+      name: 'PCO',
+      fullName: 'PT. Perkasa Citra Organizer',
+      logo: '/images/sponsors/pco.png',
+    },
+    {
+      id: 4,
+      type: 'Pihak Pendukung Tingkat Provinsi',
+      name: 'Dinas BMBK Prov. Sulsel',
+      fullName: 'Dinas Bina Marga dan Bina Konstruksi Provinsi Sulawesi Selatan',
+      logo: '/images/sponsors/bmbk.png',
+    },
+    {
+      id: 5,
+      type: 'Mitra Kerja Sama Penyelenggaraan',
+      name: 'BJKW VI Makassar',
+      fullName: 'Balai Jasa Konstruksi Wilayah VI Makassar',
+      logo: '/images/sponsors/bjkw.png',
+    },
+  ],
+  supporting: [
+    { id: 1, name: 'Media Partner 1', logo: '' },
+    { id: 2, name: 'Media Partner 2', logo: '' },
+    { id: 3, name: 'Media Partner 3', logo: '' },
+    { id: 4, name: 'Media Partner 4', logo: '' },
+    { id: 5, name: 'Media Partner 5', logo: '' },
+    { id: 6, name: 'Community Partner 1', logo: '' },
+    { id: 7, name: 'Community Partner 2', logo: '' },
+    { id: 8, name: 'Tech Partner 1', logo: '' },
+  ],
+};
 
 // =====================
 // TESTIMONIALS
