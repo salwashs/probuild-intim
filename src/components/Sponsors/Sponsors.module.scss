@@ -1,8 +1,10 @@
 @use '../../styles/variables' as *;
 
-.section {}
+// .section {}
 
-.accent { color: $red; }
+.accent {
+  color: $red;
+}
 
 // Tier indicators
 .tiers {
@@ -68,8 +70,12 @@
 }
 
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-100% / 3)); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
 }
 
 .slide {
@@ -94,7 +100,7 @@
 
   &:hover {
     border-color: var(--logo-color);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     transform: translateY(-3px);
   }
 
