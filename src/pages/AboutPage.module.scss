@@ -1,0 +1,526 @@
+@use '../styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+// Hero Section
+.hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/hero-about.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  @media (max-width: $bp-md) {
+    min-height: 500px;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    padding: 8rem 0 4rem;
+    text-align: center;
+    color: $white;
+
+    @media (max-width: $bp-md) {
+      padding: 6rem 0 3rem;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: $white;
+
+    @media (max-width: $bp-md) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: $bp-sm) {
+      font-size: 2rem;
+    }
+  }
+
+  &__titleRed {
+    color: $red-50;
+  }
+
+  &__titleGreen {
+    color: $green-50;
+  }
+
+  &__titleBlue {
+    color: $blue-50;
+  }
+
+  &__titleOrange {
+    color: $orange-50;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+
+    @media (max-width: $bp-md) {
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+}
+
+// Stats
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: $radius-lg;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  &__item {
+    text-align: center;
+  }
+
+  &__value {
+    font-family: $font-display;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: $white;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: $bp-md) {
+      font-size: 2rem;
+    }
+  }
+
+  &__label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Vision Section
+.visionSection {
+  background: $off-white;
+}
+
+.visionGrid {
+  display: grid;
+  gap: 4rem;
+  align-items: start;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.visionContent {
+  .section__label {
+    margin-bottom: 1rem;
+  }
+
+  .section__title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.visionText {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: $text-body;
+  margin-bottom: 1.25rem;
+}
+
+.visionDivider {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+
+  span {
+    width: 60px;
+    height: 4px;
+    border-radius: $radius-full;
+  }
+}
+
+.visionCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.visionCard {
+  background: $white;
+  padding: 2rem 1.5rem;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  border-top: 4px solid transparent;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+
+  &--red {
+    border-top-color: $red;
+
+    .visionCard__icon {
+      background: $red-light;
+    }
+  }
+
+  &--green {
+    border-top-color: $green;
+
+    .visionCard__icon {
+      background: $green-light;
+    }
+  }
+
+  &--orange {
+    border-top-color: $orange-50;
+
+    .visionCard__icon {
+      background: $orange-10;
+    }
+  }
+
+  &--blue {
+    border-top-color: $blue;
+
+    .visionCard__icon {
+      background: $blue-light;
+    }
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 0.5rem;
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: $text-muted;
+  }
+}
+
+// Agenda Section
+.agendaSection {
+  background: $white;
+}
+
+.agendaHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .section__title {
+    margin-bottom: 1rem;
+  }
+}
+
+.agendaUnderline {
+  width: 80px;
+  height: 4px;
+  background: $red;
+  margin: 0 auto;
+  border-radius: $radius-full;
+}
+
+.agendaTimeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+
+  // Vertical line connecting timeline dots
+  &::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 40px;
+    bottom: 40px;
+    width: 2px;
+    background: linear-gradient(to bottom, $mid-gray 0%, $mid-gray 100%);
+
+    @media (max-width: $bp-sm) {
+      left: 25px;
+    }
+  }
+}
+
+.agendaItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+
+  @media (max-width: $bp-sm) {
+    gap: 1.25rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.agendaTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+
+  &__dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $white;
+    border: 4px solid $red;
+    box-shadow: 0 0 0 4px rgba(232, 48, 58, 0.1);
+
+    @media (max-width: $bp-sm) {
+      width: 30px;
+      height: 30px;
+      border-width: 3px;
+    }
+  }
+
+  &__label {
+    font-family: $font-display;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: $text-dark;
+    white-space: nowrap;
+    background-color: $white;
+
+    @media (max-width: $bp-sm) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.agendaCard {
+  background: $off-white;
+  padding: 2rem;
+  border-radius: $radius-lg;
+  border-left: 4px solid $mid-gray;
+  transition: all $transition-base;
+  position: relative;
+
+  @media (max-width: $bp-sm) {
+    padding: 1.5rem;
+  }
+
+  &:hover {
+    background: $white;
+    box-shadow: $shadow-md;
+    transform: translateX(4px);
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: $radius-full;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+
+    &--orange {
+      background: $orange-10;
+      color: $orange-90;
+    }
+
+    &--blue {
+      background: $blue-light;
+      color: $blue-90;
+    }
+
+    &--green {
+      background: $green-light;
+      color: $green-90;
+    }
+
+    &--purple {
+      background: color.change(#9c27b0, $alpha: 0.1);
+      color: #7b1fa2;
+    }
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $text-dark;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+
+    @media (max-width: $bp-sm) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: $text-body;
+  }
+}
+
+// Features Section
+.featuresSection {
+  background: $white;
+}
+
+.featuresHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .section__title {
+    margin-bottom: 1rem;
+  }
+}
+
+.featuresUnderline {
+  width: 80px;
+  height: 4px;
+  background: $red;
+  margin: 0 auto;
+  border-radius: $radius-full;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.featureCard {
+  background: $off-white;
+  padding: 2rem 1.5rem;
+  border-radius: $radius-lg;
+  text-align: center;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $white;
+    box-shadow: $shadow-md;
+    transform: translateY(-4px);
+  }
+
+  &__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.25rem;
+
+    &--red {
+      background: $red-light;
+      color: $red-90;
+    }
+
+    &--green {
+      background: $green-light;
+      color: $green-90;
+    }
+
+    &--orange {
+      background: $orange-10;
+      color: $orange-90;
+    }
+
+    &--blue {
+      background: $blue-light;
+      color: $blue-90;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 0.75rem;
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: $text-body;
+  }
+}
