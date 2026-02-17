@@ -22,6 +22,19 @@
   color: $red;
 }
 
+.accentRed {
+  color: $red-50;
+}
+.accentGreen {
+  color: $green-50;
+}
+.accentBlue {
+  color: $blue-50;
+}
+.accentOrange {
+  color: $orange-50;
+}
+
 .cards {
   display: grid;
   gap: 1.5rem;
@@ -196,7 +209,7 @@
 
     span {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
     }
   }
 
@@ -206,5 +219,16 @@
     gap: 1rem;
     position: relative;
     z-index: 1;
+  }
+}
+
+.btnProgram {
+  background: $text-body;
+  color: $white;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: color.adjust($text-body, $lightness: 10%);
+    transform: translateY(-2px);
   }
 }

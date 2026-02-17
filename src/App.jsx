@@ -7,6 +7,7 @@ import About from './components/About/About';
 import WhyAttend from './components/WhyAttend/WhyAttend';
 import Parallax from './components/Parallax/Parallax';
 import Gallery from './components/Gallery/Gallery';
+import ProjectPreparation from './components/ProjectPreparation/ProjectPreparation';
 import Sponsors from './components/Sponsors/Sponsors';
 import Testimonials from './components/Testimonials/Testimonials';
 import News from './components/News/News';
@@ -42,9 +43,10 @@ export default function App() {
         <About />
         <WhyAttend />
         <Parallax />
-        <Gallery />
+        <ProjectPreparation />
+        {/* <Gallery /> */}
         <Sponsors />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <News />
         <BookingForm />
       </main>

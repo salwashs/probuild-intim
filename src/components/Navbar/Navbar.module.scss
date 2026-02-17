@@ -7,13 +7,18 @@
   right: 0;
   z-index: 1000;
   padding: 1.25rem 0;
-  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    background 0.4s ease,
+    padding 0.4s ease,
+    box-shadow 0.4s ease;
 
   &.scrolled {
     background: color.change($white, $alpha: 0.95);
     backdrop-filter: blur(16px);
     padding: 0.875rem 0;
-    box-shadow: 0 1px 0 $mid-gray, 0 4px 24px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 1px 0 $mid-gray,
+      0 4px 24px rgba(0, 0, 0, 0.06);
 
     .logo__text strong {
       color: $text-dark;
@@ -27,14 +32,14 @@
       color: $text-body;
 
       &:hover {
-        color: $red;
+        color: $green-50;
       }
     }
 
     .cta {
-      background: $red;
+      background: $green-50;
       color: $white;
-      border-color: $red;
+      border-color: $green-50;
     }
 
     .toggle span {
@@ -60,6 +65,10 @@
     width: 32px;
     height: 32px;
     flex-shrink: 0;
+
+    img {
+      border-radius: 4px;
+    }
   }
 
   &__text {
@@ -73,7 +82,7 @@
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: $white;
+      color: $text-dark;
       transition: color 0.4s;
     }
 
@@ -83,7 +92,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
+      color: $text-muted;
       transition: color 0.4s;
     }
   }
@@ -103,9 +112,11 @@
     padding: 0.5rem 0.875rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: $text-body;
     border-radius: $radius-full;
-    transition: color $transition-fast, background $transition-fast;
+    transition:
+      color $transition-fast,
+      background $transition-fast;
     text-decoration: none;
 
     &:hover {
@@ -122,16 +133,16 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: $white;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
+  border: 1.5px solid $green-90;
   transition: $transition-base;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  background-color: $green-90;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.7);
+    background: color.adjust($green-90, $lightness: 8%);
+    border-color: color.adjust($green-90, $lightness: 8%);
   }
 
   @media (min-width: $bp-lg) {
@@ -161,9 +172,15 @@
     background: $white;
     transition: $transition-base;
 
-    &:nth-child(1) { width: 24px; }
-    &:nth-child(2) { width: 18px; }
-    &:nth-child(3) { width: 24px; }
+    &:nth-child(1) {
+      width: 24px;
+    }
+    &:nth-child(2) {
+      width: 18px;
+    }
+    &:nth-child(3) {
+      width: 24px;
+    }
   }
 
   &.open span {
@@ -191,7 +208,7 @@
   backdrop-filter: blur(20px);
 
   &__open {
-    max-height: 420px;
+    max-height: 460px;
   }
 
   &__nav {
@@ -227,7 +244,7 @@
     margin-top: 1rem;
     padding: 0.875rem;
     text-align: center;
-    background: $red;
+    background: $green-50;
     color: $white;
     border-radius: $radius-md;
     font-weight: 600;
@@ -236,7 +253,7 @@
     transition: $transition-fast;
 
     &:hover {
-      background: color.adjust($red, $lightness: -8%);
+      background: color.adjust($green-50, $lightness: -8%);
     }
   }
 }
