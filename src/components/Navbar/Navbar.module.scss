@@ -81,9 +81,22 @@
       font-size: 0.9rem;
       font-weight: 800;
       letter-spacing: 0.06em;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       color: $text-dark;
       transition: color 0.4s;
+    }
+
+    .textRed {
+      color: $red-50;
+    }
+    .textGreen {
+      color: $green-50;
+    }
+    .textBlue {
+      color: $blue-50;
+    }
+    .textOrange {
+      color: $orange-50;
     }
 
     em {

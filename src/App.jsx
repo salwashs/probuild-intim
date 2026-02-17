@@ -1,20 +1,17 @@
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './styles/global.scss';
 
 import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import WhyAttend from './components/WhyAttend/WhyAttend';
-import Parallax from './components/Parallax/Parallax';
-import Gallery from './components/Gallery/Gallery';
-import ProjectPreparation from './components/ProjectPreparation/ProjectPreparation';
-import Sponsors from './components/Sponsors/Sponsors';
-import Testimonials from './components/Testimonials/Testimonials';
-import News from './components/News/News';
-import BookingForm from './components/BookingForm/BookingForm';
 import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import ArticlesPage from './pages/ArticlesPage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+
   useEffect(() => {
     // Global scroll reveal observer
     const observer = new IntersectionObserver(
@@ -29,28 +26,31 @@ export default function App() {
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
+    // Re-observe elements whenever route changes
     const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]); // Re-run when route changes
 
   return (
     <>
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <WhyAttend />
-        <Parallax />
-        <ProjectPreparation />
-        {/* <Gallery /> */}
-        <Sponsors />
-        {/* <Testimonials /> */}
-        <News />
-        <BookingForm />
-      </main>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/tentang-kami' element={<AboutPage />} />
+        <Route path='/artikel' element={<ArticlesPage />} />
+        <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
+      </Routes>
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
