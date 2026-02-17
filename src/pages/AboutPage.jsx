@@ -162,7 +162,7 @@ export default function AboutPage() {
       </section>
 
       {/* Event Agenda Section */}
-      <section className={`section ${styles.agendaSection}`}>
+      <section className={`section ${styles.agendaSection} `}>
         <div className='container'>
           <div className={styles.agendaHeader}>
             <h2 className='section__title'>Agenda Acara</h2>
