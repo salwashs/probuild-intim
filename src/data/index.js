@@ -332,12 +332,12 @@ export const articles = [
 // BOOTH OPTIONS
 // =====================
 export const boothSizes = [
-  { value: '3x3', label: '3×3 m² — Standard' },
-  { value: '3x6', label: '3×6 m² — Medium' },
-  { value: '6x6', label: '6×6 m² — Large' },
-  { value: '6x9', label: '6×9 m² — XL' },
-  { value: '6x12', label: '6×12 m² — Premium' },
-  { value: 'custom', label: 'Custom Size' },
+  { value: 'standard', label: '9 m² — Standard' },
+  { value: 'premium', label: '18 m² — Premium' },
+  { value: 'silver', label: '18 m² — Silver' },
+  { value: 'elite', label: '36 m² — Elite' },
+  { value: 'gold', label: '36 m² — Gold' },
+  { value: 'platinum', label: '54 m² — Platinum' },
 ];
 
 export const productCategories = [
@@ -350,6 +350,104 @@ export const productCategories = [
   'Arsitektur & Desain',
   'Green Building & Sustainability',
   'Lainnya',
+];
+
+// =====================
+// EXHIBITOR PACKAGES
+// =====================
+export const exhibitorPackages = [
+  {
+    id: 'standard',
+    name: 'Standard',
+    icon: '📦',
+    color: 'orange',
+    tagline: 'Eksisi untuk startup & UKM',
+    price: '45jt',
+    priceUnit: '/booth',
+    size: '9 m²',
+    popular: false,
+    features: ['Ukuran Booth 9 m²', 'Booth standar, lebar 3kW', 'Logo di website ProBuild'],
+    note: 'Harga Spesial',
+    noteDetail: '3x investasi via leads (700+ kontak)',
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    icon: '🎯',
+    color: 'green',
+    tagline: 'Untuk brand yang berkembang',
+    price: '90jt',
+    priceUnit: '/booth',
+    size: '18 m²',
+    popular: true,
+    features: ['Ukuran Booth 18 m²', 'Booth custom & Demo area', "2 Tiket VIP & Slot Seminar 30'"],
+    note: 'PALING EFISIEN',
+    noteDetail: '5x investasi = Branding TV nasional',
+  },
+  {
+    id: 'elite',
+    name: 'Elite',
+    icon: '💎',
+    color: 'blue',
+    tagline: 'Dominasi pasar utama',
+    price: '180jt',
+    priceUnit: '/booth',
+    size: '36 m²',
+    popular: false,
+    features: [
+      'Ukuran Booth 36 m²',
+      'Booth Pavilion & Sponsorship Seminar',
+      'Lokasi VIP strategis & Prioritas Leads',
+    ],
+    note: 'PALING PREMIUM',
+    noteDetail: '7x investasi + kontrak proyeksi langsung',
+  },
+];
+
+// =====================
+// SPONSORSHIP PACKAGES
+// =====================
+export const sponsorshipPackages = [
+  {
+    id: 'platinum',
+    name: 'Platinum',
+    icon: '💎',
+    color: 'orange',
+    contribution: '500.000.000',
+    privileges: 'Naming rights, Booth 54m², Keynote slot, Banner utama',
+    mediaValue: '2,5',
+    mediaUnit: 'Miliar',
+  },
+  {
+    id: 'gold',
+    name: 'Gold',
+    icon: '🏆',
+    color: 'yellow',
+    contribution: '250.000.000',
+    privileges: 'Co-branding seminar, Booth 36m², Logo di materi promo',
+    mediaValue: '1,2',
+    mediaUnit: 'Miliar',
+  },
+  {
+    id: 'silver',
+    name: 'Silver',
+    icon: '🥈',
+    color: 'gray',
+    contribution: '150.000.000',
+    privileges: 'Booth 18m², Logo di backdrop utama, 10 Tiket VIP',
+    mediaValue: '800',
+    mediaUnit: 'Juta',
+  },
+  {
+    id: 'media',
+    name: 'Media',
+    icon: '📢',
+    color: 'purple',
+    contribution: '100.000.000',
+    privileges: 'Slot iklan di app & LED, Interview media partner',
+    mediaValue: '500',
+    mediaUnit: 'Juta',
+  },
 ];
 
 // =====================
