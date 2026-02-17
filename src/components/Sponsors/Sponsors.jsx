@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { sponsors } from '../../data';
 import styles from './Sponsors.module.scss';
 
@@ -60,21 +59,6 @@ function SponsorLogo({ sponsor, className, variant = 'supporting' }) {
 export default function Sponsors() {
   const { main, secondary, supporting } = sponsors;
 
-  // --- Main Sponsor Logic ---
-  const [activeMainIndex, setActiveMainIndex] = useState(0);
-
-  useEffect(() => {
-    if (main.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setActiveMainIndex((prev) => (prev + 1) % main.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [main.length]);
-
-  const currentMain = main[activeMainIndex];
-
   // --- Secondary Sponsor Logic ---
   // Duplicate for seamless marquee
   // If list is short, duplicate more times to fill width
@@ -97,19 +81,21 @@ export default function Sponsors() {
           </p>
         </div>
 
-        {/* 1. Main Sponsor (Carousel/Single) */}
+        {/* 1. Main Sponsor (Grid Layout) */}
         {main.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
               <h3>Pendukung Utama Nasional</h3>
             </div>
             <div className={styles.mainWrapper}>
-              <SponsorLogo
-                key={currentMain.id}
-                sponsor={currentMain}
-                className={styles.mainCard}
-                variant='main'
-              />
+              {main.map((sponsor) => (
+                <SponsorLogo
+                  key={sponsor.id}
+                  sponsor={sponsor}
+                  className={styles.mainCard}
+                  variant='main'
+                />
+              ))}
             </div>
           </div>
         )}

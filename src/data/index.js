@@ -183,6 +183,12 @@ export const sponsors = {
       name: 'Kementrian Pekerjaan Umum Republik Indonesia',
       logo: '/images/sponsors/kemenpu.png',
     },
+    {
+      id: 2,
+      type: 'Pendukung Utama Nasional',
+      name: 'Lembaga Pengembang Jasa Konstruksi Indonesia',
+      logo: '/images/sponsors/lpjk.png',
+    },
   ],
   secondary: [
     {
@@ -380,9 +386,9 @@ export const exhibitorPackages = [
     priceUnit: '/booth',
     size: '18 m²',
     popular: true,
-    features: ['Ukuran Booth 18 m²', 'Booth custom & Demo area', "2 Tiket VIP & Slot Seminar 30'"],
+    features: ['Ukuran Booth 18 m²', 'Booth custom & Demo area'],
     note: 'PALING EFISIEN',
-    noteDetail: '5x investasi = Branding TV nasional',
+    noteDetail: '5x investasi = Branding Media Konstruksi',
   },
   {
     id: 'elite',
@@ -434,7 +440,7 @@ export const sponsorshipPackages = [
     icon: '🥈',
     color: 'gray',
     contribution: '150.000.000',
-    privileges: 'Booth 18m², Logo di backdrop utama, 10 Tiket VIP',
+    privileges: 'Booth 18m², Logo di backdrop utama',
     mediaValue: '800',
     mediaUnit: 'Juta',
   },
@@ -444,7 +450,7 @@ export const sponsorshipPackages = [
     icon: '📢',
     color: 'purple',
     contribution: '100.000.000',
-    privileges: 'Slot iklan di app & LED, Interview media partner',
+    privileges: 'Slot iklan di Media Sosial & LED',
     mediaValue: '500',
     mediaUnit: 'Juta',
   },

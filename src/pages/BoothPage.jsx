@@ -169,10 +169,13 @@ export default function BoothPage() {
       <section className={`section ${styles.sponsorshipSection}`}>
         <div className='container'>
           <div className={styles.sponsorshipHeader}>
+            <span className='section__label'>
+              <span style={{ background: '#4CAF50' }} />
+              SPONSORSHIP PACKAGE
+            </span>
             <h2 className={styles.sponsorshipTitle}>Paket Sponsorship</h2>
             <p className={styles.sponsorshipSubtitle}>
-              Jadilah bagian dari ekosistem ProBuild dan perkuat kehadiran brand Anda di industri
-              konstruksi nasional.
+              Perkuat kehadiran brand Anda di industri konstruksi nasional.
             </p>
           </div>
 

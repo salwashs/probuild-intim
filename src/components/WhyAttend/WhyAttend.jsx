@@ -107,7 +107,7 @@ export default function WhyAttend() {
             >
               Booking Stand Sekarang
             </a>
-            <a href='/tentang-kami' className={`btn ${styles.btnProgram}`}>
+            <a href='/booth' className={`btn ${styles.btnProgram}`}>
               Pelajari Program
             </a>
           </div>
