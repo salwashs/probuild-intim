@@ -59,8 +59,9 @@ export default function WhyAttend() {
           {whyAttend.map((item, i) => {
             const colors = colorMap[item.color];
             return (
-              <div
+              <a
                 key={item.id}
+                href='/tentang-kami'
                 className={`${styles.card} reveal delay-${i + 1}`}
                 style={{
                   '--icon-bg': colors.bg,
@@ -84,7 +85,7 @@ export default function WhyAttend() {
                     <path d='M5 12h14M12 5l7 7-7 7' />
                   </svg>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -106,14 +107,7 @@ export default function WhyAttend() {
             >
               Booking Stand Sekarang
             </a>
-            <a
-              href='#about'
-              className={`btn ${styles.btnProgram}`}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
+            <a href='/tentang-kami' className={`btn ${styles.btnProgram}`}>
               Pelajari Program
             </a>
           </div>

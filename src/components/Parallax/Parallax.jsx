@@ -41,19 +41,18 @@ export default function Parallax() {
           </span>
 
           <h2 className={styles.headline}>
-            Bangun Dominasi
+            Jelajahi Inovasi,
             <br />
-            <em>Brand Anda</em>
+            Perluas Koneksi, dan
             <br />
-            di Industri Konstruksi dan Arsitektur
+            Raih <em>Peluang Baru</em>
           </h2>
 
           <p className={styles.body}>
-            Tampilkan produk dan solusi terbaik Anda di hadapan ribuan profesional, kontraktor
-            nasional, developer, dan pengambil keputusan proyek.
+            ProBuild menghadirkan ribuan pelaku industri dalam satu ekosistem kolaboratif.
             <br />
-            ProBuild adalah panggung strategis untuk memperkuat positioning, memperluas jaringan,
-            dan membuka peluang kolaborasi bernilai tinggi.
+            Dapatkan insight strategis, temukan solusi inovatif, dan bangun koneksi langsung dengan
+            pengambil keputusan proyek nasional.
           </p>
 
           <div className={styles.ctas}>
@@ -65,20 +64,10 @@ export default function Parallax() {
                 document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Daftar Sebagai Exhibitor
+              Daftar Sebagai Visitor
               <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                 <path d='M5 12h14M12 5l7 7-7 7' />
               </svg>
-            </a>
-            <a
-              href='#gallery'
-              className={`btn btn--outline ${styles.ctaOutline}`}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#gallery')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Lihat Galeri
             </a>
           </div>
 

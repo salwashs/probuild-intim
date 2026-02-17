@@ -7,14 +7,16 @@ export const eventInfo = {
   edition: '2026',
   tagline: 'Indonesia Construction & Architecture Expo',
   fullName: 'Indonesia Construction & Architecture Expo 2026',
-  date: '1-4 Juli 2026',
+  date: '2-5 Juli 2026',
   // Countdown target date
-  targetDate: new Date('2026-07-01T08:00:00'),
+  targetDate: new Date('2026-07-02T09:00:00'),
   location: 'Makassar',
   venue: 'Phinisi Point (PHIPO)',
   venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
   description:
     'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
+  exhibitor: 100,
+  targetVisitor: 15000,
 };
 
 // =====================
@@ -66,7 +68,7 @@ export const whyAttend = [
 ];
 
 // =====================
-// GALLERY
+// GALLERY PREPARATION
 // =====================
 export const galleryPreparation = [
   {
@@ -172,18 +174,63 @@ export const galleryImages = [
 // =====================
 // SPONSORS
 // =====================
-export const sponsors = [
-  { id: 1, name: 'Holcim Indonesia', tier: 'platinum', logo: null },
-  { id: 2, name: 'Semen Indonesia', tier: 'platinum', logo: null },
-  { id: 3, name: 'Wika Gedung', tier: 'gold', logo: null },
-  { id: 4, name: 'PP Properti', tier: 'gold', logo: null },
-  { id: 5, name: 'Ciputra Group', tier: 'gold', logo: null },
-  { id: 6, name: 'Summarecon', tier: 'silver', logo: null },
-  { id: 7, name: 'Jaya Kontruksi', tier: 'silver', logo: null },
-  { id: 8, name: 'Intiland', tier: 'silver', logo: null },
-  { id: 9, name: 'Tata Metal', tier: 'bronze', logo: null },
-  { id: 10, name: 'KMK Global', tier: 'bronze', logo: null },
-];
+export const sponsors = {
+  main: [
+    {
+      id: 1,
+      type: 'Pendukung Utama Nasional',
+      name: 'Kementrian Pekerjaan Umum Republik Indonesia',
+      logo: '/images/sponsors/kemenpu.png',
+    },
+  ],
+  secondary: [
+    {
+      id: 1,
+      type: 'Asosiasi Penyelenggara',
+      name: 'PERTAPIN',
+      fullName: 'Perkumpulan Tenaga Ahli Profesional Indonesia Sulawesi Selatan',
+      logo: '/images/sponsors/pertapin.png',
+    },
+    {
+      id: 2,
+      type: 'Asosiasi Penyelenggara',
+      name: 'PERKOPINDO',
+      fullName: 'Perkumpulan Kontraktor Profesional Indonesia Sulawesi Selatan',
+      logo: '/images/sponsors/perkopindo.png',
+    },
+    {
+      id: 3,
+      type: 'Event Organizer',
+      name: 'PCO',
+      fullName: 'PT. Perkasa Citra Organizer',
+      logo: '/images/sponsors/pco.png',
+    },
+    {
+      id: 4,
+      type: 'Pihak Pendukung Tingkat Provinsi',
+      name: 'Dinas BMBK Prov. Sulsel',
+      fullName: 'Dinas Bina Marga dan Bina Konstruksi Provinsi Sulawesi Selatan',
+      logo: '/images/sponsors/bmbk.png',
+    },
+    {
+      id: 5,
+      type: 'Mitra Kerja Sama Penyelenggaraan',
+      name: 'BJKW VI Makassar',
+      fullName: 'Balai Jasa Konstruksi Wilayah VI Makassar',
+      logo: '/images/sponsors/bjkw.png',
+    },
+  ],
+  supporting: [
+    { id: 1, name: 'Media Partner 1', logo: '' },
+    { id: 2, name: 'Media Partner 2', logo: '' },
+    { id: 3, name: 'Media Partner 3', logo: '' },
+    { id: 4, name: 'Media Partner 4', logo: '' },
+    { id: 5, name: 'Media Partner 5', logo: '' },
+    { id: 6, name: 'Community Partner 1', logo: '' },
+    { id: 7, name: 'Community Partner 2', logo: '' },
+    { id: 8, name: 'Tech Partner 1', logo: '' },
+  ],
+};
 
 // =====================
 // TESTIMONIALS
@@ -308,9 +355,8 @@ export const productCategories = [
 // NAVIGATION
 // =====================
 export const navLinks = [
-  { label: 'Tentang', href: '#about' },
-  { label: 'Keunggulan', href: '#why-attend' },
-  { label: 'Galeri', href: '#gallery' },
-  { label: 'Sponsor', href: '#sponsors' },
-  { label: 'Artikel', href: '#news' },
+  { label: 'Tentang', href: '/tentang-kami', isRoute: true },
+  { label: 'Keunggulan', href: '#why-attend', isRoute: false },
+  { label: 'Mitra dan Sponsor', href: '#sponsors', isRoute: false },
+  { label: 'Artikel', href: '/artikel', isRoute: true },
 ];
