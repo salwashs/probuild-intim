@@ -296,17 +296,28 @@ export const articles = [
     categoryColor: 'blue',
     title:
       'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
+    slug: 'tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
+    category: 'Pembangunan Nasional',
+    categoryColor: 'blue',
+    title:
+      'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
     excerpt:
       'Padang – Kementerian Pekerjaan Umum (PU) tidak hanya menghadirkan alat berat dan dukungan teknis dalam penanganan bencana, tetapi juga mengerahkan sumber daya manusia secara langsung guna mempercepat penanganan dampak bencana di Pulau Sumatera.',
     image:
       'https://mediakonstruksi.id/wp-content/uploads/2025/12/Tugas-di-Lokasi-Bencana-Sumatera-Barat-CPNS-Kementerian-PU-Bantu-Sediakan-Sarana-Air-Bersih-Bagi-Masyarakat-Padang.jpg',
     author: 'Mediakonstruksi',
     date: '30 Desember 2025',
+    sortableDate: new Date('2025-12-30'),
     externalContent: true,
     link: 'https://mediakonstruksi.id/tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
   },
   {
     id: 2,
+    slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
+    category: 'Infrastruktur',
+    categoryColor: 'red',
+    title:
+      'Kementerian PU Terus Lakukan Pembersihan Layanan Kesehatan dan RSUD Terdampak Bencana di Sumatera, Siapkan Pembangunan 2 Puskesmas Relokasi di Aceh',
     slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
     category: 'Infrastruktur',
     categoryColor: 'red',
@@ -318,6 +329,7 @@ export const articles = [
       'https://mediakonstruksi.id/wp-content/uploads/2026/01/Kementerian-PU-Terus-Lakukan-Pembersihan-Layanan-Kesehatan-dan-RSUD-Terdampak-Bencana-di-Sumatera-Siapkan-Pembangunan-2-Puskesmas-Relokasi-di-Aceh.png',
     author: 'Mediakonstruksi',
     date: '17 Januari 2026',
+    sortableDate: new Date('2026-01-17'),
     externalContent: true,
     link: 'https://mediakonstruksi.id/kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh/',
   },
@@ -326,7 +338,11 @@ export const articles = [
     slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
     category: 'Terbaru',
     categoryColor: 'green',
+    slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
+    category: 'Terbaru',
+    categoryColor: 'green',
     title:
+      'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
       'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
     excerpt:
       'Aceh Tamiang – Genangan lumpur masih menumpuk di sudut-sudut kelas SMK 3 Aceh Tamiang, Senin (19/1/2026). Material sisa banjir bandang belum sepenuhnya hilang dari bangunan-bangunan layanan publik, namun di balik puing-puing bencana yang melanda Aceh Tamiang, harapan mulai tumbuh dari kerja tangan masyarakat sendiri.',
@@ -334,6 +350,7 @@ export const articles = [
       'https://mediakonstruksi.id/wp-content/uploads/2026/01/Libatkan-44.954-Tenaga-Kerja-Lokal-Padat-Karya-Kementerian-PU-Hadirkan-Harapan-dan-Penghidupan-bagi-Warga-Terdampak-Bencana-Sumatera.png',
     author: 'Mediakonstruksi',
     date: '19 Januari 2026',
+    sortableDate: new Date('2026-01-19'),
     externalContent: true,
     link: 'https://mediakonstruksi.id/libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
   },

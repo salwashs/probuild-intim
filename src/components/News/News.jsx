@@ -5,6 +5,9 @@ import styles from './News.module.scss';
 const colorMap = { red: 'red', blue: 'blue', green: 'green' };
 
 export default function News() {
+  // Sort articles by date (newest first)
+  const sortedArticles = [...articles].sort((a, b) => b.sortableDate - a.sortableDate);
+
   return (
     <section className={`section ${styles.section}`} id='news'>
       <div className='container'>
@@ -33,7 +36,7 @@ export default function News() {
         </div>
 
         <div className={`${styles.grid}`}>
-          {articles.map((article, i) => (
+          {sortedArticles.map((article, i) => (
             <article
               key={article.id}
               className={`${styles.card} ${i === 0 ? styles.card__featured : ''} reveal delay-${i + 1}`}

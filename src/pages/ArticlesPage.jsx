@@ -8,6 +8,9 @@ export default function ArticlesPage() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Sort articles by date (newest first)
+  const sortedArticles = [...articles].sort((a, b) => b.sortableDate - a.sortableDate);
+
   return (
     <main className={styles.page}>
       <div className='container'>
@@ -19,7 +22,7 @@ export default function ArticlesPage() {
         </div>
 
         <div className={styles.grid}>
-          {articles.map((article) =>
+          {sortedArticles.map((article) =>
             article.externalContent ? (
               <a
                 key={article.id}
