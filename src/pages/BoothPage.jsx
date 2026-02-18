@@ -32,17 +32,20 @@ export default function BoothPage() {
   const [modalImage, setModalImage] = useState('');
 
   useEffect(() => {
-    // Scroll to top first
-    window.scrollTo(0, 0);
+    const scrollTarget = sessionStorage.getItem('scrollTo');
 
-    // Then check if there's a hash in the URL and scroll to it
-    if (window.location.hash) {
+    if (scrollTarget) {
+      // Clear immediately so it doesn't persist on refresh
+      sessionStorage.removeItem('scrollTo');
+      // Small delay to let the page render fully before scrolling
       setTimeout(() => {
-        const element = document.querySelector(window.location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+        const el = document.getElementById(scrollTarget);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, 150);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, []);
 
