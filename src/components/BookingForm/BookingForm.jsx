@@ -273,7 +273,15 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
 
             <div className={styles.contact}>
               <span>Butuh bantuan? Hubungi kami:</span>
-              <p className={styles.contact__phone}>📞 085705852676 / 0811443577</p>
+              <p className={styles.contact__phone}>
+                <a href='https://wa.me/6285705852676' target='_blank' rel='noopener noreferrer'>
+                  085705852676
+                </a>
+                {' / '}
+                <a href='https://wa.me/620811443577' target='_blank' rel='noopener noreferrer'>
+                  0811443577
+                </a>
+              </p>
               <a href='mailto:info@prebuildintim.com'>✉️ info@probuildintim.com</a>
             </div>
           </div>
