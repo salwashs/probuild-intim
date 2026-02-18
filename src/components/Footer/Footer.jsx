@@ -103,7 +103,7 @@ export default function Footer() {
                 </span>
                 <span className={styles.logo__text}>
                   <strong>
-                    <span className={styles.textRed}>Pre</span>
+                    <span className={styles.textRed}>Pro</span>
                     <span className={styles.textGreen}>Build</span>
                     <span className={styles.textBlue}>INT</span>
                     <span className={styles.textOrange}>IM</span>

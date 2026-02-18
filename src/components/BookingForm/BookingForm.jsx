@@ -274,7 +274,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
             <div className={styles.contact}>
               <span>Butuh bantuan? Hubungi kami:</span>
               <p className={styles.contact__phone}>📞 085705852676 / 0811443577</p>
-              <a href='mailto:info@prebuildintim.com'>✉️ info@prebuildintim.com</a>
+              <a href='mailto:info@prebuildintim.com'>✉️ info@probuildintim.com</a>
             </div>
           </div>
 
