@@ -49,7 +49,7 @@ export default function BoothPage() {
       </section>
 
       {/* Venue Layout Section */}
-      <section className={`section ${styles.venueSection}`}>
+      <section id='venue-layout' className={`section ${styles.venueSection}`}>
         <div className='container'>
           <div className={styles.venueSection}>
             <span className='section__label'>
@@ -177,7 +177,7 @@ export default function BoothPage() {
       </section>
 
       {/* Sponsorship Section */}
-      <section className={`section ${styles.sponsorshipSection}`}>
+      <section id='sponsorship' className={`section ${styles.sponsorshipSection}`}>
         <div className='container'>
           <div className={styles.sponsorshipHeader}>
             <span className='section__label'>
