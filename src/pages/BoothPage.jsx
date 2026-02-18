@@ -7,7 +7,18 @@ export default function BoothPage() {
   const [modalImage, setModalImage] = useState('');
 
   useEffect(() => {
+    // Scroll to top first
     window.scrollTo(0, 0);
+
+    // Then check if there's a hash in the URL and scroll to it
+    if (window.location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
   }, []);
 
   const openModal = (imageSrc) => {
@@ -217,6 +228,171 @@ export default function BoothPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Documents Section */}
+      <section
+        id='download-documents'
+        className={`section section--light ${styles.downloadSection}`}
+      >
+        <div className='container'>
+          <div className={styles.downloadHeader}>
+            <span className='section__label'>
+              <span style={{ background: '#4CAF50' }} />
+              DOKUMEN PENTING
+            </span>
+            <h2 className='section__title'>Download Dokumen</h2>
+            <p className='section__subtitle'>Unduh dokumen penting terkait ProBuild INTIM 2026.</p>
+          </div>
+
+          <div className={styles.downloadGrid}>
+            {/* Document 1 */}
+            <div className={styles.downloadCard}>
+              <div className={styles.downloadCard__icon}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='48'
+                  height='48'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
+                  <polyline points='14 2 14 8 20 8' />
+                  <line x1='16' y1='13' x2='8' y2='13' />
+                  <line x1='16' y1='17' x2='8' y2='17' />
+                  <polyline points='10 9 9 9 8 9' />
+                </svg>
+              </div>
+              <h3 className={styles.downloadCard__title}>Peraturan Exhibition</h3>
+              <p className={styles.downloadCard__description}>
+                Peraturan dan ketentuan yang harus dipatuhi oleh seluruh exhibitor selama event
+                berlangsung.
+              </p>
+              <a
+                href='/files/Peraturan exhibition ProBuild INTIM 2026.pdf'
+                download
+                className={styles.downloadCard__button}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='20'
+                  height='20'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
+                  <polyline points='7 10 12 15 17 10' />
+                  <line x1='12' y1='15' x2='12' y2='3' />
+                </svg>
+                Download PDF
+              </a>
+            </div>
+
+            {/* Document 2 */}
+            <div className={styles.downloadCard}>
+              <div className={styles.downloadCard__icon}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='48'
+                  height='48'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <rect x='3' y='4' width='18' height='18' rx='2' ry='2' />
+                  <line x1='16' y1='2' x2='16' y2='6' />
+                  <line x1='8' y1='2' x2='8' y2='6' />
+                  <line x1='3' y1='10' x2='21' y2='10' />
+                </svg>
+              </div>
+              <h3 className={styles.downloadCard__title}>Jadwal Setup Booth</h3>
+              <p className={styles.downloadCard__description}>
+                Jadwal lengkap setup booth dan move-in exhibitor untuk mempersiapkan area pameran
+                Anda.
+              </p>
+              <a
+                href='/files/Jadwal setup booth dan move-in exhibitor.pdf'
+                download
+                className={styles.downloadCard__button}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='20'
+                  height='20'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
+                  <polyline points='7 10 12 15 17 10' />
+                  <line x1='12' y1='15' x2='12' y2='3' />
+                </svg>
+                Download PDF
+              </a>
+            </div>
+
+            {/* Document 3 */}
+            <div className={styles.downloadCard}>
+              <div className={styles.downloadCard__icon}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='48'
+                  height='48'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <circle cx='12' cy='12' r='10' />
+                  <polyline points='12 6 12 12 16 14' />
+                </svg>
+              </div>
+              <h3 className={styles.downloadCard__title}>Jadwal Loading & Unloading</h3>
+              <p className={styles.downloadCard__description}>
+                Jadwal loading dan unloading booth untuk memastikan kelancaran proses bongkar muat
+                barang.
+              </p>
+              <a
+                href='/files/Jadwal loading dan unloading booth ProBuild INTIM 2026.pdf'
+                download
+                className={styles.downloadCard__button}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='20'
+                  height='20'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
+                  <polyline points='7 10 12 15 17 10' />
+                  <line x1='12' y1='15' x2='12' y2='3' />
+                </svg>
+                Download PDF
+              </a>
             </div>
           </div>
         </div>

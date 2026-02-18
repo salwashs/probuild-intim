@@ -59,17 +59,27 @@ const quickLinks = [
 const exhibitorLinks = [
   { label: 'Booking Stand', href: '#booking' },
   { label: 'Paket Sponsorship', href: '#sponsors' },
-  { label: 'Layout Denah', href: '#' },
-  { label: 'Peraturan Exhibitor', href: '#' },
-  { label: 'Jadwal Loading-Unloading', href: '#' },
-  { label: 'Jadwal Setup Booth - Move In Exhibitor', href: '#' },
+  { label: 'Layout Denah', href: '/booth#download-documents' },
+  { label: 'Peraturan Exhibitor', href: '/booth#download-documents' },
+  { label: 'Jadwal Loading-Unloading', href: '/booth#download-documents' },
+  { label: 'Jadwal Setup Booth - Move In Exhibitor', href: '/booth#download-documents' },
 ];
 
 export default function Footer() {
   const handleNav = (e, href) => {
     e.preventDefault();
+
+    // If it's a hash-only link (same page)
     if (href.startsWith('#')) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    // If it's a link to another page with hash
+    else if (href.includes('#')) {
+      window.location.href = href;
+    }
+    // Otherwise, navigate normally
+    else {
+      window.location.href = href;
     }
   };
 
