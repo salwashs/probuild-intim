@@ -58,7 +58,7 @@ const quickLinks = [
 
 const exhibitorLinks = [
   { label: 'Booking Stand', href: '#booking' },
-  { label: 'Paket Sponsorship', href: '#sponsors' },
+  { label: 'Paket Sponsorship', href: '/booth' },
   { label: 'Layout Denah', href: '/booth#download-documents' },
   { label: 'Peraturan Exhibitor', href: '/booth#download-documents' },
   { label: 'Jadwal Loading-Unloading', href: '/booth#download-documents' },
