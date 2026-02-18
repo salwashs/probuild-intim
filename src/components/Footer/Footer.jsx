@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { eventInfo, navLinks } from '../../data';
 import styles from './Footer.module.scss';
 
@@ -57,20 +58,28 @@ const quickLinks = [
 ];
 
 const exhibitorLinks = [
-  { label: 'Booking Stand', href: '#booking' },
-  { label: 'Paket Sponsorship', href: '/booth' },
-  { label: 'Layout Denah', href: '/booth#download-documents' },
-  { label: 'Peraturan Exhibitor', href: '/booth#download-documents' },
-  { label: 'Jadwal Loading-Unloading', href: '/booth#download-documents' },
-  { label: 'Jadwal Setup Booth - Move In Exhibitor', href: '/booth#download-documents' },
+  { label: 'Booking Stand', href: '#booking', isRoute: false },
+  { label: 'Paket Sponsorship', href: '/booth#sponsorship', isRoute: true },
+  { label: 'Layout Denah', href: '/booth#venue-layout', isRoute: true },
+  { label: 'Peraturan Exhibitor', href: '/booth#download-documents', isRoute: true },
+  { label: 'Jadwal Loading-Unloading', href: '/booth#download-documents', isRoute: true },
+  {
+    label: 'Jadwal Setup Booth - Move In Exhibitor',
+    href: '/booth#download-documents',
+    isRoute: true,
+  },
 ];
 
 export default function Footer() {
-  const handleNav = (e, href) => {
+  const navigate = useNavigate();
+  const handleNav = (e, href, isRoute) => {
     e.preventDefault();
 
+    if (isRoute) {
+      navigate(href);
+    }
     // If it's a hash-only link (same page)
-    if (href.startsWith('#')) {
+    else if (href.startsWith('#')) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
     // If it's a link to another page with hash
@@ -165,7 +174,7 @@ export default function Footer() {
               <ul className={styles.links}>
                 {exhibitorLinks.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} onClick={(e) => handleNav(e, l.href)}>
+                    <a href={l.href} onClick={(e) => handleNav(e, l.href, l.isRoute)}>
                       <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                         <path d='M5 12h14M12 5l7 7-7 7' />
                       </svg>
