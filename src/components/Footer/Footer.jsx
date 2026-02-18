@@ -58,7 +58,7 @@ const quickLinks = [
 ];
 
 const exhibitorLinks = [
-  { label: 'Booking Stand', href: '#booking', isRoute: false },
+  { label: 'Booking Stand', href: '/#booking', isRoute: false },
   { label: 'Paket Sponsorship', href: '/booth#sponsorship', isRoute: true },
   { label: 'Layout Denah', href: '/booth#venue-layout', isRoute: true },
   { label: 'Peraturan Exhibitor', href: '/booth#download-documents', isRoute: true },
@@ -72,23 +72,20 @@ const exhibitorLinks = [
 
 export default function Footer() {
   const navigate = useNavigate();
-  const handleNav = (e, href, isRoute) => {
+  const handleNav = (e, href) => {
     e.preventDefault();
 
-    if (isRoute) {
-      navigate(href);
-    }
-    // If it's a hash-only link (same page)
-    else if (href.startsWith('#')) {
+    // Hash-only link → scroll on current page
+    if (href.startsWith('#')) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
-    // If it's a link to another page with hash
+    // Path with hash (e.g. /booth#download-documents) → let browser handle anchor
     else if (href.includes('#')) {
       window.location.href = href;
     }
-    // Otherwise, navigate normally
+    // Plain route → use React Router
     else {
-      window.location.href = href;
+      navigate(href);
     }
   };
 
@@ -174,7 +171,7 @@ export default function Footer() {
               <ul className={styles.links}>
                 {exhibitorLinks.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} onClick={(e) => handleNav(e, l.href, l.isRoute)}>
+                    <a href={l.href} onClick={(e) => handleNav(e, l.href)}>
                       <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                         <path d='M5 12h14M12 5l7 7-7 7' />
                       </svg>
