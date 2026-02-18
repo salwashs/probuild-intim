@@ -58,35 +58,36 @@ const quickLinks = [
 ];
 
 const exhibitorLinks = [
-  { label: 'Booking Stand', href: '/#booking', isRoute: false },
-  { label: 'Paket Sponsorship', href: '/booth#sponsorship', isRoute: true },
-  { label: 'Layout Denah', href: '/booth#venue-layout', isRoute: true },
-  { label: 'Peraturan Exhibitor', href: '/booth#download-documents', isRoute: true },
-  { label: 'Jadwal Loading-Unloading', href: '/booth#download-documents', isRoute: true },
+  { label: 'Booking Stand', href: '#booking' },
+  { label: 'Paket Sponsorship', href: '/booth', scrollTo: 'sponsorship' },
+  { label: 'Layout Denah', href: '/booth', scrollTo: 'venue-layout' },
+  { label: 'Peraturan Exhibitor', href: '/booth', scrollTo: 'download-documents' },
+  { label: 'Jadwal Loading-Unloading', href: '/booth', scrollTo: 'download-documents' },
   {
     label: 'Jadwal Setup Booth - Move In Exhibitor',
-    href: '/booth#download-documents',
-    isRoute: true,
+    href: '/booth',
+    scrollTo: 'download-documents',
   },
 ];
 
 export default function Footer() {
   const navigate = useNavigate();
-  const handleNav = (e, href) => {
+  const handleNav = (e, href, scrollTo) => {
     e.preventDefault();
 
     // Hash-only link → scroll on current page
     if (href.startsWith('#')) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      return;
     }
-    // Path with hash (e.g. /booth#download-documents) → let browser handle anchor
-    else if (href.includes('#')) {
-      window.location.href = href;
+
+    // If there's a target section, store it so the destination page can scroll to it
+    if (scrollTo) {
+      sessionStorage.setItem('scrollTo', scrollTo);
     }
-    // Plain route → use React Router
-    else {
-      navigate(href);
-    }
+
+    // Navigate cleanly without any hash
+    navigate(href);
   };
 
   return (
@@ -171,7 +172,7 @@ export default function Footer() {
               <ul className={styles.links}>
                 {exhibitorLinks.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} onClick={(e) => handleNav(e, l.href)}>
+                    <a href={l.href} onClick={(e) => handleNav(e, l.href, l.scrollTo)}>
                       <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                         <path d='M5 12h14M12 5l7 7-7 7' />
                       </svg>
