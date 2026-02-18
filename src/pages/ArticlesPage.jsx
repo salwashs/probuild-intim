@@ -19,29 +19,55 @@ export default function ArticlesPage() {
         </div>
 
         <div className={styles.grid}>
-          {articles.map((article) => (
-            <Link key={article.id} to={`/artikel/${article.slug}`} className={styles.card}>
-              <div className={styles.card__image}>
-                <img src={article.image} alt={article.title} />
-                <span
-                  className={`${styles.card__category} ${styles[`card__category--${article.categoryColor}`]}`}
-                >
-                  {article.category}
-                </span>
-              </div>
-              <div className={styles.card__content}>
-                <h3 className={styles.card__title}>{article.title}</h3>
-                <p className={styles.card__excerpt}>{article.excerpt}</p>
-                <div className={styles.card__meta}>
-                  <span>{article.author}</span>
-                  <span>•</span>
-                  <span>{article.date}</span>
-                  <span>•</span>
-                  <span>{article.readTime}</span>
+          {articles.map((article) =>
+            article.externalContent ? (
+              <a
+                key={article.id}
+                href={article.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.card}
+              >
+                <div className={styles.card__image}>
+                  <img src={article.image} alt={article.title} />
+                  <span
+                    className={`${styles.card__category} ${styles[`card__category--${article.categoryColor}`]}`}
+                  >
+                    {article.category}
+                  </span>
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className={styles.card__content}>
+                  <h3 className={styles.card__title}>{article.title}</h3>
+                  <p className={styles.card__excerpt}>{article.excerpt}</p>
+                  <div className={styles.card__meta}>
+                    <span>{article.author}</span>
+                    <span>•</span>
+                    <span>{article.date}</span>
+                  </div>
+                </div>
+              </a>
+            ) : (
+              <Link key={article.id} to={`/artikel/${article.slug}`} className={styles.card}>
+                <div className={styles.card__image}>
+                  <img src={article.image} alt={article.title} />
+                  <span
+                    className={`${styles.card__category} ${styles[`card__category--${article.categoryColor}`]}`}
+                  >
+                    {article.category}
+                  </span>
+                </div>
+                <div className={styles.card__content}>
+                  <h3 className={styles.card__title}>{article.title}</h3>
+                  <p className={styles.card__excerpt}>{article.excerpt}</p>
+                  <div className={styles.card__meta}>
+                    <span>{article.author}</span>
+                    <span>•</span>
+                    <span>{article.date}</span>
+                  </div>
+                </div>
+              </Link>
+            )
+          )}
         </div>
       </div>
     </main>

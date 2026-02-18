@@ -60,13 +60,6 @@ export default function News() {
                     </svg>
                     {article.date}
                   </span>
-                  <span className={styles.card__read}>
-                    <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
-                      <circle cx='12' cy='12' r='10' />
-                      <path d='M12 6v6l4 2' />
-                    </svg>
-                    {article.readTime}
-                  </span>
                 </div>
 
                 <h3 className={styles.card__title}>{article.title}</h3>
@@ -77,15 +70,29 @@ export default function News() {
                     <div className={styles.card__authorAvatar}>{article.author.charAt(0)}</div>
                     <span>{article.author}</span>
                   </div>
-                  <Link
-                    to={`/artikel/${article.slug}`}
-                    className={`btn btn--outline-dark ${styles.card__btn}`}
-                  >
-                    Baca
-                    <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
-                      <path d='M5 12h14M12 5l7 7-7 7' />
-                    </svg>
-                  </Link>
+                  {article?.externalContent ? (
+                    <a
+                      href={article.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className={`btn btn--outline-dark ${styles.card__btn}`}
+                    >
+                      Baca
+                      <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                        <path d='M5 12h14M12 5l7 7-7 7' />
+                      </svg>
+                    </a>
+                  ) : (
+                    <Link
+                      to={`/artikel/${article.slug}`}
+                      className={`btn btn--outline-dark ${styles.card__btn}`}
+                    >
+                      Baca
+                      <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                        <path d='M5 12h14M12 5l7 7-7 7' />
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               </div>
             </article>

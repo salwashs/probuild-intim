@@ -291,46 +291,51 @@ export const testimonials = [
 export const articles = [
   {
     id: 1,
-    slug: 'tren-konstruksi-hijau-2025',
-    category: 'Tren',
-    categoryColor: 'green',
-    title: 'Green Building Jadi Tren Wajib: Regulasi Baru Kemenpupr untuk Konstruksi Berkelanjutan',
+    slug: 'tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
+    category: 'Pembangunan Nasional',
+    categoryColor: 'blue',
+    title:
+      'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
     excerpt:
-      'Pemerintah Indonesia melalui Kementerian PUPR menerbitkan regulasi baru yang mewajibkan proyek konstruksi skala besar memenuhi standar green building. Ini menjadi peluang sekaligus tantangan bagi pelaku industri.',
-    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&q=80',
-    author: 'Tim Editorial KonstruksiExpo',
-    date: '12 September 2025',
-    readTime: '5 menit',
-    content: `Kementerian Pekerjaan Umum dan Perumahan Rakyat (PUPR) resmi menerbitkan Peraturan Menteri Nomor 21 Tahun 2025 tentang Standar Bangunan Gedung Hijau yang wajib diterapkan oleh seluruh proyek konstruksi dengan nilai lebih dari Rp 50 miliar.\n\nRegulasi ini mewajibkan penggunaan material ramah lingkungan, efisiensi energi minimal 30%, sistem pengelolaan air hujan, serta sertifikasi green building dari Lembaga Sertifikasi yang terakreditasi.\n\n"Ini adalah langkah besar menuju Indonesia yang lebih berkelanjutan. Industri konstruksi menyumbang sekitar 40% emisi karbon global, sehingga transformasi ini sangat mendesak," ujar Direktur Jenderal Cipta Karya dalam konferensi pers kemarin.\n\nPara developer dan kontraktor diberikan masa transisi 24 bulan untuk menyesuaikan dengan standar baru ini. Di Konstruksi Expo 2025 mendatang, akan ada panel diskusi eksklusif membahas implementasi regulasi ini bersama pejabat Kemenpupr dan pakar green building internasional.`,
+      'Padang – Kementerian Pekerjaan Umum (PU) tidak hanya menghadirkan alat berat dan dukungan teknis dalam penanganan bencana, tetapi juga mengerahkan sumber daya manusia secara langsung guna mempercepat penanganan dampak bencana di Pulau Sumatera.',
+    image:
+      'https://mediakonstruksi.id/wp-content/uploads/2025/12/Tugas-di-Lokasi-Bencana-Sumatera-Barat-CPNS-Kementerian-PU-Bantu-Sediakan-Sarana-Air-Bersih-Bagi-Masyarakat-Padang.jpg',
+    author: 'Mediakonstruksi',
+    date: '30 Desember 2025',
+    externalContent: true,
+    link: 'https://mediakonstruksi.id/tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
   },
   {
     id: 2,
-    slug: 'teknologi-bim-revolusi-konstruksi',
-    category: 'Teknologi',
-    categoryColor: 'blue',
-    title: 'BIM 7D Siap Merevolusi Cara Indonesia Membangun: Dari Desain Hingga Demolisi',
+    slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
+    category: 'Infrastruktur',
+    categoryColor: 'red',
+    title:
+      'Kementerian PU Terus Lakukan Pembersihan Layanan Kesehatan dan RSUD Terdampak Bencana di Sumatera, Siapkan Pembangunan 2 Puskesmas Relokasi di Aceh',
     excerpt:
-      'Building Information Modeling kini hadir dalam dimensi ke-7 yang mencakup manajemen fasilitas sepanjang siklus hidup bangunan. Beberapa kontraktor besar Indonesia mulai mengadopsi teknologi ini.',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
-    author: 'Rizky Aditya Pratama',
-    date: '8 September 2025',
-    readTime: '7 menit',
-    content: `Building Information Modeling (BIM) telah berevolusi jauh dari sekadar tools gambar 3D. Kini hadir BIM 7D yang mengintegrasikan dimensi waktu, biaya, sustainability, dan manajemen fasilitas dalam satu platform digital terintegrasi.\n\nBeberapa kontraktor besar Indonesia seperti WIKA, PP, dan Adhi Karya dilaporkan telah mulai mengimplementasikan BIM 7D pada proyek-proyek infrastruktur strategis nasional.\n\nTeknologi ini memungkinkan simulasi seluruh siklus hidup bangunan bahkan sebelum konstruksi dimulai, dari desain, konstruksi, operasional, maintenance, hingga demolisi—semua terpetakan dalam model digital yang presisi.\n\nDi Konstruksi Expo 2025, zona khusus Digital Construction akan menampilkan demonstrasi live penggunaan BIM 7D, augmented reality untuk site inspection, dan drone survey technology.`,
+      'Jakarta – Kementerian Pekerjaan Umum (PU) terus memprioritaskan pemulihan fasilitas kesehatan terdampak bencana di Provinsi Aceh, Sumatera Utara, dan Sumatera Barat. Upaya tersebut difokuskan pada pembersihan lumpur dan material banjir di Rumah Sakit Umum Daerah (RSUD) dan puskesmas, serta pemulihan layanan air bersih dan sanitasi agar pelayanan kesehatan kepada masyarakat dapat kembali berjalan normal.',
+    image:
+      'https://mediakonstruksi.id/wp-content/uploads/2026/01/Kementerian-PU-Terus-Lakukan-Pembersihan-Layanan-Kesehatan-dan-RSUD-Terdampak-Bencana-di-Sumatera-Siapkan-Pembangunan-2-Puskesmas-Relokasi-di-Aceh.png',
+    author: 'Mediakonstruksi',
+    date: '17 Januari 2026',
+    externalContent: true,
+    link: 'https://mediakonstruksi.id/kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh/',
   },
   {
     id: 3,
-    slug: 'material-inovatif-masa-depan',
-    category: 'Material',
-    categoryColor: 'red',
+    slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
+    category: 'Terbaru',
+    categoryColor: 'green',
     title:
-      'Self-Healing Concrete dan Aerogel Insulation: Material Futuristik yang Mulai Masuk Pasar Indonesia',
+      'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
     excerpt:
-      'Dua material inovatif yang sebelumnya hanya ada di laboratorium riset kini mulai tersedia di pasar komersial Indonesia. Harganya masih premium, namun nilai jangka panjangnya sangat menjanjikan.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
-    author: 'Dr. Siti Rahayu Wulandari',
-    date: '5 September 2025',
-    readTime: '6 menit',
-    content: `Dua inovasi material yang selama ini hanya bisa ditemukan di jurnal ilmiah kini mulai merambah pasar konstruksi komersial Indonesia.\n\nSelf-healing concrete adalah beton yang mampu "memperbaiki diri" ketika retak menggunakan bakteri yang diencapsulasi di dalam campuran beton. Ketika air masuk ke retakan, bakteri aktif dan menghasilkan kalsium karbonat yang menutup keretakan secara otomatis.\n\nSementara itu, aerogel insulation—material yang 99.8% terdiri dari udara—menawarkan kemampuan insulasi termal 3-5 kali lebih baik dibanding insulasi konvensional dengan ketebalan yang jauh lebih tipis.\n\nKeduanya akan dipamerkan secara eksklusif di Konstruksi Expo 2025 oleh distributor resmi pertama di Indonesia.`,
+      'Aceh Tamiang – Genangan lumpur masih menumpuk di sudut-sudut kelas SMK 3 Aceh Tamiang, Senin (19/1/2026). Material sisa banjir bandang belum sepenuhnya hilang dari bangunan-bangunan layanan publik, namun di balik puing-puing bencana yang melanda Aceh Tamiang, harapan mulai tumbuh dari kerja tangan masyarakat sendiri.',
+    image:
+      'https://mediakonstruksi.id/wp-content/uploads/2026/01/Libatkan-44.954-Tenaga-Kerja-Lokal-Padat-Karya-Kementerian-PU-Hadirkan-Harapan-dan-Penghidupan-bagi-Warga-Terdampak-Bencana-Sumatera.png',
+    author: 'Mediakonstruksi',
+    date: '19 Januari 2026',
+    externalContent: true,
+    link: 'https://mediakonstruksi.id/libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
   },
 ];
 
