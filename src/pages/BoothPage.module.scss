@@ -273,39 +273,35 @@
     color: $text-muted;
   }
 
-  &__price {
-    text-align: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid $off-white;
-  }
-
-  &__priceAmount {
-    font-family: $font-display;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: $text-dark;
-  }
-
-  &__priceUnit {
-    font-size: 0.9rem;
-    color: $text-muted;
-    margin-left: 0.25rem;
-  }
-
-  &__size {
+  &__contactBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: $text-muted;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    border-radius: $radius-full;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all $transition-base;
+    cursor: pointer;
+    border: 2px solid $text-dark;
+    color: $text-dark;
+    background: transparent;
     margin-bottom: 1.5rem;
 
-    svg {
-      opacity: 0.5;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $off-white;
+    margin-bottom: 1.5rem;
   }
 
   &__features {
@@ -349,42 +345,29 @@
     }
   }
 
-  &__button {
-    width: 100%;
-    padding: 1rem;
-    border-radius: $radius-full;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all $transition-base;
-    cursor: pointer;
-  }
-
   // Color variants
   &--orange {
-    .packageCard__button {
-      background: transparent;
-      border: 2px solid #ff9800;
+    .packageCard__contactBtn {
+      border-color: #ff9800;
       color: #ff9800;
 
       &:hover {
         background: #ff9800;
         color: $white;
-        transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
       }
     }
   }
 
   &--green {
-    .packageCard__button {
+    .packageCard__contactBtn {
       background: $green;
-      border: 2px solid $green;
+      border-color: $green;
       color: $white;
       box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
 
       &:hover {
         background: color.adjust($green, $lightness: -8%);
-        transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(76, 175, 80, 0.4);
       }
     }
@@ -399,15 +382,13 @@
   }
 
   &--blue {
-    .packageCard__button {
-      background: transparent;
-      border: 2px solid $blue;
+    .packageCard__contactBtn {
+      border-color: $blue;
       color: $blue;
 
       &:hover {
         background: $blue;
         color: $white;
-        transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
       }
     }
@@ -496,256 +477,119 @@
   }
 }
 
-.sponsorshipTable {
-  background: $white;
-  border-radius: $radius-lg;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+// Column headers
+.sponsorshipColHeaders {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem;
+  padding: 0 1.5rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
 
-  &__header {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 2fr 1fr;
-    gap: 1rem;
-    background: $off-white;
-    padding: 1.25rem 1.5rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: $text-muted;
-
-    @media (max-width: $bp-lg) {
-      display: none;
-    }
-  }
-
-  &__headerCell {
-    display: flex;
-    align-items: center;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__row {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 1.75rem 1.5rem;
-    border-left: 4px solid transparent;
-    transition: all $transition-base;
-    align-items: center;
-
-    &:not(:last-child) {
-      border-bottom: 1px solid $off-white;
-    }
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.02);
-    }
-
-    // Color variants
-    &--orange {
-      border-left-color: #ff9800;
-    }
-
-    &--yellow {
-      border-left-color: #ffc107;
-    }
-
-    &--gray {
-      border-left-color: #607d8b;
-    }
-
-    &--purple {
-      border-left-color: #9c27b0;
-    }
-
-    @media (max-width: $bp-lg) {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1.5rem;
-      border-left: none;
-      border-top: 4px solid transparent;
-
-      &--orange {
-        border-left-color: transparent;
-        border-top-color: #ff9800;
-      }
-
-      &--yellow {
-        border-left-color: transparent;
-        border-top-color: #ffc107;
-      }
-
-      &--gray {
-        border-left-color: transparent;
-        border-top-color: #607d8b;
-      }
-
-      &--purple {
-        border-left-color: transparent;
-        border-top-color: #9c27b0;
-      }
-    }
-  }
-
-  &__cell {
-    display: flex;
-    align-items: center;
-
-    @media (max-width: $bp-lg) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-
-      &::before {
-        content: attr(data-label);
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: $text-muted;
-      }
-
-      &:nth-child(1)::before {
-        content: 'TINGKAT LEVEL';
-      }
-
-      &:nth-child(2)::before {
-        content: 'KONTRIBUSI (RP)';
-      }
-
-      &:nth-child(3)::before {
-        content: 'HAK ISTIMEWA';
-      }
-
-      &:nth-child(4)::before {
-        content: 'MEDIA VALUE';
-      }
-
-      &:nth-child(5)::before {
-        content: '';
-      }
-    }
-  }
-
-  &__button {
-    padding: 0.75rem 1.5rem;
-    border-radius: $radius-full;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all $transition-base;
-    cursor: pointer;
-    white-space: nowrap;
-    border: 2px solid;
-
-    @media (max-width: $bp-lg) {
-      width: 100%;
-    }
-
-    &--orange {
-      background: transparent;
-      border-color: #ff9800;
-      color: #ff9800;
-
-      &:hover {
-        background: #ff9800;
-        color: $white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
-      }
-    }
-
-    &--yellow {
-      background: transparent;
-      border-color: #ffc107;
-      color: #f57f17;
-
-      &:hover {
-        background: #ffc107;
-        color: $white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
-      }
-    }
-
-    &--gray {
-      background: transparent;
-      border-color: #607d8b;
-      color: #607d8b;
-
-      &:hover {
-        background: #607d8b;
-        color: $white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(96, 125, 139, 0.3);
-      }
-    }
-
-    &--purple {
-      background: transparent;
-      border-color: #9c27b0;
-      color: #9c27b0;
-
-      &:hover {
-        background: #9c27b0;
-        color: $white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
-      }
-    }
+  @media (max-width: $bp-md) {
+    display: none;
   }
 }
 
-.sponsorshipLevel {
+// Card list
+.sponsorshipList {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 
-  &__icon {
-    font-size: 2rem;
+.sponsorCard {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  background: $white;
+  border-radius: $radius-lg;
+  padding: 1.75rem 2rem;
+  border-left: 5px solid var(--pkg-color, #ccc);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    transform: translateX(4px);
+  }
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  &__level {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__iconWrap {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--pkg-color, #ccc) 12%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
   }
 
   &__name {
     font-family: $font-display;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: $text-dark;
-  }
-}
-
-.sponsorshipContribution {
-  font-family: $font-display;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: $text-dark;
-}
-
-.sponsorshipPrivileges {
-  font-size: 0.95rem;
-  color: $text-body;
-  line-height: 1.5;
-}
-
-.sponsorshipMedia {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-
-  &__value {
-    font-family: $font-display;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: $text-dark;
   }
 
-  &__unit {
-    font-size: 0.85rem;
-    color: $text-muted;
-    font-weight: 600;
+  &__privileges {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+
+    li {
+      font-size: 0.9rem;
+      color: $text-body;
+      line-height: 1.6;
+      margin-bottom: 0.2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    border-radius: $radius-md;
+    background: var(--pkg-color, #ccc);
+    color: $white;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all $transition-base;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: $bp-lg) {
+      width: 100%;
+    }
   }
 }
 
