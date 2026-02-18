@@ -343,7 +343,6 @@ export const articles = [
     categoryColor: 'green',
     title:
       'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
-      'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
     excerpt:
       'Aceh Tamiang – Genangan lumpur masih menumpuk di sudut-sudut kelas SMK 3 Aceh Tamiang, Senin (19/1/2026). Material sisa banjir bandang belum sepenuhnya hilang dari bangunan-bangunan layanan publik, namun di balik puing-puing bencana yang melanda Aceh Tamiang, harapan mulai tumbuh dari kerja tangan masyarakat sendiri.',
     image:
