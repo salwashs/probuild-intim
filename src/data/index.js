@@ -296,6 +296,11 @@ export const articles = [
     categoryColor: 'blue',
     title:
       'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
+    slug: 'tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
+    category: 'Pembangunan Nasional',
+    categoryColor: 'blue',
+    title:
+      'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
     excerpt:
       'Padang – Kementerian Pekerjaan Umum (PU) tidak hanya menghadirkan alat berat dan dukungan teknis dalam penanganan bencana, tetapi juga mengerahkan sumber daya manusia secara langsung guna mempercepat penanganan dampak bencana di Pulau Sumatera.',
     image:
@@ -308,6 +313,11 @@ export const articles = [
   },
   {
     id: 2,
+    slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
+    category: 'Infrastruktur',
+    categoryColor: 'red',
+    title:
+      'Kementerian PU Terus Lakukan Pembersihan Layanan Kesehatan dan RSUD Terdampak Bencana di Sumatera, Siapkan Pembangunan 2 Puskesmas Relokasi di Aceh',
     slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
     category: 'Infrastruktur',
     categoryColor: 'red',
@@ -328,7 +338,11 @@ export const articles = [
     slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
     category: 'Terbaru',
     categoryColor: 'green',
+    slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
+    category: 'Terbaru',
+    categoryColor: 'green',
     title:
+      'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
       'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
     excerpt:
       'Aceh Tamiang – Genangan lumpur masih menumpuk di sudut-sudut kelas SMK 3 Aceh Tamiang, Senin (19/1/2026). Material sisa banjir bandang belum sepenuhnya hilang dari bangunan-bangunan layanan publik, namun di balik puing-puing bencana yang melanda Aceh Tamiang, harapan mulai tumbuh dari kerja tangan masyarakat sendiri.',
