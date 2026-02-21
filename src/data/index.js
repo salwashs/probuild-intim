@@ -187,7 +187,7 @@ export const sponsors = {
       id: 2,
       type: 'Pendukung Utama Nasional',
       name: 'Lembaga Pengembang Jasa Konstruksi Indonesia',
-      logo: '/images/sponsors/lpjk.png',
+      logo: '/images/sponsors/lpjk-new.png',
       backgroundColor: '#010d40',
     },
   ],
