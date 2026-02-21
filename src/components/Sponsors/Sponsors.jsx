@@ -3,7 +3,7 @@ import styles from './Sponsors.module.scss';
 
 // Helper to generate placeholder or show image
 // Helper to generate placeholder or show image
-function SponsorLogo({ sponsor, className, variant = 'supporting' }) {
+function SponsorLogo({ sponsor, className, variant = 'supporting', backgroundColor }) {
   // Simple hashing for placeholder color if needed, or random
   const colors = ['#1A5FD6', '#F5A623', '#7A8899', '#2D9C6E'];
   const color = colors[sponsor.id % colors.length];
@@ -40,7 +40,13 @@ function SponsorLogo({ sponsor, className, variant = 'supporting' }) {
 
   return (
     <div className={`${className} ${styles.logoContainer}`} title={sponsor.name}>
-      <div className={styles.logoImageWrapper} style={!sponsor.logo ? { borderColor: color } : {}}>
+      <div
+        className={styles.logoImageWrapper}
+        style={{
+          ...(!sponsor.logo ? { borderColor: color } : {}),
+          ...(backgroundColor ? { backgroundColor } : {}),
+        }}
+      >
         {logoContent}
       </div>
 
@@ -94,6 +100,7 @@ export default function Sponsors() {
                   sponsor={sponsor}
                   className={styles.mainCard}
                   variant='main'
+                  backgroundColor={sponsor?.backgroundColor}
                 />
               ))}
             </div>

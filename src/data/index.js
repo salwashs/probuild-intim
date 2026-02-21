@@ -188,6 +188,7 @@ export const sponsors = {
       type: 'Pendukung Utama Nasional',
       name: 'Lembaga Pengembang Jasa Konstruksi Indonesia',
       logo: '/images/sponsors/lpjk.png',
+      backgroundColor: '#010d40',
     },
   ],
   secondary: [
@@ -291,67 +292,49 @@ export const testimonials = [
 export const articles = [
   {
     id: 1,
-    slug: 'tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
-    category: 'Pembangunan Nasional',
+    slug: 'proyek-flyover-padang-luar-siap-dibangun-target-atasi-kemacetan-parah-di-agam',
+    category: 'Infrastruktur',
     categoryColor: 'blue',
-    title:
-      'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
-    slug: 'tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
-    category: 'Pembangunan Nasional',
-    categoryColor: 'blue',
-    title:
-      'Tugas di Lokasi Bencana Sumatera Barat, CPNS Kementerian PU Bantu Sediakan Sarana Air Bersih Bagi Masyarakat Padang',
+    title: 'Proyek Flyover Padang Luar Siap Dibangun, Target Atasi Kemacetan Parah di Agam',
     excerpt:
-      'Padang – Kementerian Pekerjaan Umum (PU) tidak hanya menghadirkan alat berat dan dukungan teknis dalam penanganan bencana, tetapi juga mengerahkan sumber daya manusia secara langsung guna mempercepat penanganan dampak bencana di Pulau Sumatera.',
-    image:
-      'https://mediakonstruksi.id/wp-content/uploads/2025/12/Tugas-di-Lokasi-Bencana-Sumatera-Barat-CPNS-Kementerian-PU-Bantu-Sediakan-Sarana-Air-Bersih-Bagi-Masyarakat-Padang.jpg',
-    author: 'Mediakonstruksi',
-    date: '30 Desember 2025',
-    sortableDate: new Date('2025-12-30'),
+      'Konstruksi Media – Wakil Ketua Komisi VI DPR RI Andre Rosiade bersama sejumlah pemangku kepentingan meninjau langsung lokasi rencana pembangunan Flyover Padang Luar, Kabupaten Agam, Sumatera Barat. Proyek ini diprioritaskan sebagai solusi permanen untuk mengurai kemacetan parah di perlintasan sebidang kereta api yang selama ini menjadi titik rawan kecelakaan.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/Flyover-Padang-Luar.jpeg',
+    author: 'Konstruksi Media',
+    date: '21 Februari 2026',
+    sortableDate: new Date('2026-02-21'),
     externalContent: true,
-    link: 'https://mediakonstruksi.id/tugas-di-lokasi-bencana-sumatera-barat-cpns-kementerian-pu-bantu-sediakan-sarana-air-bersih-bagi-masyarakat-padang',
+    link: 'https://konstruksimedia.com/proyek-flyover-padang-luar-siap-dibangun-target-atasi-kemacetan-parah-di-agam',
   },
   {
     id: 2,
-    slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
+    slug: 'pemerintah-percepat-pembangunan-245-unit-huntara-di-tapsel',
     category: 'Infrastruktur',
-    categoryColor: 'red',
-    title:
-      'Kementerian PU Terus Lakukan Pembersihan Layanan Kesehatan dan RSUD Terdampak Bencana di Sumatera, Siapkan Pembangunan 2 Puskesmas Relokasi di Aceh',
-    slug: 'kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh',
-    category: 'Infrastruktur',
-    categoryColor: 'red',
-    title:
-      'Kementerian PU Terus Lakukan Pembersihan Layanan Kesehatan dan RSUD Terdampak Bencana di Sumatera, Siapkan Pembangunan 2 Puskesmas Relokasi di Aceh',
+    categoryColor: 'blue',
+    title: 'Pemerintah Percepat Pembangunan 245 Unit Huntara di Tapsel',
     excerpt:
-      'Jakarta – Kementerian Pekerjaan Umum (PU) terus memprioritaskan pemulihan fasilitas kesehatan terdampak bencana di Provinsi Aceh, Sumatera Utara, dan Sumatera Barat. Upaya tersebut difokuskan pada pembersihan lumpur dan material banjir di Rumah Sakit Umum Daerah (RSUD) dan puskesmas, serta pemulihan layanan air bersih dan sanitasi agar pelayanan kesehatan kepada masyarakat dapat kembali berjalan normal.',
+      'Konstruksi Media – Pemerintah melalui Kementerian Pekerjaan Umum (PU) terus mempercepat pembangunan hunian sementara (huntara) bagi masyarakat terdampak bencana di wilayah Sumatra.',
     image:
-      'https://mediakonstruksi.id/wp-content/uploads/2026/01/Kementerian-PU-Terus-Lakukan-Pembersihan-Layanan-Kesehatan-dan-RSUD-Terdampak-Bencana-di-Sumatera-Siapkan-Pembangunan-2-Puskesmas-Relokasi-di-Aceh.png',
-    author: 'Mediakonstruksi',
-    date: '17 Januari 2026',
-    sortableDate: new Date('2026-01-17'),
+      'https://konstruksimedia.com/wp-content/uploads/2026/02/Kementerian-PU-Progres-Huntara-di-Tapsel-Capai-70-Persen.jpg',
+    author: 'Konstruksi Media',
+    date: '20 Februari 2026',
+    sortableDate: new Date('2026-02-20'),
     externalContent: true,
-    link: 'https://mediakonstruksi.id/kementerian-pu-terus-lakukan-pembersihan-layanan-kesehatan-dan-rsud-terdampak-bencana-di-sumatera-siapkan-pembangunan-2-puskesmas-relokasi-di-aceh/',
+    link: 'https://konstruksimedia.com/pemerintah-percepat-pembangunan-245-unit-huntara-di-tapsel/',
   },
   {
     id: 3,
-    slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
-    category: 'Terbaru',
-    categoryColor: 'green',
-    slug: 'libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
-    category: 'Terbaru',
-    categoryColor: 'green',
-    title:
-      'Libatkan 44.954 Tenaga Kerja Lokal, Padat Karya Kementerian PUPR Hadirkan Harapan dan Penghidupan bagi Warga Terdampak Bencana Sumatera',
+    slug: 'menata-bumn-kontraktor-sipil-dan-menemukan-peran-baru-danantara',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Menata BUMN Kontraktor Sipil dan Menemukan Peran Baru Danantara',
     excerpt:
-      'Aceh Tamiang – Genangan lumpur masih menumpuk di sudut-sudut kelas SMK 3 Aceh Tamiang, Senin (19/1/2026). Material sisa banjir bandang belum sepenuhnya hilang dari bangunan-bangunan layanan publik, namun di balik puing-puing bencana yang melanda Aceh Tamiang, harapan mulai tumbuh dari kerja tangan masyarakat sendiri.',
-    image:
-      'https://mediakonstruksi.id/wp-content/uploads/2026/01/Libatkan-44.954-Tenaga-Kerja-Lokal-Padat-Karya-Kementerian-PU-Hadirkan-Harapan-dan-Penghidupan-bagi-Warga-Terdampak-Bencana-Sumatera.png',
-    author: 'Mediakonstruksi',
-    date: '19 Januari 2026',
-    sortableDate: new Date('2026-01-19'),
+      'Konstruksi Media  — Satu dekade terakhir menjadi fase paling ambisius dalam sejarah pembangunan infrastruktur Indonesia. Jalan tol, pelabuhan, bendungan, hingga kereta cepat dibangun dalam skala besar untuk mengejar konektivitas, menurunkan biaya logistik, dan meningkatkan daya saing nasional. Secara fisik, capaian ini nyata dan tidak dapat dipungkiri. Indonesia bergerak lebih cepat dibandingkan periode sebelumnya.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/IMG-20260218-WA0013-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '18 Februari 2026',
+    sortableDate: new Date('2026-02-18'),
     externalContent: true,
-    link: 'https://mediakonstruksi.id/libatkan-44-954-tenaga-kerja-lokal-padat-karya-kementerian-pu-hadirkan-harapan-dan-penghidupan-bagi-warga-terdampak-bencana-sumatera',
+    link: 'https://konstruksimedia.com/menata-bumn-kontraktor-sipil-dan-menemukan-peran-baru-danantara/',
   },
 ];
 
