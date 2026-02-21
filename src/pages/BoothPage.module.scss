@@ -274,7 +274,6 @@
   }
 
   &__contactBtn {
-  &__contactBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -291,34 +290,12 @@
     border: 2px solid $text-dark;
     color: $text-dark;
     background: transparent;
-    gap: 0.6rem;
-    width: 100%;
-    padding: 0.9rem 1.5rem;
-    border-radius: $radius-full;
-    font-family: $font-body;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: all $transition-base;
-    cursor: pointer;
-    border: 2px solid $text-dark;
-    color: $text-dark;
-    background: transparent;
     margin-bottom: 1.5rem;
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     }
-  }
-
-  &__divider {
-    height: 1px;
-    background: $off-white;
-    margin-bottom: 1.5rem;
   }
 
   &__divider {
@@ -372,8 +349,6 @@
   &--orange {
     .packageCard__contactBtn {
       border-color: #ff9800;
-    .packageCard__contactBtn {
-      border-color: #ff9800;
       color: #ff9800;
 
       &:hover {
@@ -386,9 +361,7 @@
 
   &--green {
     .packageCard__contactBtn {
-    .packageCard__contactBtn {
       background: $green;
-      border-color: $green;
       border-color: $green;
       color: $white;
       box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
@@ -409,8 +382,6 @@
   }
 
   &--blue {
-    .packageCard__contactBtn {
-      border-color: $blue;
     .packageCard__contactBtn {
       border-color: $blue;
       color: $blue;
@@ -507,16 +478,6 @@
 }
 
 // Column headers
-.sponsorshipColHeaders {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 1rem;
-  padding: 0 1.5rem 0.75rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: $text-muted;
 // Column headers
 .sponsorshipColHeaders {
   display: grid;
@@ -533,17 +494,7 @@
     display: none;
   }
 }
-  @media (max-width: $bp-md) {
-    display: none;
-  }
-}
 
-// Card list
-.sponsorshipList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
 // Card list
 .sponsorshipList {
   display: flex;
@@ -562,22 +513,7 @@
   border-left: 5px solid var(--pkg-color, #ccc);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition: all $transition-base;
-.sponsorCard {
-  display: grid;
-  grid-template-columns: 220px 1fr auto;
-  align-items: center;
-  gap: 2rem;
-  background: $white;
-  border-radius: $radius-lg;
-  padding: 1.75rem 2rem;
-  border-left: 5px solid var(--pkg-color, #ccc);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: all $transition-base;
 
-  &:hover {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    transform: translateX(4px);
-  }
   &:hover {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
     transform: translateX(4px);
@@ -599,49 +535,8 @@
     height: 52px;
     border-radius: $radius-md;
     background: color-mix(in srgb, var(--pkg-color, #ccc) 12%, transparent);
-  @media (max-width: $bp-lg) {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  &__level {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
-
-  &__iconWrap {
-    width: 52px;
-    height: 52px;
-    border-radius: $radius-md;
-    background: color-mix(in srgb, var(--pkg-color, #ccc) 12%, transparent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  &__name {
-    font-family: $font-display;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: $text-dark;
-  }
-
-  &__privileges {
-    list-style: disc;
-    padding-left: 1.25rem;
-    margin: 0;
-
-    li {
-      font-size: 0.9rem;
-      color: $text-body;
-      line-height: 1.6;
-      margin-bottom: 0.2rem;
-
-      &:last-child {
-        margin-bottom: 0;
     justify-content: center;
     font-size: 1.5rem;
     flex-shrink: 0;
@@ -681,21 +576,7 @@
     color: $white;
     font-family: $font-body;
     font-weight: 700;
-    }
-  }
-
-  &__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.85rem 1.5rem;
-    border-radius: $radius-md;
-    background: var(--pkg-color, #ccc);
-    color: $white;
-    font-family: $font-body;
-    font-weight: 700;
     font-size: 0.9rem;
-    text-decoration: none;
     text-decoration: none;
     white-space: nowrap;
     transition: all $transition-base;
