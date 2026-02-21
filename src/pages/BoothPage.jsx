@@ -97,7 +97,7 @@ export default function BoothPage() {
             <p className='section__subtitle'>Denah lokasi pameran ProBuild INTIM 2026</p>
           </div>
           <div className={styles.layoutImage} onClick={() => openModal('/images/layout-venue.png')}>
-            <img src='/images/layout-venue.png' alt='Venue Layout ProBuild INTIM 2026' />
+            <img src='/images/layout.png' alt='Venue Layout ProBuild INTIM 2026' />
             <div className={styles.layoutImage__overlay}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
