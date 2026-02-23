@@ -180,12 +180,6 @@ export const sponsors = {
     {
       id: 1,
       type: 'Pendukung Utama Nasional',
-      name: 'Kementrian Pekerjaan Umum Republik Indonesia',
-      logo: '/images/sponsors/kemenpu.png',
-    },
-    {
-      id: 2,
-      type: 'Pendukung Utama Nasional',
       name: 'Lembaga Pengembang Jasa Konstruksi Indonesia',
       logo: '/images/sponsors/lpjk-new.png',
       backgroundColor: '#010d40',
