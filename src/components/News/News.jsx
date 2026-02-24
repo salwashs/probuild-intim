@@ -6,7 +6,7 @@ const colorMap = { red: 'red', blue: 'blue', green: 'green' };
 
 export default function News() {
   // Sort articles by date (newest first)
-  const sortedArticles = [...articles].sort((a, b) => b.sortableDate - a.sortableDate);
+  const sortedArticles = [...articles].sort((a, b) => b.sortableDate - a.sortableDate).slice(0, 3);
 
   return (
     <section className={`section ${styles.section}`} id='news'>
