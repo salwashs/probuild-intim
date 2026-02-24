@@ -330,6 +330,85 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/menata-bumn-kontraktor-sipil-dan-menemukan-peran-baru-danantara/',
   },
+  {
+    id: 4,
+    slug: 'kementerian-pu-perkuat-ekosistem-jasa-konstruksi-melalui-sosialisasi-permen-pu-no-6-tahun-2025',
+    category: 'Regulasi',
+    categoryColor: 'red',
+    title:
+      'Kementerian PU Perkuat Ekosistem Jasa Konstruksi melalui Sosialisasi Permen PU No. 6 Tahun 2025',
+    excerpt:
+      'Jakarta – Direktorat Jenderal Bina Konstruksi Kementerian Pekerjaan Umum (PU) menyelenggarakan sosialisasi krusial terkait Peraturan Menteri Pekerjaan Umum Nomor 6 Tahun 2025 di Gedung Utama Kementerian PU, Selasa (3/2/2026). Regulasi ini menetapkan standar baru bagi kegiatan usaha, produk jasa, hingga mekanisme pengawasan dan sanksi pada sektor jasa konstruksi nasional.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1770792893_e696a0e06bec22db00b5.png',
+    author: 'LPJK',
+    date: '3 Februari 2026',
+    sortableDate: new Date('2026-02-03'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/698c27bde80f9/2',
+  },
+  {
+    id: 5,
+    slug: 'progres-capai-70-kementerian-pu-percepat-pembangunan-245-unit-huntara-di-tapanuli-selatan',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Progres Capai 70%, Kementerian PU Percepat Pembangunan 245 Unit Huntara di Tapanuli Selatan',
+    excerpt:
+      'Jakarta – Direktorat Jenderal Bina Konstruksi Kementerian Pekerjaan Umum (PU) menyelenggarakan sosialisasi krusial terkait Peraturan Menteri Pekerjaan Umum Nomor 6 Tahun 2025 di Gedung Utama Kementerian PU, Selasa (3/2/2026). Regulasi ini menetapkan standar baru bagi kegiatan usaha, produk jasa, hingga mekanisme pengawasan dan sanksi pada sektor jasa konstruksi nasional.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1771568968_087047e2367519b31940.jpeg',
+    author: 'LPJK',
+    date: '19 Februari 2026',
+    sortableDate: new Date('2026-02-19'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/6997ff4840761/2',
+  },
+  {
+    id: 6,
+    slug: 'kunjungi-serang-ahy-siapkan-ruang-kreatif-dan-serap-aspirasi-infrastruktur-banten-selatan',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Kunjungi Serang, AHY Siapkan Ruang Kreatif dan Serap Aspirasi Infrastruktur Banten Selatan',
+    excerpt:
+      'Konstruksi Media – Menteri Koordinator Bidang Infrastruktur dan Pembangunan Kewilayahan Agus Harimurti Yudhoyono (AHY) melakukan kunjungan kerja ke Serang, Banten, Sabtu (21/2/2026). Dalam agenda tersebut, AHY berdiskusi dengan anak-anak muda pelaku ekonomi kreatif yang tergabung dalam Forum Ekraf Banten.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/AHY.gif',
+    author: 'Konstruksi Media',
+    date: '22 Februari 2026',
+    sortableDate: new Date('2026-02-22'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/kunjungi-serang-ahy-siapkan-ruang-kreatif-dan-serap-aspirasi-infrastruktur-banten-selatan/',
+  },
+  {
+    id: 7,
+    slug: 'hutama-karya-pasang-girder-di-tol-padang-sicincin-berikut-2-skema-pengalihan-arus',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Hutama Karya Pasang Girder di Tol Padang–Sicincin, Berikut 2 Skema Pengalihan Arus',
+    excerpt:
+      'Konstruksi Media – PT Hutama Karya (Persero) bersama anak usahanya, PT Hutama Karya Infrastruktur (HKI), akan memberlakukan rekayasa lalu lintas di Tol Padang–Sicincin KM 18+998 pada 23–24 Februari 2026. Pengaturan ini dilakukan untuk mendukung pemasangan balok jembatan (erection girder) di proyek Interchange Lubuk Alung.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-6.46.34-AM-780x470.jpeg',
+    author: 'Konstruksi Media',
+    date: '23 Februari 2026',
+    sortableDate: new Date('2026-02-23'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/hutama-karya-pasang-girder-di-tol-padang-sicincin-berikut-2-skema-pengalihan-arus/',
+  },
+  {
+    id: 8,
+    slug: 'ahy-tekankan-pentingnya-rest-area-layak-untuk-keselamatan-mudik-2026',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'AHY Tekankan Pentingnya Rest Area Layak untuk Keselamatan Mudik 2026',
+    excerpt:
+      'Konstruksi Media – Menteri Koordinator Bidang Infrastruktur dan Pembangunan Kewilayahan, Agus Harimurti Yudhoyono (AHY), menekankan pentingnya ketersediaan rest area yang layak dan memadai selama musim mudik. Hal ini menjadi perhatian serius karena kecelakaan lalu lintas darat masih didominasi oleh faktor kelelahan dan kejenuhan pengemudi.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/AHY-1.jpg',
+    author: 'Konstruksi Media',
+    date: '23 Februari 2026',
+    sortableDate: new Date('2026-02-23'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/ahy-tekankan-pentingnya-rest-area-layak-untuk-keselamatan-mudik-2026/',
+  },
 ];
 
 // =====================
