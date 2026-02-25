@@ -1,9 +1,14 @@
 import { useEffect, useRef } from 'react';
 import styles from './Parallax.module.scss';
 import { eventInfo } from '../../data';
+import { translations } from '../../translations';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Parallax() {
   const bgRef = useRef(null);
+  const { lang } = useLanguage();
+  const t = translations.parallax[lang];
+  console.log('🚀 ~ Parallax ~ t:', t);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,19 +46,14 @@ export default function Parallax() {
           </span>
 
           <h2 className={styles.headline}>
-            Jelajahi Inovasi,
+            {t.headline1}
             <br />
-            Perluas Koneksi, dan
+            {t.headline2}
             <br />
-            Raih <em>Peluang Baru</em>
+            <em>{t.headlineAccent}</em>
           </h2>
 
-          <p className={styles.body}>
-            ProBuild menghadirkan ribuan pelaku industri dalam satu ekosistem kolaboratif.
-            <br />
-            Dapatkan insight strategis, temukan solusi inovatif, dan bangun koneksi langsung dengan
-            pengambil keputusan proyek nasional.
-          </p>
+          <p className={styles.body}>{t.body}</p>
 
           <div className={styles.ctas}>
             <a
@@ -64,7 +64,7 @@ export default function Parallax() {
                 document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Daftar Sebagai Visitor
+              {t.cta}
               <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                 <path d='M5 12h14M12 5l7 7-7 7' />
               </svg>
@@ -73,12 +73,7 @@ export default function Parallax() {
 
           {/* Features row */}
           <div className={styles.features}>
-            {[
-              { icon: '🤝', text: '100+ Exhibitor' },
-              { icon: '👥', text: '15.000+ Pengunjung' },
-              { icon: '💡', text: '20+ Pembicara Profesional' },
-              { icon: '📍', text: eventInfo.venue },
-            ].map((f, i) => (
+            {t.features.map((f, i) => (
               <div key={i} className={styles.feature}>
                 <span>{f.icon}</span>
                 <span>{f.text}</span>

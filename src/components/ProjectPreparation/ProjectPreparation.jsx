@@ -1,23 +1,26 @@
 import { galleryPreparation } from '../../data';
 import styles from './ProjectPreparation.module.scss';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 
 export default function ProjectShowcase() {
   // Triple the items for smooth infinite scroll
   const loop = [...galleryPreparation, ...galleryPreparation, ...galleryPreparation];
+  const { lang } = useLanguage();
+  const t = translations.projectPreparation[lang];
 
   return (
     <section className={`section ${styles.section}`}>
       <div className='container'>
         <div className='section__header reveal' style={{ marginBottom: '2rem' }}>
-          <span className='section__label'>Project Preparation</span>
+          <span className='section__label'>{t.label}</span>
           <h2 className='section__title'>
-            <span className={styles.accent}>Strategi</span> di Balik Panggung
+            <span className={styles.accent}>{t.titleAccent}</span> {t.titleSuffix}
           </h2>
           <p className='section__subtitle'>
-            Sebuah event berskala industri tidak dibangun dalam semalam. Ia lahir dari diskusi
-            strategis bersama mitra, koordinasi lintas sektor, dan perencanaan detail yang matang.
+            {t.subtitle}
             <br />
-            <strong>Karena kualitas sebuah expo ditentukan jauh sebelum pintu dibuka.</strong>
+            <strong>{t.strong}</strong>
           </p>
         </div>
 

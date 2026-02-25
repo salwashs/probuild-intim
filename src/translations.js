@@ -4,6 +4,8 @@
 // en = English
 // ========================
 
+import { eventInfo } from './data';
+
 export const translations = {
   // -----------------------------------------------
   // NAVBAR
@@ -811,6 +813,60 @@ export const translations = {
         `Hello, I am interested in booking a booth at ProBuild INTIM 2026. I would like to know more about the ${name} Package — including location availability, included facilities, and the registration process. Could you help me?`,
       waMessageSponsor: (name) =>
         `Hello, I am interested in becoming a sponsor at ProBuild INTIM 2026. I would like to know more about the ${name} Sponsorship Package — including privileges, brand visibility, and partnership details. Could you provide more information?`,
+    },
+  },
+
+  // -----------------------------------------------
+  // PARALLAX (home section)
+  // -----------------------------------------------
+  parallax: {
+    id: {
+      headline1: 'Jelajahi Inovasi,',
+      headline2: 'Perluas Koneksi, dan',
+      headlineAccent: 'Peluang Baru',
+      body: 'ProBuild menghadirkan ribuan pelaku industri dalam satu ekosistem kolaboratif.\n Dapatkan insight strategis, temukan solusi inovatif, dan bangun koneksi langsung dengan pengambil keputusan proyek nasional.',
+      cta: 'Daftar Sebagai Visitor',
+      features: [
+        { icon: '🤝', text: '100+ Exhibitor' },
+        { icon: '👥', text: '15.000+ Pengunjung' },
+        { icon: '💡', text: '20+ Pembicara Profesional' },
+        { icon: '📍', text: eventInfo.venue },
+      ],
+    },
+    en: {
+      headline1: 'Explore Innovation,',
+      headline2: 'Your Network, and',
+      headlineAccent: 'New Opportunities',
+      body: 'ProBuild brings thousands of industry players together in one collaborative ecosystem.\n Gain strategic insights, discover innovative solutions, and build direct connections with national project decision-makers.',
+      cta: 'Register as a Visitor',
+      features: [
+        { icon: '🤝', text: '100+ Exhibitors' },
+        { icon: '👥', text: '15,000+ Visitors' },
+        { icon: '💡', text: '20+ Professional Speakers' },
+        { icon: '📍', text: eventInfo.venue },
+      ],
+    },
+  },
+
+  // -----------------------------------------------
+  // PROJECT PREPARATION (home section)
+  // -----------------------------------------------
+  projectPreparation: {
+    id: {
+      label: 'Project Preparation',
+      titleAccent: 'Strategi',
+      titleSuffix: 'di Balik Panggung',
+      subtitle:
+        'Sebuah event berskala industri tidak dibangun dalam semalam. Ia lahir dari diskusi strategis bersama mitra, koordinasi lintas sektor, dan perencanaan detail yang matang.',
+      strong: 'Karena kualitas sebuah expo ditentukan jauh sebelum pintu dibuka.',
+    },
+    en: {
+      label: 'Project Preparation',
+      titleAccent: 'The Strategy',
+      titleSuffix: 'Behind the Stage',
+      subtitle:
+        'An industry-scale event is not built overnight. It is born from strategic discussions with partners, cross-sector coordination, and thorough detailed planning.',
+      strong: 'Because the quality of an expo is determined long before the doors open.',
     },
   },
 };
