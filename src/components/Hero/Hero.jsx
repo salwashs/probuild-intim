@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { eventInfo } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './Hero.module.scss';
 
 function CountdownUnit({ value, label, color }) {
@@ -38,11 +40,17 @@ function useCountdown(target) {
 
 export default function Hero() {
   const { days, hours, minutes, seconds } = useCountdown(eventInfo.targetDate);
+  const { lang } = useLanguage();
+  const t = translations.hero[lang];
 
   const handleScroll = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const description = t.description
+    .replace('{exhibitor}', eventInfo.exhibitor)
+    .replace('{targetVisitor}', eventInfo.targetVisitor?.toLocaleString('id-ID'));
 
   return (
     <section className={styles.hero} id='home'>
@@ -100,11 +108,7 @@ export default function Hero() {
           </div>
 
           {/* Description */}
-          <p className={styles.description}>
-            Platform pertemuan {eventInfo.exhibitor}+ exhibitor,{' '}
-            {eventInfo.targetVisitor?.toLocaleString('id-ID')} profesional, dan inovator industri
-            konstruksi terbesar se-Indonesia Timur dalam 4 hari transformasi.
-          </p>
+          <p className={styles.description}>{description}</p>
 
           {/* CTA Buttons */}
           <div className={styles.ctas}>
@@ -122,21 +126,21 @@ export default function Hero() {
                 <rect x='14' y='14' width='7' height='7' />
                 <rect x='3' y='14' width='7' height='7' />
               </svg>
-              Booking Stand
+              {t.ctaPrimary}
             </a>
             <a href='/tentang-kami' className={`btn btn--outline ${styles.cta__outline}`}>
-              Apa itu ProBuild INTIM?
+              {t.ctaOutline}
             </a>
           </div>
 
           {/* Countdown */}
           <div className={styles.countdownWrap}>
-            <span className={styles.countdownLabel}>Menghitung mundur ke hari H:</span>
+            <span className={styles.countdownLabel}>{t.countdownLabel}</span>
             <div className={styles.countdown}>
-              <CountdownUnit value={days} label='Hari' color='red' />
-              <CountdownUnit value={hours} label='Jam' color='blue' />
-              <CountdownUnit value={minutes} label='Menit' color='green' />
-              <CountdownUnit value={seconds} label='Detik' color='yellow' />
+              <CountdownUnit value={days} label={t.days} color='red' />
+              <CountdownUnit value={hours} label={t.hours} color='blue' />
+              <CountdownUnit value={minutes} label={t.minutes} color='green' />
+              <CountdownUnit value={seconds} label={t.seconds} color='yellow' />
             </div>
           </div>
         </div>

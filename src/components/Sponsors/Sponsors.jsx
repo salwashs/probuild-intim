@@ -1,10 +1,9 @@
 import { sponsors } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './Sponsors.module.scss';
 
-// Helper to generate placeholder or show image
-// Helper to generate placeholder or show image
 function SponsorLogo({ sponsor, className, variant = 'supporting', backgroundColor }) {
-  // Simple hashing for placeholder color if needed, or random
   const colors = ['#1A5FD6', '#F5A623', '#7A8899', '#2D9C6E'];
   const color = colors[sponsor.id % colors.length];
 
@@ -31,7 +30,6 @@ function SponsorLogo({ sponsor, className, variant = 'supporting', backgroundCol
       >
         {abbrev}
       </div>
-      {/* If simple placeholder, we might show name inside if not showing outside */}
       {variant === 'supporting' && (
         <div style={{ fontSize: '0.7rem', color: '#666' }}>{sponsor.name}</div>
       )}
@@ -63,11 +61,10 @@ function SponsorLogo({ sponsor, className, variant = 'supporting', backgroundCol
 }
 
 export default function Sponsors() {
-  const { main, secondary, supporting } = sponsors;
+  const { main, secondary } = sponsors;
+  const { lang } = useLanguage();
+  const t = translations.sponsors[lang];
 
-  // --- Secondary Sponsor Logic ---
-  // Duplicate for seamless marquee
-  // If list is short, duplicate more times to fill width
   const secondaryLoop =
     secondary.length > 0 ? [...secondary, ...secondary, ...secondary, ...secondary] : [];
 
@@ -76,22 +73,20 @@ export default function Sponsors() {
       <div className='container'>
         {/* Header */}
         <div className='section__header reveal' style={{ marginBottom: '2rem' }}>
-          <span className='section__label'>Mitra dan Sponsor</span>
+          <span className='section__label'>{t.label}</span>
           <h2 className='section__title'>
             <span className='text-primary'>
-              Didukung Oleh yang <span className={styles.accent}>Terbaik</span>
+              {t.title} <span className={styles.accent}>{t.accent}</span>
             </span>
           </h2>
-          <p className='section__subtitle'>
-            Mitra strategis yang mendukung kesuksesan ProBuild INTIM 2026.
-          </p>
+          <p className='section__subtitle'>{t.subtitle}</p>
         </div>
 
-        {/* 1. Main Sponsor (Grid Layout) */}
+        {/* 1. Main Sponsor */}
         {main.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
-              <h3>Pendukung Utama Nasional</h3>
+              <h3>{t.mainHeader}</h3>
             </div>
             <div className={styles.mainWrapper}>
               {main.map((sponsor) => (
@@ -111,7 +106,7 @@ export default function Sponsors() {
         {secondary.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
-              <h3>Asosiasi & Mitra Pendukung</h3>
+              <h3>{t.secondaryHeader}</h3>
             </div>
 
             <div className={styles.secondaryWrapper}>
@@ -129,35 +124,15 @@ export default function Sponsors() {
           </div>
         )}
 
-        {/* 3. Supporting Sponsor (Grid) */}
-        {/* {supporting.length > 0 && (
-          <div className='reveal'>
-            <div className={styles.subHeader}>
-              <h3>Sponsor Lainnya & Media Partners</h3>
-            </div>
-
-            <div className={styles.supportingWrapper}>
-              {supporting.map((s, i) => (
-                <SponsorLogo
-                  key={s.id}
-                  sponsor={s}
-                  className={styles.supportingCard}
-                  variant='supporting'
-                />
-              ))}
-            </div>
-          </div>
-        )} */}
-
         {/* CTA */}
         <div className={`reveal ${styles.cta}`}>
-          <p>Ingin brand Anda tampil di sini?</p>
+          <p>{t.ctaText}</p>
           <a
             href='https://wa.me/6285705852676?text=Halo%20Saya%20tertarik%20jadi%20sponsor%20ProBuild%20INTIM%202026'
             target='_blank'
             className='btn btn--primary'
           >
-            Jadi Sponsor
+            {t.ctaBtn}
           </a>
         </div>
       </div>

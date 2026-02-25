@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { boothSizes, eventInfo, productCategories } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
 
 const initialBoothForm = {
@@ -20,52 +22,60 @@ const initialVisitorForm = {
   position: '',
 };
 
-const initialErrors = {};
-
-function validateBooth(form) {
-  const e = {};
-  if (!form.company.trim()) e.company = 'Nama perusahaan wajib diisi';
-  if (!form.pic.trim()) e.pic = 'Nama PIC wajib diisi';
-  if (!form.email.trim()) {
-    e.email = 'Email wajib diisi';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    e.email = 'Format email tidak valid';
-  }
-  if (!form.phone.trim()) {
-    e.phone = 'Nomor telepon wajib diisi';
-  } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.phone)) {
-    e.phone = 'Nomor telepon tidak valid';
-  }
-  if (!form.category) e.category = 'Pilih kategori produk';
-  if (!form.boothSize) e.boothSize = 'Pilih ukuran booth';
-  return e;
+function makeValidateBooth(t) {
+  return (form) => {
+    const e = {};
+    if (!form.company.trim()) e.company = t.errors.company;
+    if (!form.pic.trim()) e.pic = t.errors.pic;
+    if (!form.email.trim()) {
+      e.email = t.errors.emailRequired;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      e.email = t.errors.emailInvalid;
+    }
+    if (!form.phone.trim()) {
+      e.phone = t.errors.phoneRequired;
+    } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.phone)) {
+      e.phone = t.errors.phoneInvalid;
+    }
+    if (!form.category) e.category = t.errors.category;
+    if (!form.boothSize) e.boothSize = t.errors.boothSize;
+    return e;
+  };
 }
 
-function validateVisitor(form) {
-  const e = {};
-  if (!form.name.trim()) e.name = 'Nama wajib diisi';
-  if (!form.whatsapp.trim()) {
-    e.whatsapp = 'Nomor WhatsApp wajib diisi';
-  } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.whatsapp)) {
-    e.whatsapp = 'Nomor WhatsApp tidak valid';
-  }
-  if (!form.company.trim()) e.company = 'Nama perusahaan wajib diisi';
-  if (!form.email.trim()) {
-    e.email = 'Email wajib diisi';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    e.email = 'Format email tidak valid';
-  }
-  return e;
+function makeValidateVisitor(t) {
+  return (form) => {
+    const e = {};
+    if (!form.name.trim()) e.name = t.errors.name;
+    if (!form.whatsapp.trim()) {
+      e.whatsapp = t.errors.whatsappRequired;
+    } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.whatsapp)) {
+      e.whatsapp = t.errors.whatsappInvalid;
+    }
+    if (!form.company.trim()) e.company = t.errors.company;
+    if (!form.email.trim()) {
+      e.email = t.errors.emailRequired;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      e.email = t.errors.emailInvalid;
+    }
+    return e;
+  };
 }
 
 export default function BookingForm() {
-  const [formType, setFormType] = useState('booth'); // 'booth' or 'visitor'
+  const { lang } = useLanguage();
+  const t = translations.bookingForm[lang];
+
+  const [formType, setFormType] = useState('booth');
   const [boothForm, setBoothForm] = useState(initialBoothForm);
   const [visitorForm, setVisitorForm] = useState(initialVisitorForm);
-  const [errors, setErrors] = useState(initialErrors);
+  const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const validateBooth = makeValidateBooth(t);
+  const validateVisitor = makeValidateVisitor(t);
 
   const form = formType === 'booth' ? boothForm : visitorForm;
   const setForm = formType === 'booth' ? setBoothForm : setVisitorForm;
@@ -82,7 +92,7 @@ export default function BookingForm() {
 
   const handleBlur = (e) => {
     const { name } = e.target;
-    setTouched((t) => ({ ...t, [name]: true }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
     const errs = validate(form);
     setErrors((prev) => ({ ...prev, [name]: errs[name] }));
   };
@@ -96,62 +106,29 @@ export default function BookingForm() {
 
     setLoading(true);
 
-    // Prepare WhatsApp message and phone number
     let phoneNumber = '';
     let message = '';
 
     if (formType === 'booth') {
       phoneNumber = '6285705852676';
-      message = `Halo, saya ingin melakukan booking stand untuk ProBuild INTIM 2026.
-
-Berikut data perusahaan kami:
-
-📋 *Data Perusahaan*
-• Nama Perusahaan: ${boothForm.company}
-• Nama PIC: ${boothForm.pic}
-• Email: ${boothForm.email}
-• Nomor Telepon: ${boothForm.phone}
-
-📦 *Detail Booth*
-• Kategori Produk: ${boothForm.category}
-• Ukuran Booth: ${boothForm.boothSize}${boothForm.message ? `\n\n💬 *Pesan Tambahan*\n${boothForm.message}` : ''}
-
-Mohon informasi lebih lanjut mengenai proses booking. Terima kasih.`;
+      message = `Halo, saya ingin melakukan booking stand untuk ProBuild INTIM 2026.\n\nBerikut data perusahaan kami:\n\n📋 *Data Perusahaan*\n• Nama Perusahaan: ${boothForm.company}\n• Nama PIC: ${boothForm.pic}\n• Email: ${boothForm.email}\n• Nomor Telepon: ${boothForm.phone}\n\n📦 *Detail Booth*\n• Kategori Produk: ${boothForm.category}\n• Ukuran Booth: ${boothForm.boothSize}${boothForm.message ? `\n\n💬 *Pesan Tambahan*\n${boothForm.message}` : ''}\n\nMohon informasi lebih lanjut mengenai proses booking. Terima kasih.`;
     } else {
       phoneNumber = '62811443577';
-      message = `Halo, saya ingin melakukan registrasi kunjungan untuk ProBuild INTIM 2026.
-
-Berikut data saya:
-
-👤 *Data Pengunjung*
-• Nama Lengkap: ${visitorForm.name}
-• Nomor WhatsApp: ${visitorForm.whatsapp}
-• Nama Perusahaan: ${visitorForm.company}
-• Email: ${visitorForm.email}${visitorForm.position ? `\n• Jabatan: ${visitorForm.position}` : ''}
-
-Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
+      message = `Halo, saya ingin melakukan registrasi kunjungan untuk ProBuild INTIM 2026.\n\nBerikut data saya:\n\n👤 *Data Pengunjung*\n• Nama Lengkap: ${visitorForm.name}\n• Nomor WhatsApp: ${visitorForm.whatsapp}\n• Nama Perusahaan: ${visitorForm.company}\n• Email: ${visitorForm.email}${visitorForm.position ? `\n• Jabatan: ${visitorForm.position}` : ''}\n\nMohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
     }
 
-    // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    // Small delay for loading state
     await new Promise((r) => setTimeout(r, 500));
 
-    // Open WhatsApp in new tab (Safari/iOS compatible)
-    // Using window.open with async approach for Safari compatibility
     const newWindow = window.open(whatsappUrl, 'noopener,noreferrer');
-
-    // Fallback for Safari if popup blocked
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-      // If popup blocked, try direct navigation
       window.location.href = whatsappUrl;
     }
 
     setLoading(false);
 
-    // Reset form after sending
     if (formType === 'booth') {
       setBoothForm(initialBoothForm);
     } else {
@@ -168,6 +145,14 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
     setTouched({});
   };
 
+  const benefits = t.benefits.map((b) => ({
+    ...b,
+    desc: b.desc
+      .replace('{location}', eventInfo.location)
+      .replace('{venue}', eventInfo.venue)
+      .replace('{targetVisitor}', eventInfo.targetVisitor?.toLocaleString('id-ID')),
+  }));
+
   if (submitted) {
     return (
       <section className={`section ${styles.section}`} id='booking'>
@@ -180,23 +165,13 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
               </svg>
             </div>
             <h2 className={styles.success__title}>
-              {formType === 'booth' ? 'Data Terkirim!' : 'Registrasi Terkirim!'}
+              {formType === 'booth' ? t.successBoothTitle : t.successVisitorTitle}
             </h2>
             <p className={styles.success__body}>
-              {formType === 'booth' ? (
-                <>
-                  Terima kasih! Data booking stand Anda telah dikirim ke WhatsApp kami. Tim kami
-                  akan segera menghubungi Anda untuk konfirmasi lebih lanjut.
-                </>
-              ) : (
-                <>
-                  Terima kasih! Data registrasi Anda telah dikirim ke WhatsApp kami. Kami akan
-                  mengirimkan informasi event dan menghubungi Anda segera.
-                </>
-              )}
+              {formType === 'booth' ? t.successBoothBody : t.successVisitorBody}
             </p>
             <p className={styles.success__note}>
-              💬 Jika WhatsApp tidak terbuka otomatis, silakan hubungi kami langsung di{' '}
+              {t.successNote}{' '}
               <strong>{formType === 'booth' ? '085705852676' : '0811443577'}</strong>
             </p>
             <button
@@ -208,7 +183,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                 setTouched({});
               }}
             >
-              {formType === 'booth' ? 'Kirim Booking Lainnya' : 'Daftar Lagi'}
+              {formType === 'booth' ? t.successBoothBtn : t.successVisitorBtn}
             </button>
           </div>
         </div>
@@ -224,43 +199,17 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
           <div className={`${styles.info}`}>
             <span className='section__label' style={{ color: 'rgba(255,255,255,0.5)' }}>
               <span style={{ background: '#E8303A' }} />
-              Booking Stand / Registrasi Kunjungan
+              {t.label}
             </span>
             <h2 className={`section__title ${styles.infoTitle}`}>
-              Amankan Posisi
+              {t.title}
               <br />
-              <span className={styles.accent}>Strategis</span> Anda Sekarang
+              <span className={styles.accent}>{t.accent}</span> {t.titleSuffix}
             </h2>
-            <p className={styles.infoBody}>
-              ProBuild mempertemukan brand, inovator, dan profesional industri dalam satu ekosistem
-              yang terkurasi. Baik sebagai exhibitor maupun visitor, partisipasi Anda adalah langkah
-              strategis untuk memperluas koneksi dan memperkuat posisi di industri konstruksi dan
-              arsitektur.
-            </p>
+            <p className={styles.infoBody}>{t.body}</p>
 
             <div className={styles.benefits}>
-              {[
-                {
-                  icon: '📍',
-                  title: 'Lokasi Strategis',
-                  desc: `${eventInfo.location}, ${eventInfo.venue}`,
-                },
-                {
-                  icon: '🎯',
-                  title: 'Target Tepat',
-                  desc: `${eventInfo.targetVisitor?.toLocaleString('id-ID')}+ pengunjung dari kalangan profesional`,
-                },
-                {
-                  icon: '🛠️',
-                  title: 'Fasilitas Booth Lengkap',
-                  desc: 'Listrik, internet, dan signage digital',
-                },
-                {
-                  icon: '📢',
-                  title: 'Promosi Digital',
-                  desc: 'Listing di website & media sosial event',
-                },
-              ].map((b, i) => (
+              {benefits.map((b, i) => (
                 <div key={i} className={styles.benefit}>
                   <span className={styles.benefit__icon}>{b.icon}</span>
                   <div>
@@ -272,7 +221,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
             </div>
 
             <div className={styles.contact}>
-              <span>Butuh bantuan? Hubungi kami:</span>
+              <span>{t.contactHelp}</span>
               <p className={styles.contact__phone}>
                 <a href='https://wa.me/6285705852676' target='_blank' rel='noopener noreferrer'>
                   085705852676
@@ -290,23 +239,21 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
           <div className={`${styles.formWrap}`}>
             {/* Toggle */}
             <div className={styles.toggle}>
-              <p className={styles.toggle__label}>
-                Silakan pilih jenis pendaftaran Anda di bawah ini
-              </p>
+              <p className={styles.toggle__label}>{t.toggleLabel}</p>
               <div className={styles.toggle__buttons}>
                 <button
                   type='button'
                   className={`${styles.toggle__button} ${formType === 'booth' ? styles.toggle__button__active : ''}`}
                   onClick={() => handleFormTypeChange('booth')}
                 >
-                  Booking Stand
+                  {t.toggleBooth}
                 </button>
                 <button
                   type='button'
                   className={`${styles.toggle__button} ${formType === 'visitor' ? styles.toggle__button__active : ''}`}
                   onClick={() => handleFormTypeChange('visitor')}
                 >
-                  Registrasi Pengunjung
+                  {t.toggleVisitor}
                 </button>
               </div>
             </div>
@@ -315,8 +262,8 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
               {formType === 'booth' ? (
                 <>
                   <div className={styles.form__header}>
-                    <h3>Form Booking Stand</h3>
-                    <p>Isi data lengkap perusahaan Anda untuk memesan ruang pameran.</p>
+                    <h3>{t.boothFormTitle}</h3>
+                    <p>{t.boothFormSub}</p>
                   </div>
 
                   <div className={styles.form__grid}>
@@ -324,12 +271,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.company && touched.company ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='company'>Nama Perusahaan *</label>
+                      <label htmlFor='company'>{t.fields.company} *</label>
                       <input
                         id='company'
                         name='company'
                         type='text'
-                        placeholder='PT. Nama Perusahaan Anda'
+                        placeholder={t.fields.companyPlaceholder}
                         value={boothForm.company}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -343,12 +290,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.pic && touched.pic ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='pic'>Nama PIC *</label>
+                      <label htmlFor='pic'>{t.fields.pic} *</label>
                       <input
                         id='pic'
                         name='pic'
                         type='text'
-                        placeholder='Nama lengkap penanggung jawab'
+                        placeholder={t.fields.picPlaceholder}
                         value={boothForm.pic}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -362,12 +309,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.email && touched.email ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='email'>Email *</label>
+                      <label htmlFor='email'>{t.fields.email} *</label>
                       <input
                         id='email'
                         name='email'
                         type='email'
-                        placeholder='email@perusahaan.com'
+                        placeholder={t.fields.emailPlaceholder}
                         value={boothForm.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -381,12 +328,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.phone && touched.phone ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='phone'>Nomor Telepon *</label>
+                      <label htmlFor='phone'>{t.fields.phone} *</label>
                       <input
                         id='phone'
                         name='phone'
                         type='tel'
-                        placeholder='+62 812 3456 7890'
+                        placeholder={t.fields.phonePlaceholder}
                         value={boothForm.phone}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -400,7 +347,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.category && touched.category ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='category'>Jenis Produk / Kategori *</label>
+                      <label htmlFor='category'>{t.fields.category} *</label>
                       <select
                         id='category'
                         name='category'
@@ -408,7 +355,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value=''>— Pilih kategori —</option>
+                        <option value=''>{t.fields.categoryPlaceholder}</option>
                         {productCategories.map((c) => (
                           <option key={c} value={c}>
                             {c}
@@ -424,7 +371,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.boothSize && touched.boothSize ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='boothSize'>Ukuran Booth *</label>
+                      <label htmlFor='boothSize'>{t.fields.boothSize} *</label>
                       <select
                         id='boothSize'
                         name='boothSize'
@@ -432,7 +379,7 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                         onChange={handleChange}
                         onBlur={handleBlur}
                       >
-                        <option value=''>— Pilih ukuran —</option>
+                        <option value=''>{t.fields.boothSizePlaceholder}</option>
                         {boothSizes.map((b) => (
                           <option key={b.value} value={b.value}>
                             {b.label}
@@ -446,12 +393,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
 
                     {/* Message */}
                     <div className={`${styles.field} ${styles.field__full}`}>
-                      <label htmlFor='message'>Pesan Tambahan</label>
+                      <label htmlFor='message'>{t.fields.message}</label>
                       <textarea
                         id='message'
                         name='message'
                         rows='4'
-                        placeholder='Kebutuhan khusus, pertanyaan, atau informasi tambahan...'
+                        placeholder={t.fields.messagePlaceholder}
                         value={boothForm.message}
                         onChange={handleChange}
                       />
@@ -461,8 +408,8 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
               ) : (
                 <>
                   <div className={styles.form__header}>
-                    <h3>Form Registrasi Pengunjung</h3>
-                    <p>Daftarkan diri Anda untuk mengunjungi ProBuild INTIM 2026.</p>
+                    <h3>{t.visitorFormTitle}</h3>
+                    <p>{t.visitorFormSub}</p>
                   </div>
 
                   <div className={styles.form__grid}>
@@ -470,12 +417,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${styles.field__full} ${errors.name && touched.name ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='name'>Nama Lengkap *</label>
+                      <label htmlFor='name'>{t.fields.name} *</label>
                       <input
                         id='name'
                         name='name'
                         type='text'
-                        placeholder='Nama lengkap Anda'
+                        placeholder={t.fields.namePlaceholder}
                         value={visitorForm.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -489,12 +436,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.whatsapp && touched.whatsapp ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='whatsapp'>Nomor WhatsApp *</label>
+                      <label htmlFor='whatsapp'>{t.fields.whatsapp} *</label>
                       <input
                         id='whatsapp'
                         name='whatsapp'
                         type='tel'
-                        placeholder='+62 812 3456 7890'
+                        placeholder={t.fields.whatsappPlaceholder}
                         value={visitorForm.whatsapp}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -508,12 +455,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.company && touched.company ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='company'>Nama Perusahaan *</label>
+                      <label htmlFor='company'>{t.fields.company} *</label>
                       <input
                         id='company'
                         name='company'
                         type='text'
-                        placeholder='PT. Nama Perusahaan Anda'
+                        placeholder={t.fields.companyPlaceholder}
                         value={visitorForm.company}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -527,12 +474,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                     <div
                       className={`${styles.field} ${errors.email && touched.email ? styles.field__error : ''}`}
                     >
-                      <label htmlFor='email'>Email *</label>
+                      <label htmlFor='email'>{t.fields.email} *</label>
                       <input
                         id='email'
                         name='email'
                         type='email'
-                        placeholder='email@perusahaan.com'
+                        placeholder={t.fields.emailPlaceholder}
                         value={visitorForm.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -544,12 +491,12 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
 
                     {/* Position */}
                     <div className={`${styles.field} ${styles.field__full}`}>
-                      <label htmlFor='position'>Jabatan (Opsional)</label>
+                      <label htmlFor='position'>{t.fields.position}</label>
                       <input
                         id='position'
                         name='position'
                         type='text'
-                        placeholder='Jabatan Anda di perusahaan'
+                        placeholder={t.fields.positionPlaceholder}
                         value={visitorForm.position}
                         onChange={handleChange}
                       />
@@ -566,11 +513,11 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
                 {loading ? (
                   <>
                     <span className={styles.spinner} />
-                    Memproses...
+                    {t.loading}
                   </>
                 ) : (
                   <>
-                    {formType === 'booth' ? 'Kirim Booking' : 'Daftar Sekarang'}
+                    {formType === 'booth' ? t.submitBooth : t.submitVisitor}
                     <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                       <path d='M22 2 11 13M22 2 15 22 11 13 2 9l20-7z' />
                     </svg>
@@ -579,11 +526,11 @@ Mohon informasi lebih lanjut mengenai event ini. Terima kasih.`;
               </button>
 
               <p className={styles.form__note}>
-                * Dengan mengirimkan form ini, Anda menyetujui{' '}
+                {t.note}{' '}
                 <a href='#' onClick={(e) => e.preventDefault()}>
-                  syarat dan ketentuan
+                  {t.noteLink}
                 </a>{' '}
-                event kami.
+                {t.noteSuffix}
               </p>
             </form>
           </div>

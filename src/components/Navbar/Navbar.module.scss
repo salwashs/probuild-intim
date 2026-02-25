@@ -269,4 +269,74 @@
       background: color.adjust($green-50, $lightness: -8%);
     }
   }
+
+  &__langToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-md;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: $white;
+    }
+  }
+
+  &__langArrow {
+    margin-left: auto;
+  }
+}
+
+// Language toggle pill (desktop)
+.langToggle {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: $radius-full;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: $white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: $transition-fast;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  span:first-child {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  &__scrolled {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.06);
+    color: $text-dark;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  @media (min-width: $bp-lg) {
+    display: inline-flex;
+  }
 }
