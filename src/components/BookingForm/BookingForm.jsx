@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { boothSizes, eventInfo, productCategories } from '../../data';
+import { boothSizes, eventInfo } from '../../data';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
@@ -356,7 +356,7 @@ export default function BookingForm() {
                         onBlur={handleBlur}
                       >
                         <option value=''>{t.fields.categoryPlaceholder}</option>
-                        {productCategories.map((c) => (
+                        {t.productCategories.map((c) => (
                           <option key={c} value={c}>
                             {c}
                           </option>
