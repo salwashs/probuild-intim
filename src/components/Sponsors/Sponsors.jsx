@@ -1,4 +1,4 @@
-import { sponsors } from '../../data';
+// import { sponsors } from '../../data';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import styles from './Sponsors.module.scss';
@@ -61,12 +61,18 @@ function SponsorLogo({ sponsor, className, variant = 'supporting', backgroundCol
 }
 
 export default function Sponsors() {
-  const { main, secondary } = sponsors;
   const { lang } = useLanguage();
   const t = translations.sponsors[lang];
 
   const secondaryLoop =
-    secondary.length > 0 ? [...secondary, ...secondary, ...secondary, ...secondary] : [];
+    t.content.secondary.length > 0
+      ? [
+          ...t.content.secondary,
+          ...t.content.secondary,
+          ...t.content.secondary,
+          ...t.content.secondary,
+        ]
+      : [];
 
   return (
     <section className={styles.section} id='sponsors'>
@@ -83,13 +89,13 @@ export default function Sponsors() {
         </div>
 
         {/* 1. Main Sponsor */}
-        {main.length > 0 && (
+        {t.content.main.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
               <h3>{t.mainHeader}</h3>
             </div>
             <div className={styles.mainWrapper}>
-              {main.map((sponsor) => (
+              {t.content.main.map((sponsor) => (
                 <SponsorLogo
                   key={sponsor.id}
                   sponsor={sponsor}
@@ -103,7 +109,7 @@ export default function Sponsors() {
         )}
 
         {/* 2. Secondary Sponsor (Marquee) */}
-        {secondary.length > 0 && (
+        {t.content.secondary.length > 0 && (
           <div className='reveal'>
             <div className={styles.subHeader}>
               <h3>{t.secondaryHeader}</h3>
