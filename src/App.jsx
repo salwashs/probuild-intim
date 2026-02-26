@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './styles/global.scss';
+import { LanguageProvider } from './context/LanguageContext';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -51,8 +52,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { eventInfo } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './About.module.scss';
 
-const highlights = [
-  { icon: '🏗️', number: 100, suffix: '+', label: 'Exhibitor Terpilih', color: 'red' },
-  { icon: '👥', number: 15000, suffix: '+', label: 'Target Pengunjung', color: 'blue' },
-  { icon: '🎓', number: 20, suffix: '+', label: 'Pembicara Ahli', color: 'green' },
-  { icon: '📅', number: 4, suffix: ' Hari', label: 'Durasi Event', color: 'yellow' },
+const highlightNumbers = [
+  { icon: '🏗️', number: 100, color: 'red' },
+  { icon: '👥', number: 15000, color: 'blue' },
+  { icon: '🎓', number: 20, color: 'green' },
+  { icon: '📅', number: 4, color: 'yellow' },
 ];
 
 function Counter({ end, suffix = '', duration = 2000 }) {
@@ -36,12 +38,8 @@ function Counter({ end, suffix = '', duration = 2000 }) {
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-
-      // Easing function (easeOutExpo)
       const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-
       setCount(Math.floor(ease * end));
-
       if (progress < 1) {
         animationFrame = requestAnimationFrame(step);
       }
@@ -60,47 +58,52 @@ function Counter({ end, suffix = '', duration = 2000 }) {
 }
 
 export default function About() {
+  const { lang } = useLanguage();
+  const t = translations.about[lang];
+
+  const tagColors = ['red', 'blue', 'green', 'yellow', 'red', 'blue', 'green'];
+
+  const body1 = t.body1
+    .replace('{exhibitor}', eventInfo.exhibitor)
+    .replace('{targetVisitor}', eventInfo.targetVisitor?.toLocaleString('id-ID'));
+
+  const body2 = t.body2.replace(
+    '{targetVisitor}',
+    eventInfo.targetVisitor?.toLocaleString('id-ID')
+  );
+
   return (
     <section className={`section ${styles.about}`} id='about'>
       <div className='container'>
         <div className={styles.grid}>
           {/* Left: Text Content */}
           <div className={`${styles.textCol} reveal-left`}>
-            <span className='section__label'>Tentang Event</span>
+            <span className='section__label'>{t.label}</span>
             <h2 className='section__title'>
-              Panggung Terbesar
+              {t.title[0]}
               <br />
-              <span className={styles.accent}>Industri Konstruksi</span>
+              <span className={styles.accent}>{t.title[1]}</span>
               <br />
-              Indonesia Timur
+              {t.title[2]}
             </h2>
             <p className={styles.body}>
-              <strong>ProBuild 2026</strong> adalah pameran konstruksi B2B terbesar di Indonesia
-              Timur, mempertemukan {eventInfo.exhibitor}+ exhibitor,{' '}
-              {eventInfo.targetVisitor?.toLocaleString('id-ID')}+ pengunjung profesional, dan 20+
-              pembicara ahli dari seluruh Indonesia. Fokus pada inovasi infrastruktur, material
-              bangunan, teknologi digital konstruksi (BIM, AI), dan proyek strategis nasional serta
-              pengembangan kawasan timur Indonesia.
+              <strong>ProBuild 2026</strong> {body1}
             </p>
             <p className={styles.body}>
-              <strong>Target 2026</strong>, {eventInfo.targetVisitor?.toLocaleString('id-ID')}+
-              pengunjung, didukung Dinas Bina Marga & Bina Konstruksi (DBMBK) Provinsi Sulawesi
-              Selatan, BJKW VI Makassar dan 10+ asosiasi industri.
+              <strong>{lang === 'id' ? 'Target 2026' : 'Target 2026'}</strong>, {body2}
             </p>
 
             {/* Tags */}
             <div className={styles.tags}>
-              <span className='tag tag--red'>Konstruksi</span>
-              <span className='tag tag--blue'>Arsitektur</span>
-              <span className='tag tag--green'>Properti</span>
-              <span className='tag tag--yellow'>Interior</span>
-              <span className='tag tag--red'>Smart Building</span>
-              <span className='tag tag--blue'>Green Construction</span>
-              <span className='tag tag--green'>Infrastruktur</span>
+              {t.tags.map((tag, i) => (
+                <span key={tag} className={`tag tag--${tagColors[i]}`}>
+                  {tag}
+                </span>
+              ))}
             </div>
 
             <a href='/tentang-kami' className='btn btn--outline-dark'>
-              Selengkapnya
+              {t.readMore}
               <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                 <path d='M5 12h14M12 5l7 7-7 7' />
               </svg>
@@ -119,7 +122,7 @@ export default function About() {
               <div className={styles.floatCard}>
                 <span className={styles.floatCard__dot} />
                 <div>
-                  <strong>Event Terdekat</strong>
+                  <strong>{t.floatCard}</strong>
                   <span>{eventInfo.date}</span>
                 </div>
               </div>
@@ -132,13 +135,13 @@ export default function About() {
 
         {/* Highlights Strip */}
         <div className={`${styles.highlights} reveal`}>
-          {highlights.map((h, i) => (
+          {highlightNumbers.map((h, i) => (
             <div key={i} className={`${styles.highlight} ${styles[`highlight--${h.color}`]}`}>
               <span className={styles.highlight__icon}>{h.icon}</span>
               <span className={styles.highlight__value}>
-                <Counter end={h.number} suffix={h.suffix} />
+                <Counter end={h.number} suffix={t.highlightSuffixes[i]} />
               </span>
-              <span className={styles.highlight__label}>{h.label}</span>
+              <span className={styles.highlight__label}>{t.highlights[i]}</span>
             </div>
           ))}
         </div>

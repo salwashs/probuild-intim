@@ -6,8 +6,11 @@ import ProjectPreparation from '../components/ProjectPreparation/ProjectPreparat
 import Sponsors from '../components/Sponsors/Sponsors';
 import News from '../components/News/News';
 import BookingForm from '../components/BookingForm/BookingForm';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Home() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <Hero />
@@ -16,7 +19,7 @@ export default function Home() {
       <Parallax />
       <ProjectPreparation />
       <Sponsors />
-      <News />
+      {lang == 'id' && <News />}
       <BookingForm />
     </>
   );

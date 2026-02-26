@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { navLinks } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {
@@ -8,6 +9,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { lang, toggleLanguage } = useLanguage();
+  const t = translations.nav[lang];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +24,9 @@ export default function Navbar() {
     setMobileOpen(false);
 
     if (link.isRoute) {
-      // Navigate to route
       navigate(link.href);
     } else {
-      // Handle hash navigation
       if (location.pathname !== '/') {
-        // If not on home page, navigate to home first then scroll
         navigate('/');
         setTimeout(() => {
           const target = document.querySelector(link.href);
@@ -35,7 +35,6 @@ export default function Navbar() {
           }
         }, 100);
       } else {
-        // Already on home page, just scroll
         const target = document.querySelector(link.href);
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
@@ -84,7 +83,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className={styles.nav}>
-          {navLinks.map((link) => (
+          {t.links.map((link) => (
             <a
               key={link.href}
               className={styles.nav__link}
@@ -99,9 +98,20 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Language Toggle (desktop) */}
+        <button
+          className={`${styles.langToggle} ${scrolled ? styles.langToggle__scrolled : ''}`}
+          onClick={toggleLanguage}
+          aria-label='Toggle language'
+          title={lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
+        >
+          <span>{lang === 'id' ? '🇮🇩' : '🇬🇧'}</span>
+          <span>{lang === 'id' ? 'ID' : 'EN'}</span>
+        </button>
+
         {/* CTA */}
         <a href='#booking' className={styles.cta} onClick={handleBookingClick}>
-          Registrasi
+          {t.cta}
         </a>
 
         {/* Mobile Toggle */}
@@ -119,7 +129,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`${styles.mobile} ${mobileOpen ? styles.mobile__open : ''}`}>
         <nav className={styles.mobile__nav}>
-          {navLinks.map((link) => (
+          {t.links.map((link) => (
             <a
               key={link.href}
               className={styles.mobile__link}
@@ -133,8 +143,18 @@ export default function Navbar() {
             </a>
           ))}
           <a href='#booking' className={styles.mobile__cta} onClick={handleBookingClick}>
-            Registrasi
+            {t.cta}
           </a>
+          {/* Language toggle inside mobile menu */}
+          <button
+            className={styles.mobile__langToggle}
+            onClick={toggleLanguage}
+            aria-label='Toggle language'
+          >
+            <span>{lang === 'id' ? '🇮🇩' : '🇬🇧'}</span>
+            <span>{lang === 'id' ? 'Bahasa Indonesia' : 'English'}</span>
+            <span className={styles.mobile__langArrow}>→</span>
+          </button>
         </nav>
       </div>
     </header>

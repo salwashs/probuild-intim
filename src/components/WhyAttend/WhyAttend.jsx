@@ -1,4 +1,5 @@
-import { whyAttend } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './WhyAttend.module.scss';
 
 const icons = {
@@ -24,6 +25,9 @@ const icons = {
   ),
 };
 
+const iconKeys = ['building', 'lightbulb', 'chart', 'seminar'];
+const colorKeys = ['red', 'blue', 'green', 'yellow'];
+
 const colorMap = {
   red: { bg: '#FFF0F1', border: '#FECDD0', icon: '#E8303A' },
   blue: { bg: '#EEF4FF', border: '#C7D9FF', icon: '#1A5FD6' },
@@ -32,16 +36,19 @@ const colorMap = {
 };
 
 export default function WhyAttend() {
+  const { lang } = useLanguage();
+  const t = translations.whyAttend[lang];
+
   return (
     <section className={`section section--light ${styles.section}`} id='why-attend'>
       <div className='container'>
         <div className={`section__header ${styles.header}`}>
           <div className='reveal'>
-            <span className='section__label'>Mengapa Hadir</span>
+            <span className='section__label'>{t.label}</span>
             <h2 className='section__title'>
-              Empat Alasan Kuat
+              {t.title[0]}
               <br />
-              untuk Tidak Melewatkan
+              {t.title[1]}
               <br />
               <span className={styles.accentRed}>Pro</span>
               <span className={styles.accentGreen}>Build</span>{' '}
@@ -50,17 +57,16 @@ export default function WhyAttend() {
             </h2>
           </div>
           <p className={`section__subtitle reveal delay-2`} style={{ maxWidth: '48ch' }}>
-            Event yang tidak hanya memajang produk, tetapi membangun ekosistem bisnis konstruksi
-            yang lebih kuat dan terkoneksi.
+            {t.subtitle}
           </p>
         </div>
 
         <div className={styles.cards}>
-          {whyAttend.map((item, i) => {
-            const colors = colorMap[item.color];
+          {t.cards.map((item, i) => {
+            const colors = colorMap[colorKeys[i]];
             return (
               <a
-                key={item.id}
+                key={i}
                 href='/tentang-kami'
                 className={`${styles.card} reveal delay-${i + 1}`}
                 style={{
@@ -70,11 +76,11 @@ export default function WhyAttend() {
                 }}
               >
                 <div className={styles.card__number}>{String(i + 1).padStart(2, '0')}</div>
-                <div className={styles.card__icon}>{icons[item.icon]}</div>
+                <div className={styles.card__icon}>{icons[iconKeys[i]]}</div>
                 <h3 className={styles.card__title}>{item.title}</h3>
                 <p className={styles.card__desc}>{item.description}</p>
                 <div className={styles.card__footer}>
-                  <span className={styles.card__more}>Pelajari lebih lanjut</span>
+                  <span className={styles.card__more}>{t.learnMore}</span>
                   <svg
                     viewBox='0 0 24 24'
                     fill='none'
@@ -93,8 +99,8 @@ export default function WhyAttend() {
         {/* Bottom CTA */}
         <div className={`${styles.bottomCta} reveal`}>
           <div className={styles.bottomCta__text}>
-            <strong>Siap bergabung?</strong>
-            <span>Ratusan pelaku industri sudah mendaftarkan diri.</span>
+            <strong>{t.bottomCta.ready}</strong>
+            <span>{t.bottomCta.sub}</span>
           </div>
           <div className={styles.bottomCta__btns}>
             <a
@@ -105,10 +111,10 @@ export default function WhyAttend() {
                 document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Booking Stand Sekarang
+              {t.bottomCta.bookNow}
             </a>
             <a href='/booth' className={`btn ${styles.btnProgram}`}>
-              Pelajari Program
+              {t.bottomCta.program}
             </a>
           </div>
         </div>

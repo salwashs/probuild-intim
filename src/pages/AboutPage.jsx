@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { eventInfo } from '../data';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 import styles from './AboutPage.module.scss';
 
 export default function AboutPage() {
@@ -7,66 +9,27 @@ export default function AboutPage() {
     window.scrollTo(0, 0);
   }, []);
 
+  const { lang } = useLanguage();
+  const t = translations.aboutPage[lang];
+
   const stats = [
-    { value: '100+', label: 'Exhibitors' },
-    { value: '15.000+', label: 'Visitors' },
-    { value: '20+', label: 'Expert Speakers' },
+    { value: '100+', label: t.statsLabels[0] },
+    { value: '15.000+', label: t.statsLabels[1] },
+    { value: '20+', label: t.statsLabels[2] },
   ];
 
-  const visionMission = [
-    {
-      icon: '🤝',
-      title: 'Collaboration',
-      description: 'Membangun sinergi antar pelaku industri.',
-      color: 'red',
-    },
-    {
-      icon: '💡',
-      title: 'Innovation',
-      description: 'Menampilkan teknologi konstruksi terdepan.',
-      color: 'green',
-    },
-    {
-      icon: '📈',
-      title: 'Investment',
-      description: 'Membuka peluang investasi untuk proyek daerah.',
-      color: 'orange',
-    },
-    {
-      icon: '🌱',
-      title: 'Green Infra',
-      description: 'Fokus pada pembangunan ramah lingkungan.',
-      color: 'blue',
-    },
-  ];
+  const visionText1 = t.visionText1
+    .replace('{exhibitor}', eventInfo.exhibitor)
+    .replace('{targetVisitor}', eventInfo.targetVisitor?.toLocaleString('id-ID'))
+    .replace('{speakers}', eventInfo.speakers);
 
-  const features = [
-    {
-      icon: '👥',
-      title: 'Business Matching',
-      description:
-        'Sesi khusus B2B untuk mempertemukan kontraktor dengan supplier material pilihan.',
-      color: 'red',
-    },
-    {
-      icon: '🎤',
-      title: 'Conference & Seminar',
-      description: 'Berbagi pengetahuan bersama pakar konstruksi nasional dan internasional.',
-      color: 'green',
-    },
-    {
-      icon: '🏗️',
-      title: 'Expo & Demo',
-      description: 'Demonstrasi langsung alat berat dan teknologi konstruksi terbaru di lapangan.',
-      color: 'orange',
-    },
-    {
-      icon: '⚙️',
-      title: 'Digital Integration',
-      description: 'Implementasi BIM (Building Information Modeling) dan digitalisasi proyek.',
-      color: 'blue',
-    },
-  ];
+  const visionText2 = t.visionText2.replace(
+    '{targetVisitor}',
+    eventInfo.targetVisitor?.toLocaleString('id-ID')
+  );
+
+  const badgeColors = ['orange', 'blue', 'green', 'purple'];
+  const featureColors = ['red', 'green', 'orange', 'blue'];
 
   return (
     <main className={styles.page}>
@@ -85,14 +48,11 @@ export default function AboutPage() {
               <span className={styles.hero__titleBlue}>2</span>
               <span className={styles.hero__titleOrange}>6</span>
               <br />
-              <span className={styles.hero__title}>Bangun Masa Depan</span>
+              <span className={styles.hero__title}>{t.heroTitle2}</span>
               <br />
-              <span className={styles.hero__title}>Indonesia Timur</span>
+              <span className={styles.hero__title}>{t.heroTitle3}</span>
             </h1>
-            <p className={styles.hero__subtitle}>
-              Pameran Konstruksi Terbesar di Indonesia Timur. Makassar sebagai gerbang utama inovasi
-              dan kolaborasi infrastruktur masa depan.
-            </p>
+            <p className={styles.hero__subtitle}>{t.heroSubtitle}</p>
 
             {/* Stats */}
             <div className={styles.stats}>
@@ -115,28 +75,15 @@ export default function AboutPage() {
             <div className={styles.visionContent}>
               <span className='section__label'>
                 <span style={{ background: '#E8303A' }} />
-                Tentang Kami
+                {t.visionLabel}
               </span>
               <h2 className='section__title'>
-                Gerbang Pembangunan
+                {t.visionTitle[0]}
                 <br />
-                Berkelanjutan
+                {t.visionTitle[1]}
               </h2>
-              <p className={styles.visionText}>
-                ProBuild 2026 adalah pameran konstruksi B2B terbesar di Indonesia Timur yang
-                menghadirkan {eventInfo.exhibitor}+ exhibitor,{' '}
-                {eventInfo.targetVisitor.toLocaleString('id-ID')}+ pengunjung profesional, dan{' '}
-                {eventInfo.speakers}+ pembicara ahli dari seluruh Indonesia. Event ini berfokus pada
-                inovasi infrastruktur, material bangunan, teknologi digital konstruksi (BIM & AI),
-                serta proyek strategis nasional dan pengembangan kawasan timur.
-              </p>
-              <p className={styles.visionText}>
-                Didukung oleh Dinas Bina Marga & Bina Konstruksi (DBMBK) Sulawesi Selatan dan BJKW
-                VI Makassar, ProBuild INTIM 2026 menargetkan lebih dari{' '}
-                {eventInfo.targetVisitor.toLocaleString('id-ID')} pengunjung profesional.
-                Diselenggarakan di Makassar sebagai gateway Indonesia Timur, lokasi ini memiliki
-                akses strategis melalui bandara internasional dan pelabuhan utama.
-              </p>
+              <p className={styles.visionText}>{visionText1}</p>
+              <p className={styles.visionText}>{visionText2}</p>
               <div className={styles.visionDivider}>
                 <span style={{ background: '#E8303A' }} />
                 <span style={{ background: '#4CAF50' }} />
@@ -146,10 +93,10 @@ export default function AboutPage() {
 
             {/* Right Cards */}
             <div className={styles.visionCards}>
-              {visionMission.map((item, index) => (
+              {t.visionMission.map((item, index) => (
                 <div
                   key={index}
-                  className={`${styles.visionCard} ${styles[`visionCard--${item.color}`]}`}
+                  className={`${styles.visionCard} ${styles[`visionCard--${item.color || ['red', 'green', 'orange', 'blue'][index]}`]}`}
                 >
                   <div className={styles.visionCard__icon}>{item.icon}</div>
                   <h3 className={styles.visionCard__title}>{item.title}</h3>
@@ -165,15 +112,15 @@ export default function AboutPage() {
       <section className={`section ${styles.featuresSection}`}>
         <div className='container'>
           <div className={styles.featuresHeader}>
-            <h2 className='section__title'>Fitur Utama Event</h2>
+            <h2 className='section__title'>{t.featuresTitle}</h2>
             <div className={styles.featuresUnderline} />
           </div>
 
           <div className={styles.featuresGrid}>
-            {features.map((feature, index) => (
+            {t.features.map((feature, index) => (
               <div key={index} className={`${styles.featureCard} reveal delay-${index + 1}`}>
                 <div
-                  className={`${styles.featureCard__icon} ${styles[`featureCard__icon--${feature.color}`]}`}
+                  className={`${styles.featureCard__icon} ${styles[`featureCard__icon--${featureColors[index]}`]}`}
                 >
                   {feature.icon}
                 </div>
@@ -186,103 +133,32 @@ export default function AboutPage() {
       </section>
 
       {/* Event Agenda Section */}
-      <section className={`section ${styles.agendaSection} `}>
+      <section className={`section ${styles.agendaSection}`}>
         <div className='container'>
           <div className={styles.agendaHeader}>
-            <h2 className='section__title'>Agenda Acara</h2>
+            <h2 className='section__title'>{t.agendaTitle}</h2>
             <div className={styles.agendaUnderline} />
           </div>
 
           <div className={styles.agendaTimeline}>
-            {/* Day 1 */}
-            <div className={`${styles.agendaItem} reveal`}>
-              <div className={styles.agendaTime}>
-                <div className={styles.agendaTime__dot} />
-                <span className={styles.agendaTime__label}>Hari ke 1</span>
-              </div>
-              <div className={styles.agendaCard}>
-                <div
-                  className={`${styles.agendaCard__badge} ${styles['agendaCard__badge--orange']}`}
-                >
-                  Seremonial
+            {t.agenda.map((item, index) => (
+              <div key={index} className={`${styles.agendaItem} reveal delay-${index}`}>
+                <div className={styles.agendaTime}>
+                  <div className={styles.agendaTime__dot} />
+                  <span className={styles.agendaTime__label}>{item.day}</span>
                 </div>
-                <div className={styles.agendaCard__icon}>🎉</div>
-                <h3 className={styles.agendaCard__title}>
-                  Pembukaan Menteri PU, Expo + Demo Alat Berat
-                </h3>
-                <p className={styles.agendaCard__desc}>
-                  Upacara pembukaan resmi oleh Menteri PU dan Gubernur Provinsi, dilanjutkan dengan
-                  demo alat berat dan teknologi konstruksi terkini
-                </p>
-              </div>
-            </div>
-
-            {/* Day 2 */}
-            <div className={`${styles.agendaItem} reveal delay-1`}>
-              <div className={styles.agendaTime}>
-                <div className={styles.agendaTime__dot} />
-                <span className={styles.agendaTime__label}>Hari ke 2</span>
-              </div>
-              <div className={styles.agendaCard}>
-                <div className={`${styles.agendaCard__badge} ${styles['agendaCard__badge--blue']}`}>
-                  Seminar
+                <div className={styles.agendaCard}>
+                  <div
+                    className={`${styles.agendaCard__badge} ${styles[`agendaCard__badge--${badgeColors[index]}`]}`}
+                  >
+                    {item.badge}
+                  </div>
+                  <div className={styles.agendaCard__icon}>{item.icon}</div>
+                  <h3 className={styles.agendaCard__title}>{item.title}</h3>
+                  <p className={styles.agendaCard__desc}>{item.desc}</p>
                 </div>
-                <div className={styles.agendaCard__icon}>🎤</div>
-                <h3 className={styles.agendaCard__title}>
-                  Konferensi "Inovasi Konstruksi Hijau" (10 Pembicara), Business Matching
-                </h3>
-                <p className={styles.agendaCard__desc}>
-                  Keynote: Konstruksi Indonesia Timur 2030 - Visi pembangunan infrastruktur kawasan
-                  Indonesia Timur, dilanjutkan dengan sesi business matching B2B
-                </p>
               </div>
-            </div>
-
-            {/* Day 3 */}
-            <div className={`${styles.agendaItem} reveal delay-2`}>
-              <div className={styles.agendaTime}>
-                <div className={styles.agendaTime__dot} />
-                <span className={styles.agendaTime__label}>Hari ke 3</span>
-              </div>
-              <div className={styles.agendaCard}>
-                <div
-                  className={`${styles.agendaCard__badge} ${styles['agendaCard__badge--green']}`}
-                >
-                  Pameran
-                </div>
-                <div className={styles.agendaCard__icon}>🏗️</div>
-                <h3 className={styles.agendaCard__title}>
-                  Kompetisi & Fasilitas SKK Gratis oleh BJKW VI
-                </h3>
-                <p className={styles.agendaCard__desc}>
-                  Pameran terbuka — Hall A & B dengan 200+ booth exhibitor dari seluruh Indonesia,
-                  kompetisi inovasi konstruksi, dan fasilitas sertifikasi gratis
-                </p>
-              </div>
-            </div>
-
-            {/* Day 4 */}
-            <div className={`${styles.agendaItem} reveal delay-3`}>
-              <div className={styles.agendaTime}>
-                <div className={styles.agendaTime__dot} />
-                <span className={styles.agendaTime__label}>Hari ke 4</span>
-              </div>
-              <div className={styles.agendaCard}>
-                <div
-                  className={`${styles.agendaCard__badge} ${styles['agendaCard__badge--purple']}`}
-                >
-                  Workshop
-                </div>
-                <div className={styles.agendaCard__icon}>💻</div>
-                <h3 className={styles.agendaCard__title}>
-                  Deal Signing, Award "Best Innovator Konstruksi Timur"
-                </h3>
-                <p className={styles.agendaCard__desc}>
-                  Workshop: BIM untuk Proyek Skala Menengah - Praktis dan langsung diterapkan di
-                  lapangan, penandatanganan MoU, dan penganugerahan award
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

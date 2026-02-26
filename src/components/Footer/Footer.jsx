@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { eventInfo, navLinks } from '../../data';
+import { eventInfo } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import styles from './Footer.module.scss';
 
 const socialLinks = [
@@ -50,43 +52,23 @@ const socialLinks = [
   },
 ];
 
-const quickLinks = [
-  { label: 'Tentang Event', href: '/tentant-kami' },
-  { label: 'Keunggulan', href: '#why-attend' },
-  { label: 'Sponsor', href: '#sponsors' },
-  { label: 'Artikel', href: '/artikel' },
-];
-
-const exhibitorLinks = [
-  { label: 'Booking Stand', href: '/#booking' },
-  { label: 'Paket Sponsorship', href: '/booth', scrollTo: 'sponsorship' },
-  { label: 'Layout Denah', href: '/booth', scrollTo: 'venue-layout' },
-  { label: 'Peraturan Exhibitor', href: '/booth', scrollTo: 'download-documents' },
-  { label: 'Jadwal Loading-Unloading', href: '/booth', scrollTo: 'download-documents' },
-  {
-    label: 'Jadwal Setup Booth - Move In Exhibitor',
-    href: '/booth',
-    scrollTo: 'download-documents',
-  },
-];
-
 export default function Footer() {
   const navigate = useNavigate();
+  const { lang } = useLanguage();
+  const t = translations.footer[lang];
+
   const handleNav = (e, href, scrollTo) => {
     e.preventDefault();
 
-    // Hash-only link → scroll on current page
     if (href.startsWith('#')) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
       return;
     }
 
-    // If there's a target section, store it so the destination page can scroll to it
     if (scrollTo) {
       sessionStorage.setItem('scrollTo', scrollTo);
     }
 
-    // Navigate cleanly without any hash
     navigate(href);
   };
 
@@ -124,10 +106,7 @@ export default function Footer() {
                 </span>
               </a>
 
-              <p className={styles.brand__desc}>
-                Pameran konstruksi dan arsitektur terbesar Indonesia Timur. Platform bertemu,
-                berinovasi, dan bertransaksi bagi seluruh ekosistem industri bangunan.
-              </p>
+              <p className={styles.brand__desc}>{t.brandDesc}</p>
 
               <div className={styles.socials}>
                 {socialLinks.map((s) => (
@@ -145,15 +124,17 @@ export default function Footer() {
 
               <div className={styles.badge}>
                 <span className={styles.badge__dot} />
-                <span>Event Terdekat: {eventInfo.date}</span>
+                <span>
+                  {t.upcomingEvent}: {eventInfo.date}
+                </span>
               </div>
             </div>
 
             {/* Quick Links */}
             <div className={styles.col}>
-              <h4 className={styles.col__title}>Navigasi</h4>
+              <h4 className={styles.col__title}>{t.navTitle}</h4>
               <ul className={styles.links}>
-                {quickLinks.map((l) => (
+                {t.quickLinks.map((l) => (
                   <li key={l.label}>
                     <a href={l.href} onClick={(e) => handleNav(e, l.href)}>
                       <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
@@ -168,9 +149,9 @@ export default function Footer() {
 
             {/* Exhibitor */}
             <div className={styles.col}>
-              <h4 className={styles.col__title}>Exhibitor</h4>
+              <h4 className={styles.col__title}>{t.exhibitorTitle}</h4>
               <ul className={styles.links}>
-                {exhibitorLinks.map((l) => (
+                {t.exhibitorLinks.map((l) => (
                   <li key={l.label}>
                     <a href={l.href} onClick={(e) => handleNav(e, l.href, l.scrollTo)}>
                       <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
@@ -185,7 +166,7 @@ export default function Footer() {
 
             {/* Contact */}
             <div className={styles.col}>
-              <h4 className={styles.col__title}>Kontak</h4>
+              <h4 className={styles.col__title}>{t.contactTitle}</h4>
               <ul className={styles.contacts}>
                 <li>
                   <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.75'>
@@ -226,20 +207,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className='container'>
           <div className={styles.bottom__inner}>
-            <p>© 2026 ProBuild INTIM. Seluruh hak cipta dilindungi.</p>
-            {/* <div className={styles.bottom__links}>
-              <a href='#' onClick={(e) => e.preventDefault()}>
-                Kebijakan Privasi
-              </a>
-              <span>·</span>
-              <a href='#' onClick={(e) => e.preventDefault()}>
-                Syarat & Ketentuan
-              </a>
-              <span>·</span>
-              <a href='#' onClick={(e) => e.preventDefault()}>
-                Peta Situs
-              </a>
-            </div> */}
+            <p>{t.copyright}</p>
           </div>
         </div>
       </div>
