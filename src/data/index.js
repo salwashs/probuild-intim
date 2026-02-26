@@ -409,6 +409,21 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/ahy-tekankan-pentingnya-rest-area-layak-untuk-keselamatan-mudik-2026/',
   },
+  {
+    id: 9,
+    slug: 'wika-raih-kontrak-bangun-sma-garuda-di-kalimantan-utara',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'WIKA Raih Kontrak Rp 290 M Bangun SMA Garuda di Kalimantan Utara',
+    excerpt:
+      'Konstruksi Media –  PT Wijaya Karya (Persero) Tbk (WIKA) menegaskan kembali komitmennya untuk mendukung pembangunan infrastruktur pendidikan nasional dengan mengamankan kontrak baru untuk pembangunan SMA Garuda di Provinsi Kalimantan Utara. Untuk proyek ini, WIKA berkolaborasi dengan anak perusahaannya, PT Wijaya Karya Bangunan Gedung Tbk (WEGE), di bawah skema Operasi Bersama (KSO).',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2025/03/Wika.jpg',
+    author: 'Konstruksi Media',
+    date: '24 Februari 2026',
+    sortableDate: new Date('2026-02-24'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/wika-raih-kontrak-bangun-sma-garuda-di-kalimantan-utara/',
+  },
 ];
 
 // =====================
