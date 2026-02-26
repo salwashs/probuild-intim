@@ -168,7 +168,6 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-left: auto;
   padding: 4px;
   cursor: pointer;
   background: none;
@@ -271,29 +270,58 @@
   }
 
   &__langToggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: $radius-md;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
+    display: none; // now shown next to hamburger, not in menu
+  }
+}
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: $white;
-    }
+// Mobile controls wrapper (language toggle + hamburger)
+.mobileControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+
+  @media (min-width: $bp-lg) {
+    display: none;
+  }
+}
+
+// Language toggle pill (mobile, next to hamburger)
+.langToggleMobile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: $radius-full;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: $text-muted;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: $transition-fast;
+  white-space: nowrap;
+
+  span:first-child {
+    font-size: 0.95rem;
+    line-height: 1;
   }
 
-  &__langArrow {
-    margin-left: auto;
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  &__scrolled {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.06);
+    color: $text-dark;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
@@ -306,7 +334,7 @@
   border-radius: $radius-full;
   border: 1.5px solid rgba(255, 255, 255, 0.35);
   background: rgba(255, 255, 255, 0.08);
-  color: $white;
+  color: $text-muted;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.04em;

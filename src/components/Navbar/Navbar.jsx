@@ -114,16 +114,27 @@ export default function Navbar() {
           {t.cta}
         </a>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`${styles.toggle} ${mobileOpen ? styles.open : ''}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label='Toggle menu'
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        {/* Mobile Controls (Language Toggle + Hamburger) */}
+        <div className={styles.mobileControls}>
+          <button
+            className={`${styles.langToggleMobile} ${scrolled ? styles.langToggleMobile__scrolled : ''}`}
+            onClick={toggleLanguage}
+            aria-label='Toggle language'
+            title={lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
+          >
+            <span>{lang === 'id' ? '🇮🇩' : '🇬🇧'}</span>
+            <span>{lang === 'id' ? 'ID' : 'EN'}</span>
+          </button>
+          <button
+            className={`${styles.toggle} ${mobileOpen ? styles.open : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label='Toggle menu'
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -145,16 +156,6 @@ export default function Navbar() {
           <a href='#booking' className={styles.mobile__cta} onClick={handleBookingClick}>
             {t.cta}
           </a>
-          {/* Language toggle inside mobile menu */}
-          <button
-            className={styles.mobile__langToggle}
-            onClick={toggleLanguage}
-            aria-label='Toggle language'
-          >
-            <span>{lang === 'id' ? '🇮🇩' : '🇬🇧'}</span>
-            <span>{lang === 'id' ? 'Bahasa Indonesia' : 'English'}</span>
-            <span className={styles.mobile__langArrow}>→</span>
-          </button>
         </nav>
       </div>
     </header>
