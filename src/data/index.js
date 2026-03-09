@@ -424,6 +424,101 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/wika-raih-kontrak-bangun-sma-garuda-di-kalimantan-utara/',
   },
+  {
+    id: 10,
+    slug: 'waskita-karya-dan-kementerian-pu-rampungkan-puluhan-huntara-di-aceh-utara-siap-dihuni-300-warga',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Waskita Karya dan Kementerian PUPR Rampungkan Puluhan Huntara di Aceh Utara, Siap Dihuni 300 Warga',
+    excerpt:
+      'PT Waskita Karya (Persero) Tbk bersama Kementerian Pekerjaan Umum Republik Indonesia merampungkan pembangunan puluhan Hunian Sementara (Huntara) di Kecamatan Langkahan, Aceh Utara.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/Waskita-Karya.jpeg',
+    author: 'Konstruksi Media',
+    date: '26 Februari 2026',
+    sortableDate: new Date('2026-02-26'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/waskita-karya-dan-kementerian-pu-rampungkan-puluhan-huntara-di-aceh-utara-siap-dihuni-300-warga/',
+  },
+  {
+    id: 11,
+    slug: 'progres-tol-jakarta-cikampek-ii-selatan-8165-bekasi-ke-bandung-makin-cepat',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Progres Tol Jakarta-Cikampek II Selatan 81,65%, Bekasi ke Bandung Makin Cepat',
+    excerpt:
+      'Konstruksi Media – Pengerjaan Tol Jakarta-Cikampek II Selatan Paket 2A sepanjang 10,50 km menunjukkan progres fisik signifikan. Hingga pertengahan Februari 2026, konstruksi telah mencapai 81,65%. Ruas yang membentang dari Setu hingga Sukaragam ini dikerjakan oleh PT Hutama Karya Infrastruktur (HKI) dalam Kerja Sama Operasi (KSO) bersama WIKA-PP-KMK-HKI KSO.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/02/Tol-Japek-II.jpeg',
+    author: 'Konstruksi Media',
+    date: '27 Februari 2026',
+    sortableDate: new Date('2026-02-27'),
+    externalContent: true,
+    link: 'http://konstruksimedia.com/progres-tol-jakarta-cikampek-ii-selatan-8165-bekasi-ke-bandung-makin-cepat/',
+  },
+  {
+    id: 12,
+    slug: 'menteri-dodi-pastikan-jalur-pantura-barat-bebas-lubang-sebelum-mudik-aman-bagi-pemotor',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Menteri Dodi Pastikan Jalur Pantura Barat Bebas Lubang Sebelum Mudik, Aman Bagi Pemotor',
+    excerpt:
+      'Konstruksi Media – Menteri Pekerjaan Umum, Dody Hanggodo, memastikan ruas Jalan Nasional Pantura Wilayah Barat akan bebas lubang sebelum arus mudik Lebaran 2026. Hal itu disampaikannya usai meninjau langsung kondisi jalur Pantura di Kabupaten Indramayu, Sabtu (28/2/2026).',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Menteri-Dody-2.jpg',
+    author: 'Konstruksi Media',
+    date: '2 Maret 2026',
+    sortableDate: new Date('2026-03-02'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/menteri-dodi-pastikan-jalur-pantura-barat-bebas-lubang-sebelum-mudik-aman-bagi-pemotor/',
+  },
+  {
+    id: 13,
+    slug: 'pengurus-dan-dewan-pengawas-lpjk-periode-20252029-dikukuhkan-perkuat-profesionalitas-jasa-konstruksi-nasional',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Pengurus dan Dewan Pengawas LPJK Periode 2025–2029 Dikukuhkan, Perkuat Profesionalitas Jasa Konstruksi Nasional',
+    excerpt:
+      'Jakarta – Pengurus Lembaga Pengembangan Jasa Konstruksi (LPJK) periode 2025–2029 resmi dikukuhkan dalam sebuah acara yang diselenggarakan di Aula Serbaguna Lantai 17, Gedung Utama Kementerian Pekerjaan Umum (PU), Jakarta, Rabu (4/3/2026). Pengukuhan ini sekaligus menjadi momentum serah terima jabatan kepemimpinan LPJK dari kepengurusan sebelumnya kepada pengurus baru yang akan menjalankan tugas hingga tahun 2029.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1772679838_3369ea47fbb8ba2da70f.jpeg',
+    author: 'LPJK',
+    date: '4 Maret 2026',
+    sortableDate: new Date('2026-03-04'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/69a8f29e12d73/2',
+  },
+  {
+    id: 14,
+    slug: 'pembangunan-sekolah-permanen-di-aceh-sumut-dan-sumbar-tunggu-penetapan-lokasi-hunian-tetap-korban-bencana',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Pembangunan Sekolah Permanen di Aceh, Sumut dan Sumbar Tunggu Penetapan Lokasi Hunian Tetap Korban Bencana',
+    excerpt:
+      'Konstruksi Media – Pemerintah melalui Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen) akan membangun sekolah permanen untuk menggantikan fasilitas pendidikan yang rusak akibat bencana di Aceh, Sumatera Utara, dan Sumatera Barat. Namun pembangunan tersebut masih menunggu penetapan lokasi hunian tetap (huntap) bagi masyarakat terdampak.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Sekolah-Aceh-1.jpeg',
+    author: 'Konstruksi Media',
+    date: '5 Maret 2026',
+    sortableDate: new Date('2026-03-05'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/pembangunan-sekolah-permanen-di-aceh-sumut-dan-sumbar-tunggu-penetapan-lokasi-hunian-tetap-korban-bencana/',
+  },
+  {
+    id: 15,
+    slug: 'kesiapan-jalan-nasional-dan-tol-untuk-mudik-lebaran-2026-simak-penjelasan-menteri-dody',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Kesiapan Jalan Nasional dan Tol untuk Mudik Lebaran 2026, Simak Penjelasan Menteri Dody',
+    excerpt:
+      'Konstruksi Media – Pemerintah melalui Kementerian Pekerjaan Umum memastikan kesiapan jaringan jalan nasional dan jalan tol untuk menghadapi arus mudik dan arus balik Lebaran 2026. Upaya ini dilakukan guna menjamin perjalanan masyarakat berlangsung aman, lancar, dan nyaman di tengah meningkatnya mobilitas pemudik setiap tahun.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Menteri-Dody-10.jpg',
+    author: 'Konstruksi Media',
+    date: '8 Maret 2026',
+    sortableDate: new Date('2026-03-08'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/kesiapan-jalan-nasional-dan-tol-untuk-mudik-lebaran-2026-simak-penjelasan-menteri-dody/',
+  },
 ];
 
 // =====================
