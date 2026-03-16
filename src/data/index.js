@@ -519,6 +519,84 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/kesiapan-jalan-nasional-dan-tol-untuk-mudik-lebaran-2026-simak-penjelasan-menteri-dody/',
   },
+  {
+    id: 16,
+    slug: 'dukung-mudik-lebaran-2026-kementerian-pu-siapkan-10-ruas-tol-fungsional-dan-15-rest-area-sementara',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Dukung Mudik Lebaran 2026, Kementerian PUPR Siapkan 10 Ruas Tol Fungsional dan 15 Rest Area Sementara',
+    excerpt:
+      'Beritakota.id, Jakarta – Pemerintah menyiapkan sejumlah langkah strategis untuk mendukung kelancaran arus mudik dan arus balik Lebaran 2026. Melalui Kementerian Pekerjaan Umum, pemerintah bersama Badan Pengatur Jalan Tol dan para Badan Usaha Jalan Tol (BUJT) menyiapkan 10 ruas tol fungsional sepanjang sekitar 291,13 kilometer serta 15 Tempat Istirahat dan Pelayanan (TIP) atau rest area fungsional di berbagai titik jalur mudik.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Kementerian-PU-3.jpg',
+    author: 'Konstruksi Media',
+    date: '10 Maret 2026',
+    sortableDate: new Date('2026-03-10'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/dukung-mudik-lebaran-2026-kementerian-pu-siapkan-10-ruas-tol-fungsional-dan-15-rest-area-sementara/',
+  },
+  {
+    id: 17,
+    slug: 'dukung-mudik-lebaran-2026-kementerian-pu-siapkan-10-ruas-tol-fungsional-dan-15-rest-area-sementara',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Dukung Mudik Lebaran 2026, Kementerian PUPR Siapkan 10 Ruas Tol Fungsional dan 15 Rest Area Sementara',
+    excerpt:
+      'Beritakota.id, Jakarta – Pemerintah menyiapkan sejumlah langkah strategis untuk mendukung kelancaran arus mudik dan arus balik Lebaran 2026. Melalui Kementerian Pekerjaan Umum, pemerintah bersama Badan Pengatur Jalan Tol dan para Badan Usaha Jalan Tol (BUJT) menyiapkan 10 ruas tol fungsional sepanjang sekitar 291,13 kilometer serta 15 Tempat Istirahat dan Pelayanan (TIP) atau rest area fungsional di berbagai titik jalur mudik.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Kementerian-PU-3.jpg',
+    author: 'Konstruksi Media',
+    date: '10 Maret 2026',
+    sortableDate: new Date('2026-03-10'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/dukung-mudik-lebaran-2026-kementerian-pu-siapkan-10-ruas-tol-fungsional-dan-15-rest-area-sementara/',
+  },
+  {
+    id: 18,
+    slug: 'rest-area-travoy-km-88b-titik-istirahat-terluas-di-indonesia-dengan-fasilitas-super-lengkap',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Rest Area Travoy KM 88B Titik Istirahat Terluas di Indonesia dengan Fasilitas Super Lengkap',
+    excerpt:
+      'Konstruksi Media – Bagi Anda yang sering melintasi Tol Cipularang arah Jakarta, Rest Area Travoy KM 88B tentu bukan nama yang asing. Namun, tahukah Anda bahwa lokasi ini menyandang predikat sebagai rest area terluas di Indonesia?',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2025/03/Rest-Area-Travoy-1.jpg',
+    author: 'Konstruksi Media',
+    date: '11 Maret 2026',
+    sortableDate: new Date('2026-03-11'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/rest-area-travoy-km-88b-titik-istirahat-terluas-di-indonesia-dengan-fasilitas-super-lengkap/',
+  },
+  {
+    id: 19,
+    slug: 'ahy-pastikan-infrastruktur-dan-transportasi-siap-hadapi-mudik-lebaran-2026',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'AHY Pastikan Infrastruktur dan Transportasi Siap Hadapi Mudik Lebaran 2026',
+    excerpt:
+      'Konstruksi Media – Menteri Koordinator (Menko) Bidang Infrastruktur dan Pembangunan Kewilayahan, Agus Harimurti Yudhoyono (AHY), memastikan kesiapan infrastruktur serta sarana transportasi menjelang arus mudik Lebaran 2026. Pemerintah saat ini berfokus memastikan kondisi jalan nasional maupun jalan arteri berada dalam keadaan optimal untuk mendukung kelancaran mobilitas masyarakat.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Menko-AHY-1.jpg',
+    author: 'Konstruksi Media',
+    date: '12 Maret 2026',
+    sortableDate: new Date('2026-03-12'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/ahy-pastikan-infrastruktur-dan-transportasi-siap-hadapi-mudik-lebaran-2026/',
+  },
+  {
+    id: 20,
+    slug: 'ketika-negara-tak-bisa-sendirian-kpbu-dan-masa-depan-konstruksi-indonesia',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Ketika Negara Tak Bisa Sendirian, KPBU dan Masa Depan Konstruksi Indonesia',
+    excerpt:
+      'Konstruksi Media — Sebuah ironi pelan-pelan menggerogoti semangat pembangunan kita. Indonesia adalah negara kepulauan terbesar di dunia, dengan lebih dari 17.000 pulau yang membentang dari Sabang sampai Merauke.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/IMG-20260316-WA0009-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '16 Maret 2026',
+    sortableDate: new Date('2026-03-16'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/ketika-negara-tak-bisa-sendirian-kpbu-dan-masa-depan-konstruksi-indonesia/',
+  },
 ];
 
 // =====================

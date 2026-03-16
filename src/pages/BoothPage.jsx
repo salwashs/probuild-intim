@@ -79,7 +79,7 @@ export default function BoothPage() {
             </h2>
             <p className='section__subtitle'>{t.venueSubtitle}</p>
           </div>
-          <div className={styles.layoutImage} onClick={() => openModal('/images/layout-venue.png')}>
+          <div className={styles.layoutImage} onClick={() => openModal('/images/layout.png')}>
             <img src='/images/layout.png' alt='Venue Layout ProBuild INTIM 2026' />
             <div className={styles.layoutImage__overlay}>
               <svg
