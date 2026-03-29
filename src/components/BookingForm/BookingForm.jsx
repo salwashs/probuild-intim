@@ -34,7 +34,7 @@ function makeValidateBooth(t) {
     }
     if (!form.phone.trim()) {
       e.phone = t.errors.phoneRequired;
-    } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.phone)) {
+    } else if (!/^[0-9]{8,16}$/.test(form.phone)) {
       e.phone = t.errors.phoneInvalid;
     }
     if (!form.category) e.category = t.errors.category;
@@ -49,7 +49,7 @@ function makeValidateVisitor(t) {
     if (!form.name.trim()) e.name = t.errors.name;
     if (!form.whatsapp.trim()) {
       e.whatsapp = t.errors.whatsappRequired;
-    } else if (!/^[0-9+\-\s()]{8,16}$/.test(form.whatsapp)) {
+    } else if (!/^[0-9]{8,16}$/.test(form.whatsapp)) {
       e.whatsapp = t.errors.whatsappInvalid;
     }
     if (!form.company.trim()) e.company = t.errors.company;
@@ -82,7 +82,13 @@ export default function BookingForm() {
   const validate = formType === 'booth' ? validateBooth : validateVisitor;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+
+    if (name === 'phone' || name === 'whatsapp') {
+      value = value.replace(/\D/g, '');
+      e.target.value = value;
+    }
+
     setForm((f) => ({ ...f, [name]: value }));
     if (touched[name]) {
       const errs = validate({ ...form, [name]: value });
@@ -332,7 +338,9 @@ export default function BookingForm() {
                       <input
                         id='phone'
                         name='phone'
-                        type='tel'
+                        type='text'
+                        inputMode='numeric'
+                        pattern='[0-9]*'
                         placeholder={t.fields.phonePlaceholder}
                         value={boothForm.phone}
                         onChange={handleChange}
@@ -440,7 +448,9 @@ export default function BookingForm() {
                       <input
                         id='whatsapp'
                         name='whatsapp'
-                        type='tel'
+                        type='text'
+                        inputMode='numeric'
+                        pattern='[0-9]*'
                         placeholder={t.fields.whatsappPlaceholder}
                         value={visitorForm.whatsapp}
                         onChange={handleChange}
