@@ -3,6 +3,7 @@ import { eventInfo } from '../../data';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
+import * as Sentry from '@sentry/react';
 
 const API_URL = 'https://admin.probuildintim.com/api';
 
@@ -219,6 +220,7 @@ export default function BookingForm() {
 
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
+        Sentry.captureException(errorData);
         throw new Error(errorData.message || `HTTP ${res.status}`);
       }
 
@@ -240,6 +242,7 @@ export default function BookingForm() {
     } catch (err) {
       setLoading(false);
       // Show error modal with WhatsApp fallback link
+      Sentry.captureException(err);
       document.body.style.overflow = 'hidden';
       setModal({
         open: true,
