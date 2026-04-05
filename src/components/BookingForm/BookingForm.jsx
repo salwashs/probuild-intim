@@ -4,7 +4,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_URL = 'https://admin.probuildintim.com/api';
 
 const initialBoothForm = {
   company: '',
