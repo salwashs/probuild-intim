@@ -9,6 +9,16 @@ export default defineConfig({
       '/api': {
         target: 'https://admin.probuildintim.com',
         changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
+  preview: {
+    proxy: {
+      '/api': {
+        target: 'https://admin.probuildintim.com',
+        changeOrigin: true,
+        secure: true,
       },
     },
   },

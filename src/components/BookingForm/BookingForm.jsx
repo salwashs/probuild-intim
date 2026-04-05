@@ -5,7 +5,7 @@ import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
 import * as Sentry from '@sentry/react';
 
-const API_URL = 'https://admin.probuildintim.com/api';
+const API_URL = '/api';
 
 const initialBoothForm = {
   company: '',
