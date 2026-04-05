@@ -597,13 +597,202 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/ketika-negara-tak-bisa-sendirian-kpbu-dan-masa-depan-konstruksi-indonesia/',
   },
+  {
+    id: 21,
+    slug: 'menteri-pu-arus-mudik-dan-balik-lebaran-2026-berjalan-relatif-lancar-evaluasi-terus-dilakukan',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Menteri PU: Arus Mudik dan Balik Lebaran 2026 Berjalan Relatif Lancar, Evaluasi Terus Dilakukan',
+    excerpt:
+      'Jakarta – Menteri Pekerjaan Umum (PU) Dody Hanggodo menilai pelaksanaan arus mudik dan arus balik Lebaran 2026 secara umum berjalan relatif lebih lancar dibandingkan tahun sebelumnya, dengan tetap dilakukan pemantauan dan evaluasi berkelanjutan hingga periode arus balik berakhir.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1774576728_fcf9c91e25eb6549bf15.jpeg',
+    author: 'LPJK',
+    date: '25 Maret 2026',
+    sortableDate: new Date('2026-03-25'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/69c5e45801812/2',
+  },
+  {
+    id: 22,
+    slug: 'progres-bendungan-manikin-lampaui-target-perkuat-ketahanan-pangan-dan-air-di-ntt',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Progres Bendungan Manikin Lampaui Target, Perkuat Ketahanan Pangan dan Air di NTT',
+    excerpt:
+      'Jakarta – Menteri Pekerjaan Umum (PU) Dody Hanggodo menilai pelaksanaan arus mudik dan arus balik Lebaran 2026 secara umum berjalan relatif lebih lancar dibandingkan tahun sebelumnya, dengan tetap dilakukan pemantauan dan evaluasi berkelanjutan hingga periode arus balik berakhir.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1775107702_306262a52c502ecbc82f.jpeg',
+    author: 'LPJK',
+    date: '31 Maret 2026',
+    sortableDate: new Date('2026-03-31'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/69cdfe769c437/2',
+  },
+  {
+    id: 23,
+    slug: 'kementerian-pu-bangun-stadion-sudiang-di-makassar-perkuat-pembinaan-atlet-dan-prestasi-olahraga-nasional',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Kementerian PU Bangun Stadion Sudiang di Makassar, Perkuat Pembinaan Atlet dan Prestasi Olahraga Nasional',
+    excerpt:
+      'Jakarta – Kementerian Pekerjaan Umum (PU) membangun Stadion Sudiang di Kota Makassar, Sulawesi Selatan, sebagai bagian dari upaya memperkuat pembinaan atlet dan meningkatkan prestasi olahraga nasional.',
+    image: 'https://lpjk.pu.go.id/assets/upload/image/1775107881_873669e74a2d397efc47.jpeg',
+    author: 'LPJK',
+    date: '2 April 2026',
+    sortableDate: new Date('2026-04-02'),
+    externalContent: true,
+    link: 'https://lpjk.pu.go.id/berita-detail/69cdff2931260/2',
+  },
+  {
+    id: 24,
+    slug: 'perbaikan-tol-jakarta-tangerang-diintensifkan-menteri-pu-tak-ada-kompromi-jalan-rusak',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Perbaikan Tol Jakarta-Tangerang Diintensifkan, Menteri PU: Tak Ada Kompromi Jalan Rusak',
+    excerpt:
+      'Konstruksi Media – Kementerian Pekerjaan Umum menegaskan tidak ada kompromi terhadap kondisi jalan rusak di Ruas Tol Jakarta–Tangerang, terutama menjelang arus mudik Lebaran 2026.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/03/Tol-Jakarta%E2%80%93Tangerang.jpeg',
+    author: 'Konstruksi Media',
+    date: '20 Maret 2026',
+    sortableDate: new Date('2026-03-20'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/perbaikan-tol-jakarta-tangerang-diintensifkan-menteri-pu-tak-ada-kompromi-jalan-rusak/',
+  },
+  {
+    id: 24,
+    slug: 'strategi-pt-pii-tarik-investor-infrastruktur-andre-permana-ungkap-kunci-mitigasi-risiko-proyek-kpbu',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Strategi PT PII Tarik Investor Infrastruktur, Andre Permana Ungkap Kunci Mitigasi Risiko Proyek KPBU',
+    excerpt:
+      'Konstruksi Media — Plt Direktur Utama PT Penjaminan Infrastruktur Indonesia (Persero) (PT PII), Andre Permana, mengungkapkan strategi kunci dalam menarik minat investor terhadap proyek infrastruktur di Indonesia, khususnya melalui penguatan manajemen risiko dan skema penjaminan pemerintah.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/Andre-Permana-1.jpg',
+    author: 'Konstruksi Media',
+    date: '23 Maret 2026',
+    sortableDate: new Date('2026-03-23'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/strategi-pt-pii-tarik-investor-infrastruktur-andre-permana-ungkap-kunci-mitigasi-risiko-proyek-kpbu/',
+  },
+  {
+    id: 25,
+    slug: 'supply-chain-management-penentu-arah-proyek-konstruksi',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Supply Chain Management Penentu Arah Proyek Konstruksi',
+    excerpt:
+      'Konstruksi Media — Seiring dengan masifnya pembangunan infrastruktur nasional (mulai dari bendungan, jalan tol, kawasan industri hingga fasilitas strategis negara), terdapat satu fungsi yang kerap luput dari sorotan, namun justru menjadi penentu utama keberhasilan proyek, yakni Supply Chain Management (SCM).',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/03/Cut-Raisa-SVP-Supply-Chain-Management-PT-Nindya-Karya-Persero-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '25 Maret 2026',
+    sortableDate: new Date('2026-03-25'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/supply-chain-management-penentu-arah-proyek-konstruksi/',
+  },
+  {
+    id: 26,
+    slug: 'buana-enjiniring-konsultan-siap-mengawal-energi-masa-depan',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Buana Enjiniring Konsultan Siap Mengawal Energi Masa Depan',
+    excerpt:
+      'Konstruksi Media — PT Buana Enjiniring Konsultan, sebagai bagian dari ekosistem PT Brantas Energi, tampil sebagai mitra strategis dalam mendukung agenda besar percepatan transisi energi nasional melalui kerja sama dengan PT PLN Nusantara Power (anak usaha PT Perusahaan Listrik Negara).',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/03/Artikel-Buana-Enjiring-Konsultan-di-Majalah-Konstruksi-Media-XIX2026--780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '30 Maret 2026',
+    sortableDate: new Date('2026-03-30'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/buana-enjiniring-konsultan-siap-mengawal-energi-masa-depan/',
+  },
+  {
+    id: 27,
+    slug: 'arus-balik-lebaran-2026-terkendali-29-juta-kendaraan-sudah-masuk-jakarta',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Arus Balik Lebaran 2026 Terkendali, 29 Juta Kendaraan Sudah Masuk Jakarta',
+    excerpt:
+      'Konstruksi Media – Arus mudik dan balik Lebaran 2026 secara umum berlangsung terkendali. Pemerintah bersama operator jalan tol dan kepolisian mencatat kepadatan lalu lintas yang sempat meningkat berhasil dikelola, sehingga kondisi di sejumlah ruas tol mulai berangsur normal.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/03/public-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '30 Maret 2026',
+    sortableDate: new Date('2026-03-30'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/arus-balik-lebaran-2026-terkendali-29-juta-kendaraan-sudah-masuk-jakarta/',
+  },
+  {
+    id: 28,
+    slug: 'menteri-dody-beberkan-progres-bendungan-manikin-capai-6898',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Menteri PUPR: Progres Pembangunan Bendungan Manikin Capai 68,98%',
+    excerpt:
+      'Konstruksi Media – Kementerian Pekerjaan Umum (PU) mencatat progres pembangunan Bendungan Manikin di Kabupaten Kupang, Nusa Tenggara Timur (NTT), telah mencapai 68,98%, melampaui target rencana sebesar 68,57%.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/Bendungan-Manikin-.jpg',
+    author: 'Konstruksi Media',
+    date: '2 April 2026',
+    sortableDate: new Date('2026-04-02'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/menteri-dody-beberkan-progres-bendungan-manikin-capai-6898/',
+  },
+  {
+    id: 29,
+    slug: 'konreg-pu-2027-kementerian-pu-fokus-infrastruktur-produktif-untuk-dorong-pertumbuhan-ekonomi-berkualitas',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Konreg PU 2027: Kementerian PU Fokus Infrastruktur Produktif untuk Dorong Pertumbuhan Ekonomi Berkualitas',
+    excerpt:
+      'Konstruksi Media – Kementerian Pekerjaan Umum (Kementerian PU) menegaskan arah pembangunan infrastruktur nasional akan difokuskan pada peningkatan produktivitas dan dampak nyata terhadap perekonomian melalui Konsultasi Regional (Konreg) Program Infrastruktur Tahun Anggaran 2027.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/Kementerian-PU-9.jpg',
+    author: 'Konstruksi Media',
+    date: '3 April 2026',
+    sortableDate: new Date('2026-04-03'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/konreg-pu-2027-kementerian-pu-fokus-infrastruktur-produktif-untuk-dorong-pertumbuhan-ekonomi-berkualitas/',
+  },
+  {
+    id: 30,
+    slug: 'nindya-karya-raih-medal-of-honor-bakti-untuk-negeri',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Nindya Karya Raih “Medal of Honor Bakti untuk Negeri”',
+    excerpt:
+      'Konstruksi Media — PT Nindya Karya (Persero) memperoleh penghargaan “Medal of Honor Bakti untuk Negeri” dari Jaringan Pemred Sumbar (JPS) pada 2 April. Acara penganugerahan berlangsung di Restoran Suasso, Komplek GOR H. Agus Salim, Padang, dan penghargaan diserahkan langsung oleh Wakil Gubernur Sumatera Barat sebagai bentuk apresiasi atas kontribusi perusahaan dalam penanganan bencana hidrometeorologi sejak Desember 2025 di wilayah Sumatera Barat dan daerah terdampak lainnya.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/IMG-20260403-WA0004-472x470.jpg',
+    author: 'Konstruksi Media',
+    date: '4 April 2026',
+    sortableDate: new Date('2026-04-04'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/nindya-karya-raih-medal-of-honor-bakti-untuk-negeri/',
+  },
+  {
+    id: 30,
+    slug: 'rest-area-km-57-dan-km-62-tol-japek-dirombak-menteri-pu-targetkan-hilangkan-bottleneck',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Rest Area KM 57 dan KM 62 Tol Japek Dirombak, Menteri PUPR Targetkan Hilangkan Bottleneck',
+    excerpt:
+      'Konstruksi Media — Pemerintah akan melakukan perombakan besar terhadap Rest Area KM 57 dan KM 62 di ruas Tol Jakarta-Cikampek (Japek) setelah keduanya teridentifikasi sebagai titik utama kemacetan (bottleneck) saat arus mudik dan balik Lebaran 2026.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/Rest-Area-KM-57.jpg',
+    author: 'Konstruksi Media',
+    date: '5 April 2026',
+    sortableDate: new Date('2026-04-05'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/rest-area-km-57-dan-km-62-tol-japek-dirombak-menteri-pu-targetkan-hilangkan-bottleneck/',
+  },
 ];
 
 // =====================
 // BOOTH OPTIONS
 // =====================
 export const boothSizes = [
-  { value: 'standard', label: '9 m² — Standard' },
+  { value: 'standard', label: '6 m² — Standard' },
   { value: 'premium', label: '18 m² — Premium' },
   { value: 'silver', label: '18 m² — Silver' },
   { value: 'elite', label: '36 m² — Elite' },

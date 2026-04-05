@@ -802,7 +802,7 @@ export const translations = {
       packages: [
         {
           tagline: 'Eksisi untuk startup & UKM',
-          features: ['Ukuran Booth 9 m²', 'Booth standar, lebar 3kW', 'Logo di website ProBuild'],
+          features: ['Ukuran Booth 6 m²', 'Booth standar, lebar 3kW', 'Logo di website ProBuild'],
         },
         {
           tagline: 'Untuk brand yang berkembang',
@@ -898,7 +898,7 @@ export const translations = {
       packages: [
         {
           tagline: 'Ideal for startups & SMEs',
-          features: ['Booth Size 9 m²', 'Standard booth, 3kW power', 'Logo on ProBuild website'],
+          features: ['Booth Size 6 m²', 'Standard booth, 3kW power', 'Logo on ProBuild website'],
         },
         {
           tagline: 'For growing brands',
