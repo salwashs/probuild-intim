@@ -792,12 +792,12 @@ export const articles = [
 // BOOTH OPTIONS
 // =====================
 export const boothSizes = [
-  { value: 'standard', label: '6 m² — Standard' },
-  { value: 'premium', label: '18 m² — Premium' },
-  { value: 'silver', label: '18 m² — Silver' },
-  { value: 'elite', label: '36 m² — Elite' },
-  { value: 'gold', label: '36 m² — Gold' },
-  { value: 'platinum', label: '54 m² — Platinum' },
+  { value: 'Standard', label: '6 m² — Standard' },
+  { value: 'Premium', label: '18 m² — Premium' },
+  { value: 'Silver', label: '18 m² — Silver' },
+  { value: 'Elite', label: '36 m² — Elite' },
+  { value: 'Gold', label: '36 m² — Gold' },
+  { value: 'Platinum', label: '54 m² — Platinum' },
 ];
 
 export const productCategories = [

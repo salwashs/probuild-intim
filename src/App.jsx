@@ -10,6 +10,7 @@ import AboutPage from './pages/AboutPage';
 import BoothPage from './pages/BoothPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
+import RegisterPage from './pages/RegisterPage';
 
 function AppContent() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function AppContent() {
         <Route path='/' element={<Home />} />
         <Route path='/tentang-kami' element={<AboutPage />} />
         <Route path='/booth' element={<BoothPage />} />
+        <Route path='/register' element={<RegisterPage />} />
         <Route path='/artikel' element={<ArticlesPage />} />
         <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
       </Routes>

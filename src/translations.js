@@ -411,6 +411,10 @@ export const translations = {
         whatsappRequired: 'Nomor WhatsApp wajib diisi',
         whatsappInvalid: 'Nomor WhatsApp tidak valid',
       },
+      modalErrorTitle: 'Gagal Mengirim Data',
+      modalErrorMessage: 'Terjadi kesalahan saat mengirim data ke server. Silakan coba lagi atau hubungi kami langsung melalui WhatsApp.',
+      modalRetryBtn: 'Coba Lagi',
+      modalWhatsappBtn: 'Kirim via WhatsApp',
       productCategories: [
         'Material Bangunan & Struktur',
         'Finishing & Interior',
@@ -497,6 +501,10 @@ export const translations = {
         whatsappRequired: 'WhatsApp number is required',
         whatsappInvalid: 'Invalid WhatsApp number',
       },
+      modalErrorTitle: 'Submission Failed',
+      modalErrorMessage: 'An error occurred while sending your data to the server. Please try again or contact us directly via WhatsApp.',
+      modalRetryBtn: 'Try Again',
+      modalWhatsappBtn: 'Send via WhatsApp',
       productCategories: [
         'Building Materials & Structure',
         'Finishing & Interior',

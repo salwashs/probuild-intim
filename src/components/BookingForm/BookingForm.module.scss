@@ -475,3 +475,173 @@
     }
   }
 }
+
+// ===========================
+// Error / Feedback Modal
+// ===========================
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: modalFadeIn 0.25s ease-out;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  &__container {
+    position: relative;
+    background: $white;
+    border-radius: $radius-xl;
+    padding: 2.5rem 2rem 2rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    @media (max-width: $bp-sm) {
+      padding: 2rem 1.25rem 1.5rem;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: $off-white;
+    border: 1px solid $mid-gray;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $text-muted;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $mid-gray;
+      color: $text-dark;
+    }
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: $red-light;
+    border: 2px solid color.change($red, $alpha: 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: $red;
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: $text-dark;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.625rem;
+  }
+
+  &__message {
+    font-size: 0.9rem;
+    color: $text-muted;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__retryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    border: 1.5px solid $mid-gray;
+    background: $white;
+    border-radius: $radius-md;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $text-dark;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $off-white;
+      border-color: $text-muted;
+    }
+  }
+
+  &__waBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background: #25d366;
+    border: none;
+    border-radius: $radius-md;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: color.change(#25d366, $lightness: 38%);
+    }
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

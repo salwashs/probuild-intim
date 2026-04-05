@@ -1,8 +1,10 @@
-import { useState } from 'react';
-import { boothSizes, eventInfo } from '../../data';
+import { useState, useEffect, useCallback } from 'react';
+import { eventInfo } from '../../data';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import styles from './BookingForm.module.scss';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 const initialBoothForm = {
   company: '',
@@ -62,6 +64,31 @@ function makeValidateVisitor(t) {
   };
 }
 
+/**
+ * Redirect to WhatsApp using a method that works across all browsers,
+ * including Safari which blocks window.open and popup-like navigations.
+ *
+ * Strategy:
+ * 1. Create a hidden <a> element with target="_blank"
+ * 2. Programmatically click it (Safari allows this inside user gesture chains)
+ * 3. If that still fails (e.g. popup blocker), fall back to window.location.href
+ */
+function openWhatsApp(url) {
+  // Try creating and clicking a link – works in most browsers including Safari
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+
+  // Clean up after a short delay
+  setTimeout(() => {
+    document.body.removeChild(link);
+  }, 100);
+}
+
 export default function BookingForm() {
   const { lang } = useLanguage();
   const t = translations.bookingForm[lang];
@@ -73,6 +100,16 @@ export default function BookingForm() {
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [boothSizes, setBoothSizes] = useState([]);
+
+  // Modal state
+  const [modal, setModal] = useState({
+    open: false,
+    type: '',
+    title: '',
+    message: '',
+    whatsappUrl: '',
+  });
 
   const validateBooth = makeValidateBooth(t);
   const validateVisitor = makeValidateVisitor(t);
@@ -80,6 +117,22 @@ export default function BookingForm() {
   const form = formType === 'booth' ? boothForm : visitorForm;
   const setForm = formType === 'booth' ? setBoothForm : setVisitorForm;
   const validate = formType === 'booth' ? validateBooth : validateVisitor;
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && modal.open) {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [modal.open]);
+
+  const closeModal = useCallback(() => {
+    setModal({ open: false, type: '', title: '', message: '', whatsappUrl: '' });
+    document.body.style.overflow = 'auto';
+  }, []);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -112,6 +165,7 @@ export default function BookingForm() {
 
     setLoading(true);
 
+    // Build WhatsApp URL
     let phoneNumber = '';
     let message = '';
 
@@ -126,23 +180,77 @@ export default function BookingForm() {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    await new Promise((r) => setTimeout(r, 500));
+    // POST to API
+    try {
+      let apiEndpoint = '';
+      let payload = {};
 
-    const newWindow = window.open(whatsappUrl, 'noopener,noreferrer');
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-      window.location.href = whatsappUrl;
+      if (formType === 'booth') {
+        apiEndpoint = `${API_URL}/exhibitors`;
+        payload = {
+          companyName: boothForm.company,
+          picName: boothForm.pic,
+          email: boothForm.email,
+          phone: boothForm.phone,
+          productType: boothForm.category,
+          boothTypeId: boothForm.boothSize,
+          notes: boothForm.message || '',
+        };
+      } else {
+        apiEndpoint = `${API_URL}/visitors`;
+        payload = {
+          fullName: visitorForm.name,
+          phone: visitorForm.whatsapp,
+          company: visitorForm.company,
+          position: visitorForm.position || '',
+          email: visitorForm.email,
+        };
+      }
+
+      console.log('🚀 ~ handleSubmit ~ payload:', payload);
+
+      const res = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const responseJson = await res.json();
+      console.log('🚀 ~ handleSubmit ~ res:', responseJson);
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || `HTTP ${res.status}`);
+      }
+
+      // API success → open WhatsApp
+      setLoading(false);
+
+      // Use the Safari-safe redirect
+      openWhatsApp(whatsappUrl);
+
+      // Reset form
+      if (formType === 'booth') {
+        setBoothForm(initialBoothForm);
+      } else {
+        setVisitorForm(initialVisitorForm);
+      }
+      setErrors({});
+      setTouched({});
+      setSubmitted(true);
+    } catch (err) {
+      setLoading(false);
+      // Show error modal with WhatsApp fallback link
+      document.body.style.overflow = 'hidden';
+      setModal({
+        open: true,
+        type: 'error',
+        title: t.modalErrorTitle || 'Gagal Mengirim Data',
+        message:
+          t.modalErrorMessage ||
+          'Terjadi kesalahan saat mengirim data. Silakan coba lagi atau hubungi kami melalui WhatsApp.',
+        whatsappUrl,
+      });
     }
-
-    setLoading(false);
-
-    if (formType === 'booth') {
-      setBoothForm(initialBoothForm);
-    } else {
-      setVisitorForm(initialVisitorForm);
-    }
-    setErrors({});
-    setTouched({});
-    setSubmitted(true);
   };
 
   const handleFormTypeChange = (type) => {
@@ -158,6 +266,20 @@ export default function BookingForm() {
       .replace('{venue}', eventInfo.venue)
       .replace('{targetVisitor}', eventInfo.targetVisitor?.toLocaleString('id-ID')),
   }));
+
+  const getBoothType = async () => {
+    const res = await fetch(`${API_URL}/booth-types`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch booth types');
+    }
+    const responseJson = await res.json();
+
+    setBoothSizes(responseJson);
+  };
+
+  useEffect(() => {
+    getBoothType();
+  }, []);
 
   if (submitted) {
     return (
@@ -389,8 +511,8 @@ export default function BookingForm() {
                       >
                         <option value=''>{t.fields.boothSizePlaceholder}</option>
                         {boothSizes.map((b) => (
-                          <option key={b.value} value={b.value}>
-                            {b.label}
+                          <option key={b?.id} value={b?.id}>
+                            {`${b?.size} m² - ${b?.name}`}
                           </option>
                         ))}
                       </select>
@@ -546,6 +668,96 @@ export default function BookingForm() {
           </div>
         </div>
       </div>
+
+      {/* Error Modal */}
+      {modal.open && (
+        <div className={styles.modal} onClick={closeModal}>
+          <div className={styles.modal__overlay} />
+          <div className={styles.modal__container} onClick={(e) => e.stopPropagation()}>
+            {/* Close button */}
+            <button className={styles.modal__close} onClick={closeModal} aria-label='Close modal'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='20'
+                height='20'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                <line x1='18' y1='6' x2='6' y2='18' />
+                <line x1='6' y1='6' x2='18' y2='18' />
+              </svg>
+            </button>
+
+            {/* Icon */}
+            <div className={styles.modal__icon}>
+              <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                <circle cx='12' cy='12' r='10' />
+                <line x1='12' y1='8' x2='12' y2='12' />
+                <line x1='12' y1='16' x2='12.01' y2='16' />
+              </svg>
+            </div>
+
+            {/* Content */}
+            <h3 className={styles.modal__title}>{modal.title}</h3>
+            <p className={styles.modal__message}>{modal.message}</p>
+
+            {/* Actions */}
+            <div className={styles.modal__actions}>
+              <button
+                className={styles.modal__retryBtn}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='16'
+                  height='16'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M21 2v6h-6' />
+                  <path d='M3 12a9 9 0 0 1 15-6.7L21 8' />
+                  <path d='M3 22v-6h6' />
+                  <path d='M21 12a9 9 0 0 1-15 6.7L3 16' />
+                </svg>
+                {t.modalRetryBtn || 'Coba Lagi'}
+              </button>
+
+              <a
+                href={modal.whatsappUrl}
+                className={styles.modal__waBtn}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={(e) => {
+                  e.preventDefault();
+                  openWhatsApp(modal.whatsappUrl);
+                  closeModal();
+                }}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='16'
+                  height='16'
+                  viewBox='0 0 24 24'
+                  fill='currentColor'
+                >
+                  <path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z' />
+                </svg>
+                {t.modalWhatsappBtn || 'Kirim via WhatsApp'}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
