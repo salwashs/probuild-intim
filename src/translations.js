@@ -362,8 +362,8 @@ export const translations = {
       visitorFormTitle: 'Form Registrasi Pengunjung',
       visitorFormSub: 'Daftarkan diri Anda untuk mengunjungi ProBuild INTIM 2026.',
       fields: {
-        company: 'Nama Perusahaan',
-        companyPlaceholder: 'PT. Nama Perusahaan Anda',
+        company: 'Nama Perusahaan / Instansi',
+        companyPlaceholder: 'Perusahaan / Instansi',
         pic: 'Nama PIC',
         picPlaceholder: 'Nama lengkap penanggung jawab',
         email: 'Email',
@@ -412,7 +412,8 @@ export const translations = {
         whatsappInvalid: 'Nomor WhatsApp tidak valid',
       },
       modalErrorTitle: 'Gagal Mengirim Data',
-      modalErrorMessage: 'Terjadi kesalahan saat mengirim data ke server. Silakan coba lagi atau hubungi kami langsung melalui WhatsApp.',
+      modalErrorMessage:
+        'Terjadi kesalahan saat mengirim data ke server. Silakan coba lagi atau hubungi kami langsung melalui WhatsApp.',
       modalRetryBtn: 'Coba Lagi',
       modalWhatsappBtn: 'Kirim via WhatsApp',
       productCategories: [
@@ -452,8 +453,8 @@ export const translations = {
       visitorFormTitle: 'Visitor Registration Form',
       visitorFormSub: 'Register to visit ProBuild INTIM 2026.',
       fields: {
-        company: 'Company Name',
-        companyPlaceholder: 'Your Company Name',
+        company: 'Company / Agency Name',
+        companyPlaceholder: 'Company / Agency',
         pic: 'PIC Name',
         picPlaceholder: 'Full name of person in charge',
         email: 'Email',
@@ -502,7 +503,8 @@ export const translations = {
         whatsappInvalid: 'Invalid WhatsApp number',
       },
       modalErrorTitle: 'Submission Failed',
-      modalErrorMessage: 'An error occurred while sending your data to the server. Please try again or contact us directly via WhatsApp.',
+      modalErrorMessage:
+        'An error occurred while sending your data to the server. Please try again or contact us directly via WhatsApp.',
       modalRetryBtn: 'Try Again',
       modalWhatsappBtn: 'Send via WhatsApp',
       productCategories: [

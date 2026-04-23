@@ -44,6 +44,7 @@ function AppContent() {
         <Route path='/tentang-kami' element={<AboutPage />} />
         <Route path='/booth' element={<BoothPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/registrasi' element={<RegisterPage />} />
         <Route path='/artikel' element={<ArticlesPage />} />
         <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
       </Routes>
