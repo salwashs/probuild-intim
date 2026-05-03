@@ -881,6 +881,83 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/anggaran-kementerian-pu-dipangkas-rp1271-triliun-proyek-infrastruktur-dipastikan-tetap-jalan/',
   },
+  {
+    id: 37,
+    slug: 'lpjk-kumpulkan-asosiasi-jasa-konstruksi-terakreditasi-bedah-risiko-dan-daya-saing-konstruksi',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'LPJK Kumpulkan Asosiasi Jasa Konstruksi Terakreditasi: Bedah Risiko dan Daya Saing Konstruksi',
+    excerpt:
+      'Konstruksi Media — Sejalan dengan perubahan besar lanskap industri konstruksi nasional, Lembaga Pengembangan Jasa Konstruksi (LPJK) memilih bergerak cepat dengan mengumpulkan asosiasi jasa konstruksi terakreditasi dalam forum Coffee Morning mengangkat tema “Diskusi Arah Pengembangan Jasa Konstruksi dan Program Kerja LPJK Periode 2025-2029”',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/IMG-20260409-WA01221.jpg',
+    author: 'Konstruksi Media',
+    date: '9 April 2026',
+    sortableDate: new Date('2026-04-09'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/lpjk-kumpulkan-asosiasi-jasa-konstruksi-terakreditasi-bedah-risiko-dan-daya-saing-konstruksi/',
+  },
+  {
+    id: 38,
+    slug: 'kementerian-pu-perkuat-tata-kelola-dan-sdm-jasa-konstruksi',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Kementerian PU Perkuat Tata Kelola dan SDM Jasa Konstruksi',
+    excerpt:
+      'Konstruksi Media — Kementerian Pekerjaan Umum (PU) mendorong penguatan tata kelola dan sumber daya manusia sektor jasa konstruksi untuk menjawab tantangan pembangunan infrastruktur nasional yang semakin kompleks dan berkelanjutan.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/IMG-20260410-WA0001-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '10 April 2026',
+    sortableDate: new Date('2026-04-10'),
+    externalContent: true,
+    link: 'http://konstruksimedia.com/kementerian-pu-perkuat-tata-kelola-dan-sdm-jasa-konstruksi/',
+  },
+  {
+    id: 39,
+    slug: 'wagub-dki-bang-doel-bakal-gandeng-inkindo-benahi-kota-jakarta',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Wagub DKI Bang Doel Bakal Gandeng INKINDO Benahi Kota Jakarta',
+    excerpt:
+      'Konstruksi Media  — Calon Ketua INKINDO DPP DKI Jakarta nomor urut 2, Devina Mariana menggelar Halal Bilhalal yang di hadiri oleh Wakil Gubernur DKI Jakarta Rano Karno (Bang Doel), dan juga perwakilan DPN INKINDO dan Anggota DPP INKINDO DKI Jakarta.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/IMG-20260411-WA0015-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '11 April 2026',
+    sortableDate: new Date('2026-04-11'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/wagub-dki-bang-doel-bakal-gandeng-inkindo-benahi-kota-jakarta/',
+  },
+  {
+    id: 40,
+    slug: 'pembangunan-jtts-tembus-1-100-km-hutama-karya-terima-kunjungan-komisi-vi-dpr',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Pembangunan JTTS Tembus 1.100 Km, Hutama Karya Terima Kunjungan Komisi VI DPR',
+    excerpt:
+      'Konstruksi Media – PT Hutama Karya (Persero) menerima kunjungan kerja Komisi VI DPR RI di proyek Jalan Tol Betung–Tempino–Jambi. Kunjungan ini berlangsung di tengah capaian pembangunan Jalan Tol Trans Sumatera (JTTS) yang telah menembus lebih dari 1.100 kilometer.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/04/Screenshot_20260411_203420_Instagram.jpg',
+    author: 'Konstruksi Media',
+    date: '11 April 2026',
+    sortableDate: new Date('2026-04-11'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/pembangunan-jtts-tembus-1-100-km-hutama-karya-terima-kunjungan-komisi-vi-dpr/',
+  },
+  {
+    id: 41,
+    slug: 'ia-itb-kaltim-jajaki-kolaborasi-di-ikn-dorong-inovasi-lewat-ganesha-hub',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Pembangunan JTTS Tembus 1.100 Km, Hutama Karya Terima Kunjungan Komisi VI DPR',
+    excerpt:
+      'Konstruksi Media – Otorita Ibu Kota Nusantara (IKN) menerima kunjungan Ikatan Alumni Institut Teknologi Bandung Pengurus Daerah Kalimantan Timur (IA-ITB Kaltim) di Kawasan Inti Pusat Pemerintahan (KIPP) Nusantara, Minggu (12/4/2026).',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/IMG-20260414-WA0012-780x470.jpg',
+    author: 'Konstruksi Media',
+    date: '14 April 2026',
+    sortableDate: new Date('2026-04-14'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/ia-itb-kaltim-jajaki-kolaborasi-di-ikn-dorong-inovasi-lewat-ganesha-hub/',
+  },
 ];
 
 // =====================
