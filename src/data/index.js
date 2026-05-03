@@ -786,6 +786,101 @@ export const articles = [
     externalContent: true,
     link: 'https://konstruksimedia.com/rest-area-km-57-dan-km-62-tol-japek-dirombak-menteri-pu-targetkan-hilangkan-bottleneck/',
   },
+  {
+    id: 31,
+    slug: 'wika-beton-pamer-proyek-metro-manila-subway-di-thailand-rail-2026',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'WIKA Beton Pamer Proyek Metro Manila Subway di Thailand Rail 2026',
+    excerpt:
+      'Konstruksi Media – PT Wijaya Karya Beton Tbk (WIKA Beton) memperkuat eksistensinya di pasar global dengan menjadi satu-satunya representasi Indonesia dalam ajang 3rd Edition Thailand Rail 2026 di Bangkok, Senin (30/3). Dalam forum tersebut, WIKA Beton menonjolkan keberhasilannya menggarap proyek Metro Manila Subway sebagai bukti keunggulan teknologi infrastruktur nasional.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/WIKA-Beton-1-780x470.jpeg',
+    author: 'Konstruksi Media',
+    date: '7 April 2026',
+    sortableDate: new Date('2026-04-07'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/wika-beton-pamer-proyek-metro-manila-subway-di-thailand-rail-2026/',
+  },
+  {
+    id: 32,
+    slug: '3-alasan-surabaya-berpotensi-jadi-hub-data-center-indonesia-timur',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: '3 Alasan Surabaya Berpotensi Jadi Hub Data Center Indonesia Timur',
+    excerpt:
+      'Konstruksi Media – Kota Surabaya diproyeksikan bakal menjadi pusat (hub) data center untuk kawasan Indonesia Timur seiring hadirnya E2 Data Center dari DCI Indonesia. Dukungan infrastruktur digital ini dinilai krusial bagi Jawa Timur yang ekonomi industrinya ditopang oleh sektor perdagangan, manufaktur, dan jasa.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/04/taylor-vick-M5tzZtFCOfs-unsplash.jpg',
+    author: 'Konstruksi Media',
+    date: '7 April 2026',
+    sortableDate: new Date('2026-04-07'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/3-alasan-surabaya-berpotensi-jadi-hub-data-center-indonesia-timur/',
+  },
+  {
+    id: 33,
+    slug: 'wika-percepat-pembangunan-bendungan-jenelata-dukung-ketahanan-air-nasional',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'WIKA Percepat Pembangunan Bendungan Jenelata, Dukung Ketahanan Air Nasional',
+    excerpt:
+      'Konstruksi Media —  PT Wijaya Karya (Persero) Tbk (WIKA) terus menegaskan komitmennya dalam mendukung pembangunan infrastruktur sumber daya air nasional dengan mempercepat progres Bendungan Jenelata di Kabupaten Gowa, Sulawesi Selatan.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/04/Bendungan-Jenelata-Sulawesi.jpeg',
+    author: 'Konstruksi Media',
+    date: '7 April 2026',
+    sortableDate: new Date('2026-04-07'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/wika-percepat-pembangunan-bendungan-jenelata-dukung-ketahanan-air-nasional/',
+  },
+  {
+    id: 34,
+    slug: 'wika-ungkap-fungsi-krusial-turab-di-balik-layar',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'WIKA Ungkap Fungsi Krusial Turab di Balik `Layar`',
+    excerpt:
+      'Konstruksi Media – Di balik megahnya bendungan atau jembatan, ada elemen “rahasia” yang bekerja keras memastikan semuanya tetap berdiri kokoh. PT Wijaya Karya (Persero) Tbk (WIKA) baru saja membagikan edukasi mengenai salah satu struktur penting dalam dunia konstruksi namun jarang tersorot, yakni Turab.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-08-at-11.26.59-AM.jpeg',
+    author: 'Konstruksi Media',
+    date: '8 April 2026',
+    sortableDate: new Date('2026-04-08'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/wika-ungkap-fungsi-krusial-turab-di-balik-layar/',
+  },
+  {
+    id: 35,
+    slug: 'konsisten-6-kali-jababeka-infrastruktur-kembali-sabet-proper-hijau-2026',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Konsisten 6 Kali, Jababeka Infrastruktur Kembali Sabet PROPER Hijau 2026',
+    excerpt:
+      'Konstruksi Media –  Mengelola kawasan industri besar bukan berarti harus mengorbankan lingkungan. Prinsip ini kembali dibuktikan oleh PT Jababeka Infrastruktur yang berhasil meraih penghargaan PROPER peringkat Hijau dari Kementerian Lingkungan Hidup (KLH/BPLH) Republik Indonesia, Selasa (7/4/2026).',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/04/WhatsApp_Image_2026-04-08_at_12.22.33_PM_1_optimized_100.jpeg',
+    author: 'Konstruksi Media',
+    date: '8 April 2026',
+    sortableDate: new Date('2026-04-08'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/konsisten-6-kali-jababeka-infrastruktur-kembali-sabet-proper-hijau-2026/',
+  },
+  {
+    id: 36,
+    slug: 'anggaran-kementerian-pu-dipangkas-rp1271-triliun-proyek-infrastruktur-dipastikan-tetap-jalan',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title:
+      'Anggaran Kementerian PU Dipangkas Rp12,71 Triliun, Proyek Infrastruktur Dipastikan Tetap Jalan',
+    excerpt:
+      'Konstruksi Media – Pemerintah resmi memangkas anggaran Kementerian Pekerjaan Umum (PU) tahun 2026 sebesar Rp12,71 triliun sebagai bagian dari strategi menjaga stabilitas fiskal di tengah ketidakpastian global.',
+    image: 'https://konstruksimedia.com/wp-content/uploads/2026/04/Menteri-dody-1.jpg',
+    author: 'Konstruksi Media',
+    date: '8 April 2026',
+    sortableDate: new Date('2026-04-08'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/anggaran-kementerian-pu-dipangkas-rp1271-triliun-proyek-infrastruktur-dipastikan-tetap-jalan/',
+  },
 ];
 
 // =====================
