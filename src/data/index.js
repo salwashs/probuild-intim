@@ -7,9 +7,9 @@ export const eventInfo = {
   edition: '2026',
   tagline: 'Indonesia Construction & Architecture Expo',
   fullName: 'Indonesia Construction & Architecture Expo 2026',
-  date: '2-5 Juli 2026',
+  date: '24-27 September 2026',
   // Countdown target date
-  targetDate: new Date('2026-07-02T09:00:00'),
+  targetDate: new Date('2026-09-24T09:00:00'),
   location: 'Makassar',
   venue: 'Phinisi Point (PHIPO)',
   venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
@@ -1351,6 +1351,22 @@ export const articles = [
     sortableDate: new Date('2026-04-22'),
     externalContent: true,
     link: 'https://lpjk.pu.go.id/berita-detail/69e9bebc0eabb/2',
+  },
+  {
+    id: 67,
+    slug: 'nindya-karya-bangun-19-sekolah-rakyat-target-rampung-juni-2026',
+    category: 'Infrastruktur',
+    categoryColor: 'blue',
+    title: 'Nindya Karya Bangun 19 Sekolah Rakyat, Target Rampung Juni 2026',
+    excerpt:
+      'Konstruksi Media – PT Nindya Karya mempercepat proyek “Sekolah Rakyat” di berbagai wilayah Indonesia. Proyek ini didukung oleh Danantara Indonesia dan Kementerian Pekerjaan Umum (KemenPU). Tujuannya adalah memeratakan akses pendidikan hingga ke wilayah terpencil.',
+    image:
+      'https://konstruksimedia.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-03-at-1.49.20-PM.jpeg',
+    author: 'Konstruksi Mendia',
+    date: '3 Mei 2026',
+    sortableDate: new Date('2026-05-03'),
+    externalContent: true,
+    link: 'https://konstruksimedia.com/nindya-karya-bangun-19-sekolah-rakyat-target-rampung-juni-2026/',
   },
 ];
 
