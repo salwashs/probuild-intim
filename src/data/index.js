@@ -11,7 +11,7 @@ export const eventInfo = {
   // Countdown target date
   targetDate: new Date('2026-09-24T09:00:00'),
   location: 'Makassar',
-  venue: 'Phinisi Point (PHIPO)',
+  venue: 'Phinisi Point (Parkiran Utara) - CPI Makassar',
   venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
   description:
     'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
@@ -1374,7 +1374,7 @@ export const articles = [
 // BOOTH OPTIONS
 // =====================
 export const boothSizes = [
-  { value: 'Standard', label: '6 m² — Standard' },
+  { value: 'Standard', label: '9 m² — Standard' },
   { value: 'Premium', label: '18 m² — Premium' },
   { value: 'Silver', label: '18 m² — Silver' },
   { value: 'Elite', label: '36 m² — Elite' },
@@ -1457,18 +1457,24 @@ export const exhibitorPackages = [
 // =====================
 export const sponsorshipPackages = [
   {
+    id: 'bronze',
+    name: 'Bronze',
+    icon: '🏅',
+    color: 'bronze',
+    colorHex: '#cd7f32',
+    privileges: [
+      'Slot iklan di Medsos',
+      'Interview media partner',
+      'Slot iklan di medsos dan media kolaborasi',
+      'Media konstruksi nusantara',
+    ],
+  },
+  {
     id: 'platinum',
     name: 'Platinum',
     icon: '💎',
-    color: 'orange',
-    colorHex: '#FF6B35',
-    privileges: [
-      'Naming rights event utama',
-      'Booth strategis berukuran 54m²',
-      'Keynote speaker slot di seminar utama',
-      'Penempatan logo pada banner utama & materi promo',
-    ],
-    colorHex: '#FF6B35',
+    color: 'blue',
+    colorHex: '#023e8a',
     privileges: [
       'Naming rights event utama',
       'Booth strategis berukuran 54m²',
@@ -1508,26 +1514,12 @@ export const sponsorshipPackages = [
       '10 Tiket VIP untuk tamu undangan',
       'Distribusi brosur di area registrasi',
     ],
-    colorHex: '#607D8B',
-    privileges: [
-      'Booth berukuran 18m²',
-      'Penempatan logo di backdrop utama panggung',
-      '10 Tiket VIP untuk tamu undangan',
-      'Distribusi brosur di area registrasi',
-    ],
   },
   {
     id: 'media',
     name: 'Media',
     icon: '📢',
     color: 'purple',
-    colorHex: '#7C3AED',
-    privileges: [
-      'Slot iklan di aplikasi ProBuild & LED venue',
-      'Sesi interview eksklusif dengan media partner',
-      'Akses ke media center & press room',
-      'Penyebutan di press release resmi',
-    ],
     colorHex: '#7C3AED',
     privileges: [
       'Slot iklan di aplikasi ProBuild & LED venue',

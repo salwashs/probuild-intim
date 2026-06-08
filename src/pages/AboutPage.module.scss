@@ -1,4 +1,3 @@
-@use '../styles/variables' as *;
 
 .page {
   min-height: 100vh;
@@ -271,162 +270,262 @@
 
   .section__title {
     margin-bottom: 1rem;
+    font-size: 2.5rem;
   }
 }
 
-.agendaUnderline {
-  width: 80px;
-  height: 4px;
-  background: $red;
+.agendaSubtitle {
+  font-size: 1.1rem;
+  color: $text-muted;
+  max-width: 700px;
   margin: 0 auto;
-  border-radius: $radius-full;
+  line-height: 1.6;
 }
 
-.agendaTimeline {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-
-  // Vertical line connecting timeline dots
-  &::before {
-    content: '';
-    position: absolute;
-    left: 27px;
-    top: 40px;
-    bottom: 40px;
-    width: 2px;
-    background: linear-gradient(to bottom, $mid-gray 0%, $mid-gray 100%);
-
-    @media (max-width: $bp-sm) {
-      left: 25px;
-    }
-  }
+.agendaTabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 
-.agendaItem {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-  position: relative;
-
-  @media (max-width: $bp-sm) {
-    gap: 1.25rem;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.agendaTime {
+.agendaTab {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  position: relative;
-  z-index: 2;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-full;
+  border: 1px solid $mid-gray;
+  background: $white;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-  &__dot {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: $white;
-    border: 4px solid $red;
-    box-shadow: 0 0 0 4px rgba(232, 48, 58, 0.1);
+  &:hover {
+    border-color: $red;
+    background: $red-light;
+  }
 
-    @media (max-width: $bp-sm) {
-      width: 30px;
-      height: 30px;
-      border-width: 3px;
+  &--active {
+    background: $red;
+    border-color: $red;
+    color: $white;
+
+    .agendaTab__label, .agendaTab__date {
+      color: $white;
     }
   }
 
   &__label {
-    font-family: $font-display;
-    font-size: 0.9rem;
     font-weight: 700;
+    font-size: 1rem;
     color: $text-dark;
-    white-space: nowrap;
-    background-color: $white;
+  }
+
+  &__date {
+    font-size: 0.8rem;
+    color: $text-muted;
+    margin-top: 0.25rem;
+  }
+}
+
+.agendaContainer {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.agendaListWrapper {
+  position: relative;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.agendaList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.agendaOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+  z-index: 10;
+}
+
+.agendaOverlayText {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $text-dark;
+  margin-bottom: 1rem;
+}
+
+.agendaOverlayButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: $red;
+  color: $white;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-md;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust($red, $lightness: -10%);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.agendaRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__left {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 200px;
+    flex-shrink: 0;
+    padding-top: 1.5rem; // Align with the first line of the card content
 
     @media (max-width: $bp-sm) {
-      font-size: 0.8rem;
+      width: 100%;
+      padding-top: 0;
+      align-items: center;
     }
+  }
+
+  &__indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid $red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $red;
+  }
+
+  &__time {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $text-dark;
+  }
+
+  &--green {
+    .agendaRow__indicator { border-color: $green; }
+    .agendaRow__dot { background: $green; }
+  }
+
+  &--blue {
+    .agendaRow__indicator { border-color: $blue; }
+    .agendaRow__dot { background: $blue; }
+  }
+
+  &--orange {
+    .agendaRow__indicator { border-color: $orange-50; }
+    .agendaRow__dot { background: $orange-50; }
   }
 }
 
 .agendaCard {
-  background: $off-white;
-  padding: 2rem;
-  border-radius: $radius-lg;
-  border-left: 4px solid $mid-gray;
-  transition: all $transition-base;
-  position: relative;
+  flex-grow: 1;
+  background: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 40px;
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
 
   @media (max-width: $bp-sm) {
-    padding: 1.5rem;
+    border-radius: 24px;
+    padding: 1.25rem 1.5rem;
   }
 
   &:hover {
-    background: $white;
-    box-shadow: $shadow-md;
-    transform: translateX(4px);
+    box-shadow: $shadow-sm;
+    transform: translateY(-2px);
   }
 
-  &__badge {
-    display: inline-block;
-    padding: 0.375rem 0.875rem;
-    border-radius: $radius-full;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-
-    &--orange {
-      background: $orange-10;
-      color: $orange-90;
-    }
-
-    &--blue {
-      background: $blue-light;
-      color: $blue-90;
-    }
-
-    &--green {
-      background: $green-light;
-      color: $green-90;
-    }
-
-    &--purple {
-      background: color.change(#9c27b0, $alpha: 0.1);
-      color: #7b1fa2;
-    }
-  }
-
-  &__icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  &--highlight {
+    background: $red-light;
+    border-color: $red-light;
   }
 
   &__title {
     font-family: $font-display;
     font-size: 1.25rem;
-    font-weight: 700;
-    color: $text-dark;
-    line-height: 1.4;
-    margin-bottom: 0.75rem;
-
-    @media (max-width: $bp-sm) {
-      font-size: 1.1rem;
-    }
+    font-weight: 500;
+    color: $red;
+    margin-bottom: 0.5rem;
   }
 
   &__desc {
     font-size: 0.95rem;
-    line-height: 1.7;
-    color: $text-body;
+    line-height: 1.6;
+    color: $text-dark;
+    font-weight: 400;
+  }
+
+  &--green {
+    &.agendaCard--highlight {
+      background: $green-light;
+      border-color: $green-light;
+    }
+    .agendaCard__title { color: $green; }
+  }
+
+  &--blue {
+    &.agendaCard--highlight {
+      background: $blue-light;
+      border-color: $blue-light;
+    }
+    .agendaCard__title { color: $blue; }
+  }
+
+  &--orange {
+    &.agendaCard--highlight {
+      background: rgba(247, 148, 29, 0.1);
+      border-color: rgba(247, 148, 29, 0.1);
+    }
+    .agendaCard__title { color: $orange-50; }
   }
 }
 

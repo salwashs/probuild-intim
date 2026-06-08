@@ -640,36 +640,357 @@ export const translations = {
           description: 'Implementasi BIM (Building Information Modeling) dan digitalisasi proyek.',
         },
       ],
-      agendaTitle: 'Agenda Acara',
-      agenda: [
-        {
-          day: 'Hari ke 1',
-          badge: 'Seremonial',
-          icon: '🎉',
-          title: 'Pembukaan Menteri PU, Expo + Demo Alat Berat',
-          desc: 'Upacara pembukaan resmi oleh Menteri PU dan Gubernur Provinsi, dilanjutkan dengan demo alat berat dan teknologi konstruksi terkini',
+      agendaTitle: 'Jadwal Kami',
+      agendaSubtitle: 'Rangkaian sesi yang dipandu oleh para ahli, wawasan terobosan, dan diskusi visioner untuk membentuk masa depan industri konstruksi.',
+      agendaDays: [
+{
+          id: 'day_1',
+          label: 'Hari 1',
+          date: "24 September 2026",
+          schedule: [
+            {
+              time: "07.00-08.00",
+              title: "Registrasi Tamu & VIP",
+              desc: "Registrasi tamu undangan, VIP, & media"
+            },
+            {
+              time: "08.00-08.30",
+              title: "Gladi Bersih Seremoni Pembukaan",
+              desc: "Persiapan & gladi bersih seremoni pembukaan"
+            },
+            {
+              time: "08.30-09.00",
+              title: "Penyambutan Tamu VIP",
+              desc: "Kedatangan & penjemputan tamu VIP / Menko AHY"
+            },
+            {
+              time: "09.00-09.10",
+              title: "Pembukaan oleh MC",
+              desc: "Pembukaan MC - Pengantar Acara"
+            },
+            {
+              time: "09.10-09.20",
+              title: "Pembacaan Ayat Suci Al-Quran",
+              desc: "Pembacaan Ayat Suci Al-Quran & Doa"
+            },
+            {
+              time: "09.20-09.30",
+              title: "Menyanyikan Lagu Kebangsaan",
+              desc: "Menyanyikan Lagu Indonesia Raya"
+            },
+            {
+              time: "09.30-09.40",
+              title: "Pertunjukan Tari Tradisional",
+              desc: "Penampilan Tari Padduppa (Tari Penyambutan Bugis-Makassar)"
+            },
+            {
+              time: "09.40-09.55",
+              title: "Sambutan Penyelenggara",
+              desc: "Sambutan Penyelenggara ProBuild INTIM 2026"
+            },
+            {
+              time: "09.55-10.05",
+              title: "Sambutan Gubernur Sulsel",
+              desc: "Sambutan Gubernur Provinsi Sulawesi Selatan"
+            },
+            {
+              time: "10.05-10.55",
+              title: "Keynote Speech Menko Infrastruktur",
+              desc: "Sambutan & Arahan Menko Infrastruktur Bapak AHY"
+            },
+            {
+              time: "10.55-11.20",
+              title: "Seremoni Pembukaan Resmi",
+              desc: "Pembukaan Resmi Pameran"
+            },
+            {
+              time: "11.20-11.40",
+              title: "Kunjungan Stan Pameran VIP",
+              desc: "Peninjauan Stand Pameran oleh Tamu VIP (Guided Tour)"
+            },
+            {
+              time: "11.40-12.00",
+              title: "Konferensi Pers",
+              desc: "Sesi Media / Press Conference"
+            },
+            {
+              time: "12.00-13.00",
+              title: "Talk Show 1: Kebijakan Infrastruktur Nasional",
+              desc: "Talk Show - 1 \" Membangun Pondasi Masa Depan: Arah Kebijakan Infrastruktur Nasional 2026-2035\" Narasumber: Kementerian Infrastruktur"
+            },
+            {
+              time: "13.00-17.00",
+              title: "Sinergi Bisnis Rantai Pasok",
+              desc: "Sinergi Bisnis 1-2 (dilakukan 2 agenda acara yang dihadirkan Perusahaan rantai pasok) ~ 2 perusahaan"
+            },
+            {
+              time: "13.00-15.00",
+              title: "Talk Show 2: Standar Konstruksi Bangunan",
+              desc: "Talk Show - 2 \"Standar Konstruksi untuk Keandalan Bangunan Nasional\" Narasumber: Kementerian PU"
+            },
+            {
+              time: "15.00-17.00",
+              title: "Forum Jasa Konstruksi Wilayah",
+              desc: "Forum Jasa Konstruksi Se -Sulawesi Selatan Narasumber: Kementerian PU"
+            },
+            {
+              time: "19.30-21.00",
+              title: "Pentas Seni Budaya Hari Ke-1",
+              desc: "Pertunjukan Seni Budaya Sulsel (Malam Hari-1)"
+            },
+            {
+              time: "21.00",
+              title: "Penutupan Pameran Hari Pertama",
+              desc: "Pameran Hari Pertama Ditutup"
+            }
+          ]
         },
         {
-          day: 'Hari ke 2',
-          badge: 'Seminar',
-          icon: '🎤',
-          title: 'Konferensi "Inovasi Konstruksi Hijau" (10 Pembicara), Business Matching',
-          desc: 'Keynote: Konstruksi Indonesia Timur 2030 - Visi pembangunan infrastruktur kawasan Indonesia Timur, dilanjutkan dengan sesi business matching B2B',
+          id: 'day_2',
+          label: 'Hari 2',
+          date: "25 September 2026",
+          schedule: [
+            {
+              time: "07.30-08.00",
+              title: "Briefing Internal Panitia",
+              desc: "Briefing pagi panitia & persiapan venue"
+            },
+            {
+              time: "08.00-09.00",
+              title: "Pembukaan Pameran & Registrasi",
+              desc: "Pameran dibuka - Registrasi pengunjung"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Kompetisi Tenaga Kerja Konstruksi",
+              desc: "KOMPETISI HARI 1 - Kompetisi Tenaga Kerja Konstruksi (antar tukang/tenaga kerja)"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Uji Sertifikasi Kompetensi Kerja Batch 1",
+              desc: "Uji SKK Konstruksi - Sesi Pagi (Batch 1)"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Sinergi Bisnis & Trimble Solutions",
+              desc: "Sinergi Bisnis 3-4-2 perusahaan Trimble Solutions (Sesi 1)"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Talk Show 3: Solusi Perumahan Rakyat",
+              desc: "Talk Show - 3: Perumahan Layak dan Terjangkau, Solusi untuk Kebutuhan Masyarakt Narasumber: Kementerian Perumahan Rakyat"
+            },
+            {
+              time: "12.00-13.30",
+              title: "Istirahat & Sholat Jumat",
+              desc: "ISTIRAHAT, Sholat Jumat & Makan Siang"
+            },
+            {
+              time: "13.30-17.00",
+              title: "Sinergi Bisnis Rantai Pasok Lanjutan",
+              desc: "Sinergi Bisnis 5-6~2 perusahaan"
+            },
+            {
+              time: "13.30-16.30",
+              title: "Uji Sertifikasi Kompetensi Kerja Batch 2",
+              desc: "Uji SKK Konstruksi - Sesi Siang (Batch 2)"
+            },
+            {
+              time: "13.30-15.30",
+              title: "Talk Show 4: Profesionalisme Jasa Konstruksi",
+              desc: "Talk Show - 4: Meningkatkan Profesionalisme dan Kompetensi, Tulang Punggung Jasa Konstruksi Nasional Narasumber: LPJK"
+            },
+            {
+              time: "13.30-16.30",
+              title: "Kompetisi Estimasi Biaya & BIM Mahasiswa",
+              desc: "KOMPETISI HARI 1 Sesi Siang: Kompetisi IQSI - TRIMBLE Mahasiswa Teknik Sipil/Konstruksi (Estimasi Biaya / RAB & BIM)"
+            },
+            {
+              time: "16.00-18.00",
+              title: "Talk Show 5: Perencanaan Pembangunan Berkualitas",
+              desc: "Talk Show 5: Perencanaan yang Cerdas: Dasar Keberhasilan Pembangunan Berkualitas Narasumber: INKINDO"
+            },
+            {
+              time: "18.30-21.00",
+              title: "Malam Apresiasi & Seni Budaya Hari Ke-2",
+              desc: "Malam Apresiasi Pelaku Konstruksi - Hiburan Seni Budaya Sulsel Hari 2"
+            },
+            {
+              time: "21.00",
+              title: "Penutupan Pameran Hari Kedua",
+              desc: "Pameran Hari Kedua Ditutup"
+            }
+          ]
         },
         {
-          day: 'Hari ke 3',
-          badge: 'Pameran',
-          icon: '🏗️',
-          title: 'Kompetisi & Fasilitas SKK Gratis oleh BJKW VI',
-          desc: 'Pameran terbuka — Hall A & B dengan 200+ booth exhibitor dari seluruh Indonesia, kompetisi inovasi konstruksi, dan fasilitas sertifikasi gratis',
+          id: 'day_3',
+          label: 'Hari 3',
+          date: "26 September 2026",
+          schedule: [
+            {
+              time: "07.30-08.00",
+              title: "Briefing Internal Panitia",
+              desc: "Briefing pagi panitia & persiapan"
+            },
+            {
+              time: "08.00-09.00",
+              title: "Pembukaan Pameran Kunjungan Edukasi",
+              desc: "Pameran dibuka - Registrasi pengunjung (termasuk rombongan sekolah/kampus)"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Final Kompetisi Tenaga Kerja",
+              desc: "KOMPETISI FINAL - Tenaga Kerja: Final & Penilaian Juri, Pengumuman Finalis"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Kompetisi Estimasi Proyek Antar Instansi",
+              desc: "KOMPETISI - Antar Instansi: Estimasi Proyek / Building Information Modelling (BIM)"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Uji Sertifikasi Kompetensi Kerja Batch 3",
+              desc: "Uji SKK Konstruksi - Sesi Pagi (Batch 3)"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Sinergi Bisnis Perusahaan Partner",
+              desc: "Sinergi Bisnis 7-8-2 perusahaan"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Talk Show 6: Peran Kontraktor Profesional",
+              desc: "Talk Show -6: Kontraktor Profesional: Pendorong Utama Pembangunan Nasional yang Andal Narasumber: PERKOPINDO - Perusahaan Kontraktor Nasional"
+            },
+            {
+              time: "12.00-13.30",
+              title: "Istirahat, Sholat & Makan Siang",
+              desc: "ISTIRAHAT & Sholat Dzuhur"
+            },
+            {
+              time: "13.00-15.00",
+              title: "Talk Show 7: Pengendalian Biaya Proyek",
+              desc: "Talk Show-7: Pengukuran dan Pengendalian Biaya, Kunci Keberhasilan Keuangan Proyek Narasumber: IQSI- Perusahaan Rantai Pasok"
+            },
+            {
+              time: "13.30-16.30",
+              title: "Uji Sertifikasi Kompetensi Kerja Batch 4",
+              desc: "Uji SKK Konstruksi - Sesi Siang (Batch 4)"
+            },
+            {
+              time: "13.30-15.30",
+              title: "Babak Final Kompetisi",
+              desc: "KOMPETISI FINAL (Continued)"
+            },
+            {
+              time: "15.00-17.00",
+              title: "Sinergi Bisnis Rantai Pasok Strategis",
+              desc: "Sinergi Bisnis 9-10~2 perusahaan"
+            },
+            {
+              time: "15.30-17.30",
+              title: "Talk Show 8: Manajemen Proyek Efektif",
+              desc: "Talk Show-8: Manajemen Proyek Efektif, Mengoptimalkan Sumber Daya untuk Hasil Maksimal Narasumber: HAMKI - Perusahaan Rantai Pasok"
+            },
+            {
+              time: "17.30-19.00",
+              title: "Istirahat & Sholat Maghrib",
+              desc: "ISTIRAHAT & Sholat Maghrib"
+            },
+            {
+              time: "19.00-21.00",
+              title: "Malam Puncak Budaya & Live Music",
+              desc: "Malam Puncak Budaya: Pertunjukan Seni & Live Music Sulsel"
+            },
+            {
+              time: "21.00",
+              title: "Penutupan Pameran Hari Ketiga",
+              desc: "Pameran Hari Ketiga Ditutup"
+            }
+          ]
         },
         {
-          day: 'Hari ke 4',
-          badge: 'Workshop',
-          icon: '💻',
-          title: 'Deal Signing, Award "Best Innovator Konstruksi Timur"',
-          desc: 'Workshop: BIM untuk Proyek Skala Menengah - Praktis dan langsung diterapkan di lapangan, penandatanganan MoU, dan penganugerahan award',
-        },
+          id: 'day_4',
+          label: 'Hari 4',
+          date: "27 September 2026",
+          schedule: [
+            {
+              time: "08.00-09.00",
+              title: "Pembukaan Pameran Hari Terakhir",
+              desc: "Pameran dibuka - Hari terakhir pengunjung umum"
+            },
+            {
+              time: "08.00-10.00",
+              title: "Sesi Bebas Pengunjung & Final Pameran",
+              desc: "Pameran Final Konstruksi & Sesi Bebas Pengunjung"
+            },
+            {
+              time: "08.00-12.00",
+              title: "Uji Sertifikasi Kompetensi Kerja Batch 5",
+              desc: "Uji SKK Konstruksi - Sesi Pagi (Batch 5)"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Talk Show 9: Pengawasan & Keandalan Bangunan",
+              desc: "Talk Show - 9: Pengawasan dan Inspeksi: Jaminan Keamanan dan Keandalan Setiap Bangunan Narasumber: PAKKI - JAMKRINDO - BPJS"
+            },
+            {
+              time: "09.00-12.00",
+              title: "Sinergi Bisnis Sesi Penutup",
+              desc: "Sinergi Bisnis 11-12-2 perusahaan"
+            },
+            {
+              time: "12.00-15.00",
+              title: "Talk Show 10: Sinergi Ekosistem Konstruksi",
+              desc: "Talk Show 10- : Sinergi Ekosistem Konstruksi, Membangun Keunggulan Bersama Menuju ProBuild INTIM 2027 Narasumber: DPD PERKOPINDO - DBMBK-BJKW 6- Perusahaan Rantai Pasok"
+            },
+            {
+              time: "15.30-15.40",
+              title: "Pembukaan Seremoni Penutupan",
+              desc: "Pembukaan Acara Penutupan oleh MC"
+            },
+            {
+              time: "15.40-15.50",
+              title: "Laporan & Rangkuman Kegiatan",
+              desc: "Laporan Penyelenggara & Rangkuman Kegiatan"
+            },
+            {
+              time: "15.50-16.00",
+              title: "Sambutan Kepala Balai JK Wilayah 6",
+              desc: "Sambutan Ka.Balai Jasa Konstruksi Wilayah 6"
+            },
+            {
+              time: "16.00-16.10",
+              title: "Sambutan Kadis BMBK Sulsel",
+              desc: "Sambutan Kadis Bina Marga & Bina Konstruksi Prov. Sulsel"
+            },
+            {
+              time: "16.10-16.45",
+              title: "Penyerahan Penghargaan & Plakat",
+              desc: "Pemberian hadiah, pemenang kompetisi, Plakat & Kenang-kenangan kepada Tamu VIP"
+            },
+            {
+              time: "16.45-17.00",
+              title: "Sambutan Resmi Menteri PU",
+              desc: "Sambutan & Penutupan Resmi oleh Menteri PU/Wamen PU"
+            },
+            {
+              time: "17.00-17.10",
+              title: "Seremoni Ketuk Gong Penutupan",
+              desc: "Penabuhan Gong Penutupan Resmi Pameran"
+            },
+            {
+              time: "17.10-17.30",
+              title: "Sesi Foto Bersama & Ramah Tamah",
+              desc: "Foto Bersama & Sesi Ramah Tamah Terakhir"
+            },
+            {
+              time: "17.30",
+              title: "Penutupan Resmi Event ProBuild",
+              desc: "PAMERAN ProBuild INTIM 2026 RESMI DITUTUP"
+            }
+          ]
+        }
       ],
     },
     en: {
@@ -732,36 +1053,357 @@ export const translations = {
             'Implementation of BIM (Building Information Modeling) and project digitalization.',
         },
       ],
-      agendaTitle: 'Event Agenda',
-      agenda: [
-        {
-          day: 'Day 1',
-          badge: 'Ceremonial',
-          icon: '🎉',
-          title: 'Opening by Minister of Public Works, Expo + Heavy Equipment Demo',
-          desc: 'Official opening ceremony by the Minister of Public Works and Provincial Governor, followed by heavy equipment demonstrations and the latest construction technology',
+      agendaTitle: 'Our Schedule',
+      agendaSubtitle: 'A curated lineup of expert-led sessions, breakthrough insights, and forward-thinking discussions to shape the future of construction industry.',
+      agendaDays: [
+{
+          id: 'day_1',
+          label: 'Day 1',
+          date: "24 September 2026",
+          schedule: [
+            {
+              time: "07:00-08:00",
+              title: "Guest & VIP Registration",
+              desc: "Registration of Invited Guests, VIPs & Media"
+            },
+            {
+              time: "08:00-08:30",
+              title: "Opening Ceremony Rehearsal",
+              desc: "Preparation & Rehearsal for Opening Ceremony"
+            },
+            {
+              time: "08:30-09:00",
+              title: "VIP Arrival & Traditional Welcome",
+              desc: "Arrival & Reception of VIP Guests / Coordinating Minister (Menko AHY)"
+            },
+            {
+              time: "09:00-09:10",
+              title: "Event Introduction by MC",
+              desc: "Opening by MC - Introduction to the Event"
+            },
+            {
+              time: "09:10-09:20",
+              title: "Quran Recitation & Prayer",
+              desc: "Recitation of the Holy Quran & Prayer"
+            },
+            {
+              time: "09:20-09:30",
+              title: "National Anthem Session",
+              desc: "Singing of the National Anthem (Indonesia Raya)"
+            },
+            {
+              time: "09:30-09:40",
+              title: "Traditional Welcome Dance",
+              desc: "Tari Padduppa - Traditional Bugis-Makassar Welcome Dance"
+            },
+            {
+              time: "09:40-09:55",
+              title: "Organizer Welcome Remarks",
+              desc: "Welcome Remarks by ProBuild INTIM 2026 Organizer"
+            },
+            {
+              time: "09:55-10:05",
+              title: "Gubernatorial Speech",
+              desc: "Speech by the Governor of South Sulawesi Province"
+            },
+            {
+              time: "10:05-10:55",
+              title: "Ministerial Keynote Address",
+              desc: "Keynote Speech & Directives by Coordinating Minister for Infrastructure (Menko AHY)"
+            },
+            {
+              time: "10:55-11:20",
+              title: "Official Exhibition Opening",
+              desc: "Official Opening of the Exhibition"
+            },
+            {
+              time: "11:20-11:40",
+              title: "VIP Guided Exhibition Tour",
+              desc: "VIP Guided Tour of Exhibition Booths"
+            },
+            {
+              time: "11:40-12:00",
+              title: "Press Conference",
+              desc: "Media Session / Press Conference"
+            },
+            {
+              time: "12:00-13:00",
+              title: "Talk Show 1: Infrastructure Policy 2026-2035",
+              desc: "Talk Show 1: \"Building the Foundation of the Future: National Infrastructure Policy Direction 2026-2035\" Speakers: Ministry of Infrastructure Moderators: Lilis Suryani S.T., M.T. & Achmad Syahroni ST (DPP PERTAPIN)"
+            },
+            {
+              time: "13:00-17:00",
+              title: "Supply Chain Business Synergy",
+              desc: "Business Synergy Sessions 1-2 (Supply Chain Company Presentations) - 2 Companies"
+            },
+            {
+              time: "13:00-15:00",
+              title: "Talk Show 2: Building Construction Standards",
+              desc: "Talk Show 2: \"Construction Standards for National Building Reliability\" Speakers: Ministry of Public Works Moderator: BJKW 6"
+            },
+            {
+              time: "15:00-17:00",
+              title: "Regional Construction Services Forum",
+              desc: "Construction Services Forum - South Sulawesi Province Speakers: Ministry of Public Works Moderator: Dinas BMBK Prov. South Sulawesi"
+            },
+            {
+              time: "19:30-21:00",
+              title: "Cultural Arts Performance Day 1",
+              desc: "South Sulawesi Cultural Arts Performance (Evening - Day 1)"
+            },
+            {
+              time: "21:00",
+              title: "Exhibition Day 1 Closing",
+              desc: "Exhibition Day 1 Closed"
+            }
+          ]
         },
         {
-          day: 'Day 2',
-          badge: 'Seminar',
-          icon: '🎤',
-          title: 'Conference "Green Construction Innovation" (10 Speakers), Business Matching',
-          desc: 'Keynote: Eastern Indonesia Construction 2030 – Vision of infrastructure development in Eastern Indonesia, followed by B2B business matching sessions',
+          id: 'day_2',
+          label: 'Day 2',
+          date: "25 September 2026",
+          schedule: [
+            {
+              time: "07:30-08:00",
+              title: "Morning Briefing & Preparation",
+              desc: "Morning Briefing for Committee & Venue Preparation"
+            },
+            {
+              time: "08:00-09:00",
+              title: "Exhibition Opening & Registration",
+              desc: "Exhibition Opens - Visitor Registration"
+            },
+            {
+              time: "08:00-12:00",
+              title: "Skilled Labor Construction Competition",
+              desc: "COMPETITION DAY 1 (Morning) - Construction Workforce Competition (between skilled workers / laborers)"
+            },
+            {
+              time: "08:00-12:00",
+              title: "SKK Competency Assessment Batch 1",
+              desc: "SKK Construction Competency Assessment - Morning Session (Batch 1)"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Business Synergy & Trimble Session 1",
+              desc: "Business Synergy Sessions 3-4-2 Companies (incl. Trimble Solutions Session 1)"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Talk Show 3: Community Housing Solutions",
+              desc: "Talk Show 3: \"Decent and Affordable Housing: Solutions for Community Needs\" Speakers: Ministry of Housing Moderator: DPD PERKOPINDO"
+            },
+            {
+              time: "12:00-13:30",
+              title: "Lunch Break & Friday Prayer",
+              desc: "Lunch Break & Friday Prayer (Sholat Jumat)"
+            },
+            {
+              time: "13:30-17:00",
+              title: "Corporate Business Synergy Sessions",
+              desc: "Business Synergy Sessions 5-6-2 Companies"
+            },
+            {
+              time: "13:30-16:30",
+              title: "SKK Competency Assessment Batch 2",
+              desc: "SKK Construction Competency Assessment - Afternoon Session (Batch 2)"
+            },
+            {
+              time: "13:30-15:30",
+              title: "Talk Show 4: Professionalism in Construction",
+              desc: "Talk Show 4: \"Enhancing Professionalism and Competency: The Backbone of National Construction Services\" Speakers: LPJK Moderators: INKINDO - DPD PERTAPIN"
+            },
+            {
+              time: "13:30-16:30",
+              title: "Cost Estimation & BIM Student Competition",
+              desc: "COMPETITION DAY 1 - Afternoon Session: Civil Engineering / Construction Student Competition (Cost Estimation / RAB & BIM) Organized by IQSI - TRIMBLE"
+            },
+            {
+              time: "16:00-18:00",
+              title: "Talk Show 5: Smart Development Planning",
+              desc: "Talk Show 5: \"Smart Planning: The Key to Quality Development\" Speakers: INKINDO Moderator: PNUP"
+            },
+            {
+              time: "18:30-21:00",
+              title: "Practitioner Appreciation & Culture Night",
+              desc: "Appreciation Evening for Construction Practitioners - South Sulawesi Cultural Entertainment (Day 2)"
+            },
+            {
+              time: "21:00",
+              title: "Exhibition Day 2 Closing",
+              desc: "Exhibition Day 2 Closed"
+            }
+          ]
         },
         {
-          day: 'Day 3',
-          badge: 'Exhibition',
-          icon: '🏗️',
-          title: 'Competition & Free SKK Certification by BJKW VI',
-          desc: 'Open exhibition — Hall A & B with 200+ exhibitor booths from across Indonesia, construction innovation competition, and free certification facilities',
+          id: 'day_3',
+          label: 'Day 3',
+          date: "26 September 2026",
+          schedule: [
+            {
+              time: "07:30-08:00",
+              title: "Morning Briefing & Venue Check",
+              desc: "Morning Briefing for Committee & Venue Preparation"
+            },
+            {
+              time: "08:00-09:00",
+              title: "Exhibition Opening & School Visits",
+              desc: "Exhibition Opens - Visitor Registration (incl. School / University Groups)"
+            },
+            {
+              time: "08:00-12:00",
+              title: "Workforce Competition Finals",
+              desc: "COMPETITION FINAL - Workforce: Finals, Jury Scoring & Finalist Announcement"
+            },
+            {
+              time: "08:00-12:00",
+              title: "Inter-Agency BIM & Project Estimation",
+              desc: "COMPETITION - Inter-Agency: Project Estimation / Building Information Modelling (BIM)"
+            },
+            {
+              time: "08:00-12:00",
+              title: "SKK Competency Assessment Batch 3",
+              desc: "SKK Construction Competency Assessment - Morning Session (Batch 3)"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Business Matching & Synergy",
+              desc: "Business Synergy Sessions 7-8-2 Companies"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Talk Show 6: Reliable National Development",
+              desc: "Talk Show 6: \"Professional Contractors: The Primary Driver of Reliable National Development\" Speakers: PERKOPINDO - National Contractor Companies Moderator: UMI"
+            },
+            {
+              time: "12:00-13:30",
+              title: "Midday Break & Prayer",
+              desc: "Lunch Break & Midday Prayer (Sholat Dzuhur)"
+            },
+            {
+              time: "13:00-15:00",
+              title: "Talk Show 7: Project Cost Control",
+              desc: "Talk Show 7: \"Cost Measurement and Control: The Key to Financial Success in Projects\" Speakers: IQSI - Supply Chain Companies Moderator: ARDEV"
+            },
+            {
+              time: "13:30-16:30",
+              title: "SKK Competency Assessment Batch 4",
+              desc: "SKK Construction Competency Assessment - Afternoon Session (Batch 4)"
+            },
+            {
+              time: "13:30-15:30",
+              title: "Final Stage Competition Continuation",
+              desc: "COMPETITION FINAL (Continued)"
+            },
+            {
+              time: "15:00-17:00",
+              title: "B2B Supply Chain Synergy",
+              desc: "Business Synergy Sessions 9-10-2 Companies"
+            },
+            {
+              time: "15:30-17:30",
+              title: "Talk Show 8: Effective Project Management",
+              desc: "Talk Show 8: \"Effective Project Management: Optimizing Resources for Maximum Results\" Speakers: HAMKI - Supply Chain Companies Moderator: BJKW 6"
+            },
+            {
+              time: "17:30-19:00",
+              title: "Rest & Evening Prayer Break",
+              desc: "Break & Maghrib Prayer (Sholat Maghrib)"
+            },
+            {
+              time: "19:00-21:00",
+              title: "Cultural Gala & Live Music Night",
+              desc: "Cultural Gala Night: Arts Performance & South Sulawesi Live Music"
+            },
+            {
+              time: "21:00",
+              title: "Exhibition Day 3 Closing",
+              desc: "Exhibition Day 3 Closed"
+            }
+          ]
         },
         {
-          day: 'Day 4',
-          badge: 'Workshop',
-          icon: '💻',
-          title: 'Deal Signing, Award "Best Innovator of Eastern Construction"',
-          desc: 'Workshop: BIM for Medium-Scale Projects – Practical and directly applied in the field, MoU signings, and award ceremony',
-        },
+          id: 'day_4',
+          label: 'Day 4',
+          date: "27 September 2026",
+          schedule: [
+            {
+              time: "08:00-09:00",
+              title: "Exhibition Final Day Opening",
+              desc: "Exhibition Opens - Last Day for General Public"
+            },
+            {
+              time: "08:00-10:00",
+              title: "Public Free Exhibition Session",
+              desc: "Final Construction Exhibition & Free Visitor Session"
+            },
+            {
+              time: "08:00-12:00",
+              title: "SKK Competency Assessment Batch 5",
+              desc: "SKK Construction Competency Assessment - Morning Session (Batch 5)"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Talk Show 9: Structural Safety & Inspection",
+              desc: "Talk Show 9: \"Supervision and Inspection: Ensuring Safety and Reliability of Every Structure\" Speakers: PAKKI - JAMKRINDO - BPJS Moderator: BJKW 6"
+            },
+            {
+              time: "09:00-12:00",
+              title: "Final Supply Chain Synergy",
+              desc: "Business Synergy Sessions 11-12-2 Companies"
+            },
+            {
+              time: "12:00-15:00",
+              title: "Talk Show 10: Construction Ecosystem Synergy",
+              desc: "Talk Show 10: \"Construction Ecosystem Synergy: Building Excellence Together Toward ProBuild INTIM 2027\" Speakers: DPD PERKOPINDO-DBMBK-BJKW 6-Supply Chain Companies Moderator: PCO"
+            },
+            {
+              time: "15:30-15:40",
+              title: "Closing Ceremony Commencement",
+              desc: "Opening of Closing Ceremony by MC"
+            },
+            {
+              time: "15:40-15:50",
+              title: "Organizer's Final Summary Report",
+              desc: "Organizer's Report & Event Summary"
+            },
+            {
+              time: "15:50-16:00",
+              title: "Regional Construction Office Remarks",
+              desc: "Remarks by Head of Construction Services Regional Office Wilayah 6"
+            },
+            {
+              time: "16:00-16:10",
+              title: "Provincial Infrastructure Agency Speech",
+              desc: "Remarks by Head of Roads & Construction Agency, South Sulawesi Province"
+            },
+            {
+              time: "16:10-16:45",
+              title: "Awards & Awarding Ceremony",
+              desc: "Prize Giving - Competition Winners, Plaques & Mementos for VIP Guests"
+            },
+            {
+              time: "16:45-17:00",
+              title: "Ministerial Closing Remarks",
+              desc: "Remarks & Official Closing by Minister of Public Works / Deputy Minister"
+            },
+            {
+              time: "17:00-17:10",
+              title: "Official Gong Closing Ceremony",
+              desc: "Gong Ceremony - Official Closing of the Exhibition"
+            },
+            {
+              time: "17:10-17:30",
+              title: "Final Group Photo & Networking",
+              desc: "Group Photo & Final Networking Session"
+            },
+            {
+              time: "17:30",
+              title: "Official Event Closure",
+              desc: "ProBuild INTIM 2026 OFFICIALLY CLOSED"
+            }
+          ]
+        }
       ],
     },
   },
@@ -812,44 +1454,51 @@ export const translations = {
       packages: [
         {
           tagline: 'Eksisi untuk startup & UKM',
-          features: ['Ukuran Booth 6 m²', 'Booth standar, lebar 3kW', 'Logo di website ProBuild'],
+          features: [
+            'Ukuran Booth 9 m²',
+            'Booth standar',
+            'Listrik 450 watt',
+            'Logo di website ProBuild',
+          ],
         },
         {
           tagline: 'Untuk brand yang berkembang',
-          features: ['Ukuran Booth 18 m²', 'Booth custom & Demo area'],
+          features: ['Ukuran Booth 18 m²', 'Booth custom', 'Demo area', 'Slot seminar 30 menit'],
         },
         {
           tagline: 'Dominasi pasar utama',
           features: [
             'Ukuran Booth 36 m²',
-            'Booth Pavilion & Sponsorship Seminar',
-            'Lokasi VIP strategis & Prioritas Leads',
+            'Booth paviliun',
+            'Sponsorship seminar utama',
+            'Booth di area VIP',
           ],
         },
       ],
       sponsorPackages: [
         {
           privileges: [
-            'Naming rights event utama',
-            'Booth strategis berukuran 54m²',
-            'Keynote speaker slot di seminar utama',
-            'Penempatan logo pada banner utama & materi promo',
+            'Naming rights (ProBuild Platinum Sponsor)',
+            'Booth 54 m²',
+            'Keynote slot',
+            'Banner utama',
+            'Slot iklan di medsos dan media kolaborasi konstruksi nusantara',
           ],
         },
         {
           privileges: [
-            'Co-branding seminar sesi pilihan',
-            'Booth strategis berukuran 36m²',
-            'Logo eksklusif di materi promosi digital',
-            'Penyebutan brand oleh MC di setiap sesi',
+            'Co-branding seminar',
+            'Booth 36 m²',
+            'Logo di semua materi promo',
+            'Slot iklan di medsos dan media kolaborasi konstruksi nusantara',
           ],
         },
         {
           privileges: [
-            'Booth berukuran 18m²',
-            'Penempatan logo di backdrop utama panggung',
-            '10 Tiket VIP untuk tamu undangan',
-            'Distribusi brosur di area registrasi',
+            'Co-branding seminar',
+            'Booth 36 m²',
+            'Logo di semua materi promo',
+            'Slot iklan di medsos dan media kolaborasi konstruksi nusantara',
           ],
         },
         {
@@ -907,19 +1556,25 @@ export const translations = {
       ],
       packages: [
         {
-          tagline: 'Ideal for startups & SMEs',
-          features: ['Booth Size 6 m²', 'Standard booth, 3kW power', 'Logo on ProBuild website'],
+          tagline: 'Exposure for startups & SMEs',
+          features: [
+            'Booth Size 9 m²',
+            'Standard booth',
+            '450 watt electricity',
+            'Logo on ProBuild website',
+          ],
         },
         {
           tagline: 'For growing brands',
-          features: ['Booth Size 18 m²', 'Custom booth & Demo area'],
+          features: ['Booth Size 18 m²', 'Custom booth', 'Demo area', '30-minute seminar slot'],
         },
         {
           tagline: 'Dominate the main market',
           features: [
             'Booth Size 36 m²',
-            'Pavilion Booth & Seminar Sponsorship',
-            'VIP strategic location & Priority Leads',
+            'Pavilion booth',
+            'Main seminar sponsorship',
+            'Booth in VIP area',
           ],
         },
       ],

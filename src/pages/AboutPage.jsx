@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { eventInfo } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
@@ -11,6 +11,7 @@ export default function AboutPage() {
 
   const { lang } = useLanguage();
   const t = translations.aboutPage[lang];
+  const [activeDay, setActiveDay] = useState(0);
 
   const stats = [
     { value: '100+', label: t.statsLabels[0] },
@@ -30,6 +31,7 @@ export default function AboutPage() {
 
   const badgeColors = ['orange', 'blue', 'green', 'purple'];
   const featureColors = ['red', 'green', 'orange', 'blue'];
+  const agendaColors = ['red', 'green', 'red', 'blue', 'red', 'orange'];
 
   return (
     <main className={styles.page}>
@@ -137,28 +139,56 @@ export default function AboutPage() {
         <div className='container'>
           <div className={styles.agendaHeader}>
             <h2 className='section__title'>{t.agendaTitle}</h2>
-            <div className={styles.agendaUnderline} />
+            <p className={styles.agendaSubtitle}>{t.agendaSubtitle}</p>
           </div>
 
-          <div className={styles.agendaTimeline}>
-            {t.agenda.map((item, index) => (
-              <div key={index} className={`${styles.agendaItem} reveal delay-${index}`}>
-                <div className={styles.agendaTime}>
-                  <div className={styles.agendaTime__dot} />
-                  <span className={styles.agendaTime__label}>{item.day}</span>
-                </div>
-                <div className={styles.agendaCard}>
-                  <div
-                    className={`${styles.agendaCard__badge} ${styles[`agendaCard__badge--${badgeColors[index]}`]}`}
-                  >
-                    {item.badge}
+          <div className={styles.agendaTabs}>
+            {t.agendaDays.map((day, index) => (
+              <button
+                key={day.id}
+                className={`${styles.agendaTab} ${activeDay === index ? styles['agendaTab--active'] : ''}`}
+                onClick={() => setActiveDay(index)}
+              >
+                <span className={styles.agendaTab__label}>{day.label}</span>
+                <span className={styles.agendaTab__date}>{day.date}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.agendaContainer}>
+            <div className={styles.agendaListWrapper}>
+              <div className={styles.agendaList}>
+                {t.agendaDays[activeDay].schedule.map((item, index) => {
+                  const color = agendaColors[index % agendaColors.length];
+                  return (
+                  <div key={index} className={`${styles.agendaRow} ${styles[`agendaRow--${color}`]} reveal delay-${(index % 5) + 1}`}>
+                    <div className={styles.agendaRow__left}>
+                      <div className={styles.agendaRow__indicator}>
+                        <div className={styles.agendaRow__dot} />
+                      </div>
+                      <div className={styles.agendaRow__time}>{item.time}</div>
+                    </div>
+                    <div className={`${styles.agendaCard} ${styles[`agendaCard--${color}`]} ${index === 0 ? styles['agendaCard--highlight'] : ''}`}>
+                      <h3 className={styles.agendaCard__title}>{item.title}</h3>
+                      {item.desc && <p className={styles.agendaCard__desc}>{item.desc}</p>}
+                    </div>
                   </div>
-                  <div className={styles.agendaCard__icon}>{item.icon}</div>
-                  <h3 className={styles.agendaCard__title}>{item.title}</h3>
-                  <p className={styles.agendaCard__desc}>{item.desc}</p>
+                )})}
+              </div>
+              <div className={styles.agendaOverlay}>
+                <p className={styles.agendaOverlayText}>Lihat Jadwal Selengkapnya</p>
+                <div className={styles.agendaOverlayButtons}>
+                  <a href="/files/ProBuild_INTIM_2026_Rundown_ID.pdf" target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    Download Rundown (ID)
+                  </a>
+                  <a href="/files/ProBuild_INTIM_2026_Rundown_EN.pdf" target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    Download Rundown (EN)
+                  </a>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
