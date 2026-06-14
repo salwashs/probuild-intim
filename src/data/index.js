@@ -11,7 +11,7 @@ export const eventInfo = {
   // Countdown target date
   targetDate: new Date('2026-09-24T09:00:00'),
   location: 'Makassar',
-  venue: 'Phinisi Point (Parkiran Utara) - CPI Makassar',
+  venue: 'Sumarecon Mutiara Makassar Convention Center (SMMCC) - Makassar',
   venueAddress: 'Jl. Metro Tj. Bunga No.2, Kota Makassar, Sulawesi Selatan',
   description:
     'Event pameran konstruksi dan arsitektur terbesar di Indonesia Timur yang mempertemukan ribuan profesional, inovator, dan pelaku industri dalam satu platform bertaraf internasional.',
