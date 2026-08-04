@@ -113,12 +113,10 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className={styles.ctas}>
             <a
-              href='#booking'
+              href='https://forms.gle/mbR83h9yksfL3Rtd8'
               className={`btn btn--primary ${styles.cta__primary}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleScroll('#booking');
-              }}
+              target='_blank'
+              rel='noopener noreferrer'
             >
               <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
                 <rect x='3' y='3' width='7' height='7' />
@@ -127,6 +125,19 @@ export default function Hero() {
                 <rect x='3' y='14' width='7' height='7' />
               </svg>
               {t.ctaPrimary}
+            </a>
+            <a
+              href='https://forms.gle/6cytR4sEM4bj1y699'
+              className={`btn ${styles.cta__visitor}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2' />
+                <circle cx='9' cy='7' r='4' />
+                <path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' />
+              </svg>
+              {t.ctaVisitor}
             </a>
             <a href='/tentang-kami' className={`btn btn--outline ${styles.cta__outline}`}>
               {t.ctaOutline}

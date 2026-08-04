@@ -41,6 +41,7 @@ export const translations = {
       description:
         'Platform pertemuan {exhibitor}+ exhibitor, {targetVisitor} profesional, dan inovator industri konstruksi terbesar se-Indonesia Timur dalam 4 hari transformasi.',
       ctaPrimary: 'Booking Stand',
+      ctaVisitor: 'Registrasi Visitor',
       ctaOutline: 'Apa itu ProBuild INTIM?',
       countdownLabel: 'Menghitung mundur ke hari H:',
       days: 'Hari',
@@ -52,6 +53,7 @@ export const translations = {
       description:
         "The meeting platform for {exhibitor}+ exhibitors, {targetVisitor} professionals, and innovators of Eastern Indonesia's largest construction industry in 4 transformative days.",
       ctaPrimary: 'Book a Stand',
+      ctaVisitor: 'Visitor Registration',
       ctaOutline: 'What is ProBuild INTIM?',
       countdownLabel: 'Counting down to the big day:',
       days: 'Days',

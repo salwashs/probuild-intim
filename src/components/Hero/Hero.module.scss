@@ -234,6 +234,29 @@
   }
 }
 
+.cta__visitor {
+  font-size: 0.95rem;
+  padding: 1rem 2rem;
+  border-color: $green;
+  color: $white;
+  background-color: $green;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    border-color: color.adjust($green, $lightness: -8%);
+    background-color: color.adjust($green, $lightness: -8%);
+    color: $white;
+  }
+
+  @media (max-width: $bp-sm) {
+    width: 100%;
+  }
+}
+
 .cta__outline {
   font-size: 0.95rem;
   padding: 1rem 2rem;
