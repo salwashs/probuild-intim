@@ -64,41 +64,16 @@ export function mapApiErrors(apiErrors) {
 }
 
 async function postVisitorPayload(url, payload) {
-  const pageOrigin = typeof window !== 'undefined' ? window.location.origin : 'ssr';
-  let requestOrigin = '';
-  try {
-    requestOrigin = new URL(url).origin;
-  } catch {
-    requestOrigin = 'invalid-url';
-  }
-  const isCrossOrigin = pageOrigin !== 'ssr' && requestOrigin !== pageOrigin;
-
-  // #region agent log
-  fetch('http://127.0.0.1:7639/ingest/7916bf69-6717-459c-8dcf-e3d38511f257',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f52846'},body:JSON.stringify({sessionId:'f52846',runId:'post-fix',hypothesisId:'H6',location:'visitorRegistrationApi.js:postVisitorPayload:pre-fetch',message:'RSVP request starting',data:{url,resolvedBase:resolveApiBase(),pageOrigin,isDev:import.meta.env.DEV,bakedViteApiUrl:import.meta.env.VITE_API_URL||null},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
-
-  let res;
-  try {
-    res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-  } catch (fetchErr) {
-    // #region agent log
-    fetch('http://127.0.0.1:7639/ingest/7916bf69-6717-459c-8dcf-e3d38511f257',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f52846'},body:JSON.stringify({sessionId:'f52846',runId:'pre-fix',hypothesisId:'H2-H4',location:'visitorRegistrationApi.js:postVisitorPayload:fetch-error',message:'Fetch failed (likely CORS/network)',data:{url,isCrossOrigin,errorName:fetchErr?.name,errorMessage:fetchErr?.message},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
-    throw fetchErr;
-  }
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
 
   const data = await res.json().catch(() => ({}));
-
-  // #region agent log
-  fetch('http://127.0.0.1:7639/ingest/7916bf69-6717-459c-8dcf-e3d38511f257',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f52846'},body:JSON.stringify({sessionId:'f52846',runId:'post-fix',hypothesisId:'H3-H5',location:'visitorRegistrationApi.js:postVisitorPayload:response',message:'RSVP response received',data:{url,status:res.status,ok:res.ok,isCrossOrigin,apiMessage:data?.message||data?.data?.message||null},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
 
   if (!res.ok) {
     const { status, message, errors } = parseApiErrorBody(data, res.status);
