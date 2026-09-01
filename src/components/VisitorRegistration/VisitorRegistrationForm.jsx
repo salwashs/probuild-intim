@@ -233,7 +233,11 @@ export default function VisitorRegistrationForm() {
       const message =
         err instanceof VisitorRsvpError && err.status === 409
           ? err.message || t.errors.conflict
-          : err.message || t.modalErrorMessage;
+          : err instanceof VisitorRsvpError && err.status === 404
+            ? err.message || t.errors.eventNotFound
+            : err instanceof VisitorRsvpError && err.status === 0
+              ? t.errors.networkError
+              : err.message || t.modalErrorMessage;
 
       setModal({
         open: true,

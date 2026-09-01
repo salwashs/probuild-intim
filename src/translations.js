@@ -491,6 +491,10 @@ export const translations = {
         minLength: 'Minimal {min} karakter',
         notesMax: 'Catatan maksimal 2000 karakter',
         conflict: 'Konfirmasi untuk email atau KTP ini sudah tercatat.',
+        eventNotFound:
+          'Layanan registrasi belum aktif di server. Silakan hubungi panitia atau coba lagi nanti.',
+        networkError:
+          'Gagal terhubung ke server (kemungkinan masalah jaringan atau CORS). Silakan hubungi panitia.',
       },
     },
     en: {
@@ -595,6 +599,10 @@ export const translations = {
         minLength: 'Minimum {min} characters',
         notesMax: 'Notes must be at most 2000 characters',
         conflict: 'A confirmation for this email or ID number is already on record.',
+        eventNotFound:
+          'Registration is not active on the server yet. Please contact the committee or try again later.',
+        networkError:
+          'Could not reach the server (possible network or CORS issue). Please contact the committee.',
       },
     },
   },
