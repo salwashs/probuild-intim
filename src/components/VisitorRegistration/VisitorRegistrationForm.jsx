@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import { eventInfo } from '../../data';
-import { submitVisitorRsvp } from '../../services/visitorRegistrationApi';
+import { submitVisitorRsvp, mapApiErrors, VisitorRsvpError } from '../../services/visitorRegistrationApi';
 import styles from './VisitorRegistrationForm.module.scss';
 
 const EVENT_ROLES = [
@@ -47,10 +47,29 @@ function validate(form, t) {
     if (!String(val || '').trim()) e[key] = t.errors.required;
   };
 
-  req('fullName', form.fullName);
-  req('position', form.position);
-  req('institution', form.institution);
-  req('institutionAddress', form.institutionAddress);
+  if (!form.fullName.trim()) {
+    e.fullName = t.errors.required;
+  } else if (form.fullName.trim().length < 3) {
+    e.fullName = t.errors.minLength.replace('{min}', '3');
+  }
+
+  if (!form.position.trim()) {
+    e.position = t.errors.required;
+  } else if (form.position.trim().length < 2) {
+    e.position = t.errors.minLength.replace('{min}', '2');
+  }
+
+  if (!form.institution.trim()) {
+    e.institution = t.errors.required;
+  } else if (form.institution.trim().length < 2) {
+    e.institution = t.errors.minLength.replace('{min}', '2');
+  }
+
+  if (!form.institutionAddress.trim()) {
+    e.institutionAddress = t.errors.required;
+  } else if (form.institutionAddress.trim().length < 5) {
+    e.institutionAddress = t.errors.minLength.replace('{min}', '5');
+  }
 
   if (!form.identityNumber.trim()) {
     e.identityNumber = t.errors.required;
@@ -79,6 +98,8 @@ function validate(form, t) {
   if (form.specialNeeds.length === 0) e.specialNeeds = t.errors.specialNeeds;
   if (!form.termsAccepted) e.termsAccepted = t.errors.terms;
 
+  if (form.notes.length > 2000) e.notes = t.errors.notesMax;
+
   if (form.attendanceStatus === 'diwakilkan') {
     req('delegateName', form.delegateName);
     req('delegatePosition', form.delegatePosition);
@@ -94,16 +115,30 @@ function validate(form, t) {
   return e;
 }
 
-export default function VisitorRegistrationForm({ onSuccess }) {
+export default function VisitorRegistrationForm() {
   const { lang } = useLanguage();
   const t = translations.visitorRegistration[lang];
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState({ open: false, message: '' });
+  const [modal, setModal] = useState({
+    open: false,
+    type: 'error',
+    title: '',
+    message: '',
+    registrationId: '',
+  });
 
-  const closeModal = useCallback(() => setModal({ open: false, message: '' }), []);
+  const closeModal = useCallback(() => {
+    setModal({ open: false, type: 'error', title: '', message: '', registrationId: '' });
+  }, []);
+
+  const resetForm = useCallback(() => {
+    setForm(initialForm);
+    setErrors({});
+    setTouched({});
+  }, []);
 
   const setField = (name, value) => {
     setForm((f) => {
@@ -175,18 +210,37 @@ export default function VisitorRegistrationForm({ onSuccess }) {
           ? form.eventRolesOther.trim()
           : null,
         specialNeeds: form.specialNeeds,
-        notes: form.notes.trim(),
+        notes: form.notes.trim() || '',
         termsAccepted: true,
         language: lang,
         submittedAt: new Date().toISOString(),
       };
 
-      await submitVisitorRsvp(payload);
-      onSuccess?.();
-    } catch (err) {
+      const data = await submitVisitorRsvp(payload);
+      resetForm();
       setModal({
         open: true,
-        message: err.message || t.modalErrorMessage,
+        type: 'success',
+        title: t.successTitle,
+        message: data.message || t.successBody,
+        registrationId: data.registrationId || '',
+      });
+    } catch (err) {
+      if (err instanceof VisitorRsvpError && err.errors) {
+        setErrors((prev) => ({ ...prev, ...mapApiErrors(err.errors) }));
+      }
+
+      const message =
+        err instanceof VisitorRsvpError && err.status === 409
+          ? err.message || t.errors.conflict
+          : err.message || t.modalErrorMessage;
+
+      setModal({
+        open: true,
+        type: 'error',
+        title: t.modalErrorTitle,
+        message,
+        registrationId: '',
       });
     } finally {
       setLoading(false);
@@ -416,7 +470,7 @@ export default function VisitorRegistrationForm({ onSuccess }) {
             ))}
           </div>
 
-          <Field label={t.fields.notes} full>
+          <Field label={t.fields.notes} error={errors.notes} full>
             <textarea
               rows={4}
               value={form.notes}
@@ -454,21 +508,53 @@ export default function VisitorRegistrationForm({ onSuccess }) {
       {modal.open && (
         <div className={styles.modal} onClick={closeModal}>
           <div className={styles.modal__overlay} />
-          <div className={styles.modal__box} onClick={(e) => e.stopPropagation()}>
-            <h4>{t.modalErrorTitle}</h4>
-            <p>{modal.message || t.modalErrorMessage}</p>
+          <div
+            className={`${styles.modal__box} ${modal.type === 'success' ? styles.modal__boxSuccess : styles.modal__boxError}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className={`${styles.modal__icon} ${modal.type === 'success' ? styles.modal__iconSuccess : styles.modal__iconError}`}
+            >
+              {modal.type === 'success' ? (
+                <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                  <path d='M22 11.08V12a10 10 0 1 1-5.93-9.14' />
+                  <path d='M22 4 12 14.01l-3-3' />
+                </svg>
+              ) : (
+                <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                  <circle cx='12' cy='12' r='10' />
+                  <line x1='12' y1='8' x2='12' y2='12' />
+                  <line x1='12' y1='16' x2='12.01' y2='16' />
+                </svg>
+              )}
+            </div>
+            <h4>{modal.title}</h4>
+            <p>{modal.message}</p>
+            {modal.type === 'success' && modal.registrationId && (
+              <p className={styles.modal__registrationId}>
+                {t.successRegistrationId} <strong>{modal.registrationId}</strong>
+              </p>
+            )}
             <div className={styles.modal__actions}>
-              <button type='button' className={styles.modal__retry} onClick={closeModal}>
-                {t.modalRetryBtn}
-              </button>
-              <a
-                href={waUrl}
-                className={styles.modal__wa}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {t.modalWhatsappBtn}
-              </a>
+              {modal.type === 'success' ? (
+                <button type='button' className={styles.modal__ok} onClick={closeModal}>
+                  {t.modalSuccessBtn}
+                </button>
+              ) : (
+                <>
+                  <button type='button' className={styles.modal__retry} onClick={closeModal}>
+                    {t.modalRetryBtn}
+                  </button>
+                  <a
+                    href={waUrl}
+                    className={styles.modal__wa}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    {t.modalWhatsappBtn}
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>

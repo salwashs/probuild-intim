@@ -467,12 +467,14 @@ export const translations = {
       successTitle: 'Konfirmasi Tercatat!',
       successBody:
         'Terima kasih! Konfirmasi kehadiran telah tercatat. Bukti pendaftaran akan dikirim ke WhatsApp/Email Anda. Sampai jumpa di ProBuild INTIM 2026!',
+      successRegistrationId: 'Nomor registrasi Anda:',
       successBtn: 'Kembali ke Beranda',
       modalErrorTitle: 'Gagal Mengirim Konfirmasi',
       modalErrorMessage:
         'Terjadi kesalahan saat mengirim data ke server. Silakan coba lagi atau hubungi panitia melalui WhatsApp.',
       modalRetryBtn: 'Coba Lagi',
       modalWhatsappBtn: 'Hubungi Panitia',
+      modalSuccessBtn: 'Tutup',
       errors: {
         required: 'Field ini wajib diisi',
         emailInvalid: 'Format email tidak valid',
@@ -486,6 +488,9 @@ export const translations = {
         terms: 'Anda harus menyetujui ketentuan acara',
         groupMemberName: 'Nama anggota wajib diisi',
         groupMemberPosition: 'Jabatan anggota wajib diisi',
+        minLength: 'Minimal {min} karakter',
+        notesMax: 'Catatan maksimal 2000 karakter',
+        conflict: 'Konfirmasi untuk email atau KTP ini sudah tercatat.',
       },
     },
     en: {
@@ -566,12 +571,14 @@ export const translations = {
       successTitle: 'Confirmation Recorded!',
       successBody:
         'Thank you! Your attendance confirmation has been recorded. Registration proof will be sent to your WhatsApp/Email. See you at ProBuild INTIM 2026!',
+      successRegistrationId: 'Your registration number:',
       successBtn: 'Back to Home',
       modalErrorTitle: 'Submission Failed',
       modalErrorMessage:
         'An error occurred while sending your data to the server. Please try again or contact the committee via WhatsApp.',
       modalRetryBtn: 'Try Again',
       modalWhatsappBtn: 'Contact Committee',
+      modalSuccessBtn: 'Close',
       errors: {
         required: 'This field is required',
         emailInvalid: 'Invalid email format',
@@ -585,6 +592,9 @@ export const translations = {
         terms: 'You must agree to the event terms',
         groupMemberName: 'Member name is required',
         groupMemberPosition: 'Member position is required',
+        minLength: 'Minimum {min} characters',
+        notesMax: 'Notes must be at most 2000 characters',
+        conflict: 'A confirmation for this email or ID number is already on record.',
       },
     },
   },

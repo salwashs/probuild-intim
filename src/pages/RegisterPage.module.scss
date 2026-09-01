@@ -213,6 +213,20 @@
     font-size: 1rem;
     color: $text-body;
     line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  &__id {
+    font-size: 0.95rem;
+    color: $text-muted;
     margin-bottom: 2rem;
+    padding: 1rem;
+    background: $off-white;
+    border-radius: $radius-md;
+
+    strong {
+      color: $green;
+      font-weight: 700;
+    }
   }
 }
