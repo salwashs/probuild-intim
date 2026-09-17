@@ -1,51 +1,29 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import QRCode from 'qrcode';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import { eventInfo } from '../../data';
 import { submitVisitorRsvp, mapApiErrors, VisitorRsvpError } from '../../services/visitorRegistrationApi';
 import styles from './VisitorRegistrationForm.module.scss';
 
-const EVENT_ROLES = [
-  'pembuka_sambutan',
-  'narasumber',
-  'peninjau_stand',
-  'tamu_undangan',
-  'lainnya',
-];
-const SPECIAL_NEEDS = ['kursi_roda', 'akses_prioritas', 'meja_khusus', 'penerjemah', 'tidak_ada'];
-const ATTENDANCE_OPTIONS = ['hadir', 'diwakilkan', 'berhalangan'];
-const MAX_PARTY = 10;
-
 const initialForm = {
-  fullName: '',
-  position: '',
-  institution: '',
-  institutionAddress: '',
-  identityNumber: '',
-  whatsapp: '',
   email: '',
-  partySize: '',
-  groupMembers: [],
-  attendanceStatus: '',
-  delegateName: '',
-  delegatePosition: '',
-  eventRoles: [],
-  eventRolesOther: '',
-  specialNeeds: [],
-  notes: '',
+  fullName: '',
+  whatsapp: '',
+  institutionType: '', // 'umum' | 'instansi'
+  institution: '',
+  position: '',
   termsAccepted: false,
 };
 
-function buildGroupMembers(count) {
-  const n = Math.max(0, Number(count) - 1);
-  return Array.from({ length: n }, () => ({ name: '', position: '' }));
-}
-
 function validate(form, t) {
   const e = {};
-  const req = (key, val) => {
-    if (!String(val || '').trim()) e[key] = t.errors.required;
-  };
+
+  if (!form.email.trim()) {
+    e.email = t.errors.required;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+    e.email = t.errors.emailInvalid;
+  }
 
   if (!form.fullName.trim()) {
     e.fullName = t.errors.required;
@@ -53,64 +31,27 @@ function validate(form, t) {
     e.fullName = t.errors.minLength.replace('{min}', '3');
   }
 
-  if (!form.position.trim()) {
-    e.position = t.errors.required;
-  } else if (form.position.trim().length < 2) {
-    e.position = t.errors.minLength.replace('{min}', '2');
-  }
-
-  if (!form.institution.trim()) {
-    e.institution = t.errors.required;
-  } else if (form.institution.trim().length < 2) {
-    e.institution = t.errors.minLength.replace('{min}', '2');
-  }
-
-  if (!form.institutionAddress.trim()) {
-    e.institutionAddress = t.errors.required;
-  } else if (form.institutionAddress.trim().length < 5) {
-    e.institutionAddress = t.errors.minLength.replace('{min}', '5');
-  }
-
-  if (!form.identityNumber.trim()) {
-    e.identityNumber = t.errors.required;
-  } else if (!/^\d{16}$/.test(form.identityNumber)) {
-    e.identityNumber = t.errors.ktpInvalid;
-  }
-
   if (!form.whatsapp.trim()) {
     e.whatsapp = t.errors.required;
-  } else if (!/^[0-9]{8,16}$/.test(form.whatsapp)) {
+  } else if (!/^[0-9]{8,16}$/.test(form.whatsapp.trim())) {
     e.whatsapp = t.errors.whatsappInvalid;
   }
 
-  if (!form.email.trim()) {
-    e.email = t.errors.required;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    e.email = t.errors.emailInvalid;
+  if (!form.institutionType) {
+    e.institutionType = t.errors.institutionType;
+  } else if (form.institutionType === 'instansi') {
+    if (!form.institution.trim()) {
+      e.institution = t.errors.required;
+    } else if (form.institution.trim().length < 2) {
+      e.institution = t.errors.minLength.replace('{min}', '2');
+    }
   }
 
-  if (!form.partySize) e.partySize = t.errors.partySize;
-  if (!form.attendanceStatus) e.attendanceStatus = t.errors.attendance;
-  if (form.eventRoles.length === 0) e.eventRoles = t.errors.eventRoles;
-  if (form.eventRoles.includes('lainnya') && !form.eventRolesOther.trim()) {
-    e.eventRolesOther = t.errors.eventRolesOther;
+  if (form.position.trim() && form.position.trim().length < 2) {
+    e.position = t.errors.minLength.replace('{min}', '2');
   }
-  if (form.specialNeeds.length === 0) e.specialNeeds = t.errors.specialNeeds;
+
   if (!form.termsAccepted) e.termsAccepted = t.errors.terms;
-
-  if (form.notes.length > 2000) e.notes = t.errors.notesMax;
-
-  if (form.attendanceStatus === 'diwakilkan') {
-    req('delegateName', form.delegateName);
-    req('delegatePosition', form.delegatePosition);
-  }
-
-  if (Number(form.partySize) > 1) {
-    form.groupMembers.forEach((m, i) => {
-      if (!m.name.trim()) e[`groupMember_name_${i}`] = t.errors.groupMemberName;
-      if (!m.position.trim()) e[`groupMember_position_${i}`] = t.errors.groupMemberPosition;
-    });
-  }
 
   return e;
 }
@@ -122,6 +63,7 @@ export default function VisitorRegistrationForm() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState('');
   const [modal, setModal] = useState({
     open: false,
     type: 'error',
@@ -130,8 +72,35 @@ export default function VisitorRegistrationForm() {
     registrationId: '',
   });
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function buildQr() {
+      if (!modal.open || modal.type !== 'success' || !modal.registrationId) {
+        setQrDataUrl('');
+        return;
+      }
+      try {
+        const url = await QRCode.toDataURL(modal.registrationId, {
+          width: 220,
+          margin: 2,
+          errorCorrectionLevel: 'M',
+        });
+        if (!cancelled) setQrDataUrl(url);
+      } catch {
+        if (!cancelled) setQrDataUrl('');
+      }
+    }
+
+    buildQr();
+    return () => {
+      cancelled = true;
+    };
+  }, [modal.open, modal.type, modal.registrationId]);
+
   const closeModal = useCallback(() => {
     setModal({ open: false, type: 'error', title: '', message: '', registrationId: '' });
+    setQrDataUrl('');
   }, []);
 
   const resetForm = useCallback(() => {
@@ -143,34 +112,26 @@ export default function VisitorRegistrationForm() {
   const setField = (name, value) => {
     setForm((f) => {
       const next = { ...f, [name]: value };
-      if (name === 'partySize') {
-        next.groupMembers = buildGroupMembers(value);
+      if (name === 'institutionType' && value === 'umum') {
+        next.institution = '';
       }
       return next;
     });
-    if (touched[name]) {
+    if (touched[name] || (name === 'institutionType' && touched.institution)) {
       setErrors((prev) => {
-        const next = { ...prev, ...validate({ ...form, [name]: value }, t) };
-        delete next[name];
-        return next;
+        const merged = { ...form, [name]: value };
+        if (name === 'institutionType' && value === 'umum') merged.institution = '';
+        const nextErrs = validate(merged, t);
+        const cleaned = { ...prev };
+        delete cleaned[name];
+        if (name === 'institutionType') delete cleaned.institution;
+        if (nextErrs[name]) cleaned[name] = nextErrs[name];
+        if (name === 'institutionType' && nextErrs.institution) {
+          cleaned.institution = nextErrs.institution;
+        }
+        return cleaned;
       });
     }
-  };
-
-  const setGroupMember = (index, field, value) => {
-    setForm((f) => {
-      const groupMembers = [...f.groupMembers];
-      groupMembers[index] = { ...groupMembers[index], [field]: value };
-      return { ...f, groupMembers };
-    });
-  };
-
-  const toggleArray = (name, value) => {
-    setForm((f) => {
-      const arr = f[name];
-      const next = arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
-      return { ...f, [name]: next };
-    });
   };
 
   const handleSubmit = async (e) => {
@@ -185,33 +146,12 @@ export default function VisitorRegistrationForm() {
     setLoading(true);
     try {
       const payload = {
-        fullName: form.fullName.trim(),
-        position: form.position.trim(),
-        institution: form.institution.trim(),
-        institutionAddress: form.institutionAddress.trim(),
-        identityNumber: form.identityNumber.trim(),
-        whatsapp: form.whatsapp.trim(),
         email: form.email.trim(),
-        partySize: Number(form.partySize),
-        groupMembers:
-          Number(form.partySize) > 1
-            ? form.groupMembers.map((m) => ({
-                name: m.name.trim(),
-                position: m.position.trim(),
-              }))
-            : [],
-        attendanceStatus: form.attendanceStatus,
-        delegateName:
-          form.attendanceStatus === 'diwakilkan' ? form.delegateName.trim() : null,
-        delegatePosition:
-          form.attendanceStatus === 'diwakilkan' ? form.delegatePosition.trim() : null,
-        eventRoles: form.eventRoles,
-        eventRolesOther: form.eventRoles.includes('lainnya')
-          ? form.eventRolesOther.trim()
-          : null,
-        specialNeeds: form.specialNeeds,
-        notes: form.notes.trim() || '',
-        termsAccepted: true,
+        fullName: form.fullName.trim(),
+        whatsapp: form.whatsapp.trim(),
+        institution:
+          form.institutionType === 'umum' ? 'umum' : form.institution.trim(),
+        ...(form.position.trim() ? { position: form.position.trim() } : {}),
         language: lang,
         submittedAt: new Date().toISOString(),
       };
@@ -256,235 +196,99 @@ export default function VisitorRegistrationForm() {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
-        {/* Section 2 */}
         <div className={styles.section}>
           <h3 className={styles.section__title}>{t.section2Title}</h3>
           <p className={styles.section__sub}>{t.section2Sub}</p>
           <div className={styles.grid}>
-            <Field
-              label={`${t.fields.fullName} *`}
-              error={errors.fullName}
-              full
-            >
-              <input
-                type='text'
-                value={form.fullName}
-                placeholder={t.fields.fullNamePlaceholder}
-                onChange={(e) => setField('fullName', e.target.value)}
-              />
-            </Field>
-            <Field label={`${t.fields.position} *`} error={errors.position}>
-              <input
-                type='text'
-                value={form.position}
-                placeholder={t.fields.positionPlaceholder}
-                onChange={(e) => setField('position', e.target.value)}
-              />
-            </Field>
-            <Field label={`${t.fields.institution} *`} error={errors.institution}>
-              <input
-                type='text'
-                value={form.institution}
-                placeholder={t.fields.institutionPlaceholder}
-                onChange={(e) => setField('institution', e.target.value)}
-              />
-            </Field>
-            <Field
-              label={`${t.fields.institutionAddress} *`}
-              error={errors.institutionAddress}
-              full
-            >
-              <input
-                type='text'
-                value={form.institutionAddress}
-                placeholder={t.fields.institutionAddressPlaceholder}
-                onChange={(e) => setField('institutionAddress', e.target.value)}
-              />
-            </Field>
-            <Field label={`${t.fields.identityNumber} *`} error={errors.identityNumber}>
-              <input
-                type='text'
-                inputMode='numeric'
-                maxLength={16}
-                value={form.identityNumber}
-                placeholder={t.fields.identityNumberPlaceholder}
-                onChange={(e) =>
-                  setField('identityNumber', e.target.value.replace(/\D/g, ''))
-                }
-              />
-            </Field>
-            <Field label={`${t.fields.whatsapp} *`} error={errors.whatsapp}>
-              <input
-                type='text'
-                inputMode='numeric'
-                value={form.whatsapp}
-                placeholder={t.fields.whatsappPlaceholder}
-                onChange={(e) => setField('whatsapp', e.target.value.replace(/\D/g, ''))}
-              />
-            </Field>
-            <Field label={`${t.fields.email} *`} error={errors.email}>
+            <Field label={`${t.fields.email} *`} error={errors.email} full>
               <input
                 type='email'
+                autoComplete='email'
                 value={form.email}
                 placeholder={t.fields.emailPlaceholder}
                 onChange={(e) => setField('email', e.target.value)}
               />
             </Field>
-            <Field label={`${t.fields.partySize} *`} error={errors.partySize}>
-              <select
-                value={form.partySize}
-                onChange={(e) => setField('partySize', e.target.value)}
-              >
-                <option value=''>{t.fields.partySizePlaceholder}</option>
-                {Array.from({ length: MAX_PARTY }, (_, i) => i + 1).map((n) => (
-                  <option key={n} value={n}>
-                    {n} {lang === 'id' ? 'orang' : 'people'}
-                  </option>
-                ))}
-              </select>
-              <span className={styles.hint}>{t.fields.partySizeHint}</span>
+            <Field label={`${t.fields.fullName} *`} error={errors.fullName} full>
+              <input
+                type='text'
+                autoComplete='name'
+                value={form.fullName}
+                placeholder={t.fields.fullNamePlaceholder}
+                onChange={(e) => setField('fullName', e.target.value)}
+              />
+            </Field>
+            <Field label={`${t.fields.whatsapp} *`} error={errors.whatsapp} full>
+              <input
+                type='text'
+                inputMode='numeric'
+                autoComplete='tel'
+                value={form.whatsapp}
+                placeholder={t.fields.whatsappPlaceholder}
+                onChange={(e) => setField('whatsapp', e.target.value.replace(/\D/g, ''))}
+              />
             </Field>
           </div>
 
-          {Number(form.partySize) > 1 &&
-            form.groupMembers.map((member, i) => (
-              <div key={i} className={styles.groupBlock}>
-                <p className={styles.groupBlock__label}>
-                  {lang === 'id' ? `Anggota rombongan ${i + 1}` : `Group member ${i + 1}`}
-                </p>
-                <div className={styles.grid}>
-                  <Field
-                    label={`${t.fields.groupMemberName} *`}
-                    error={errors[`groupMember_name_${i}`]}
-                  >
-                    <input
-                      type='text'
-                      value={member.name}
-                      onChange={(e) => setGroupMember(i, 'name', e.target.value)}
-                    />
-                  </Field>
-                  <Field
-                    label={`${t.fields.groupMemberPosition} *`}
-                    error={errors[`groupMember_position_${i}`]}
-                  >
-                    <input
-                      type='text'
-                      value={member.position}
-                      onChange={(e) => setGroupMember(i, 'position', e.target.value)}
-                    />
-                  </Field>
-                </div>
-              </div>
-            ))}
-        </div>
-
-        {/* Section 3 */}
-        <div className={styles.section}>
-          <h3 className={styles.section__title}>{t.section3Title}</h3>
-          {errors.attendanceStatus && (
-            <span className={styles.sectionErr}>{errors.attendanceStatus}</span>
+          <p className={styles.checkLabel}>{t.fields.institutionType} *</p>
+          {errors.institutionType && (
+            <span className={styles.sectionErr}>{errors.institutionType}</span>
           )}
           <div className={styles.radioGroup}>
-            {ATTENDANCE_OPTIONS.map((opt) => (
-              <label key={opt} className={styles.radio}>
-                <input
-                  type='radio'
-                  name='attendanceStatus'
-                  value={opt}
-                  checked={form.attendanceStatus === opt}
-                  onChange={() => setField('attendanceStatus', opt)}
-                />
-                <span>{t.attendance[opt]}</span>
-              </label>
-            ))}
+            <label className={styles.radio}>
+              <input
+                type='radio'
+                name='institutionType'
+                value='instansi'
+                checked={form.institutionType === 'instansi'}
+                onChange={() => setField('institutionType', 'instansi')}
+              />
+              <span>{t.institutionTypes.instansi}</span>
+            </label>
+            <label className={styles.radio}>
+              <input
+                type='radio'
+                name='institutionType'
+                value='umum'
+                checked={form.institutionType === 'umum'}
+                onChange={() => setField('institutionType', 'umum')}
+              />
+              <span>{t.institutionTypes.umum}</span>
+            </label>
           </div>
 
-          {form.attendanceStatus === 'diwakilkan' && (
-            <div className={styles.grid}>
-              <Field label={`${t.fields.delegateName} *`} error={errors.delegateName}>
+          <div className={styles.grid}>
+            {form.institutionType === 'instansi' && (
+              <Field
+                label={`${t.fields.institution} *`}
+                error={errors.institution}
+                full
+              >
                 <input
                   type='text'
-                  value={form.delegateName}
-                  placeholder={t.fields.delegateNamePlaceholder}
-                  onChange={(e) => setField('delegateName', e.target.value)}
+                  autoComplete='organization'
+                  value={form.institution}
+                  placeholder={t.fields.institutionPlaceholder}
+                  onChange={(e) => setField('institution', e.target.value)}
                 />
               </Field>
-              <Field label={`${t.fields.delegatePosition} *`} error={errors.delegatePosition}>
-                <input
-                  type='text'
-                  value={form.delegatePosition}
-                  placeholder={t.fields.delegatePositionPlaceholder}
-                  onChange={(e) => setField('delegatePosition', e.target.value)}
-                />
-              </Field>
-            </div>
-          )}
-        </div>
-
-        {/* Section 4 */}
-        <div className={styles.section}>
-          <h3 className={styles.section__title}>{t.section4Title}</h3>
-          <p className={styles.checkLabel}>
-            {lang === 'id' ? 'Rencana peran dalam acara' : 'Planned role at the event'} *
-          </p>
-          {errors.eventRoles && <span className={styles.sectionErr}>{errors.eventRoles}</span>}
-          <div className={styles.checkGroup}>
-            {EVENT_ROLES.map((role) => (
-              <label key={role} className={styles.check}>
-                <input
-                  type='checkbox'
-                  checked={form.eventRoles.includes(role)}
-                  onChange={() => toggleArray('eventRoles', role)}
-                />
-                <span>{t.eventRoles[role]}</span>
-              </label>
-            ))}
-          </div>
-          {form.eventRoles.includes('lainnya') && (
+            )}
             <Field
-              label={`${t.fields.eventRolesOther} *`}
-              error={errors.eventRolesOther}
+              label={`${t.fields.position} ${t.fields.optional}`}
+              error={errors.position}
               full
             >
               <input
                 type='text'
-                value={form.eventRolesOther}
-                placeholder={t.fields.eventRolesOtherPlaceholder}
-                onChange={(e) => setField('eventRolesOther', e.target.value)}
+                autoComplete='organization-title'
+                value={form.position}
+                placeholder={t.fields.positionPlaceholder}
+                onChange={(e) => setField('position', e.target.value)}
               />
             </Field>
-          )}
-
-          <p className={styles.checkLabel}>
-            {lang === 'id' ? 'Kebutuhan khusus' : 'Special requirements'} *
-          </p>
-          {errors.specialNeeds && (
-            <span className={styles.sectionErr}>{errors.specialNeeds}</span>
-          )}
-          <div className={styles.checkGroup}>
-            {SPECIAL_NEEDS.map((need) => (
-              <label key={need} className={styles.check}>
-                <input
-                  type='checkbox'
-                  checked={form.specialNeeds.includes(need)}
-                  onChange={() => toggleArray('specialNeeds', need)}
-                />
-                <span>{t.specialNeeds[need]}</span>
-              </label>
-            ))}
           </div>
-
-          <Field label={t.fields.notes} error={errors.notes} full>
-            <textarea
-              rows={4}
-              value={form.notes}
-              placeholder={t.fields.notesPlaceholder}
-              onChange={(e) => setField('notes', e.target.value)}
-            />
-          </Field>
         </div>
 
-        {/* Section 6 */}
         <div className={styles.section}>
           <h3 className={styles.section__title}>{t.section6Title}</h3>
           <label className={styles.terms}>
@@ -535,9 +339,17 @@ export default function VisitorRegistrationForm() {
             <h4>{modal.title}</h4>
             <p>{modal.message}</p>
             {modal.type === 'success' && modal.registrationId && (
-              <p className={styles.modal__registrationId}>
-                {t.successRegistrationId} <strong>{modal.registrationId}</strong>
-              </p>
+              <>
+                <p className={styles.modal__registrationId}>
+                  {t.successRegistrationId} <strong>{modal.registrationId}</strong>
+                </p>
+                {qrDataUrl && (
+                  <div className={styles.modal__qr}>
+                    <img src={qrDataUrl} alt={`QR ${modal.registrationId}`} />
+                    <p>{t.successQrHint}</p>
+                  </div>
+                )}
+              </>
             )}
             <div className={styles.modal__actions}>
               {modal.type === 'success' ? (

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './styles/global.scss';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -43,8 +43,9 @@ function AppContent() {
         <Route path='/' element={<Home />} />
         <Route path='/tentang-kami' element={<AboutPage />} />
         <Route path='/booth' element={<BoothPage />} />
-        <Route path='/register' element={<RegisterPage />} />
+        {/* Static URL for admin QR (one QR per event) */}
         <Route path='/registrasi' element={<RegisterPage />} />
+        <Route path='/register' element={<Navigate to='/registrasi' replace />} />
         <Route path='/artikel' element={<ArticlesPage />} />
         <Route path='/artikel/:slug' element={<ArticleDetailPage />} />
       </Routes>

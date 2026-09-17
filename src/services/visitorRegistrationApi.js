@@ -44,21 +44,13 @@ function parseSuccessBody(data) {
   };
 }
 
-/** Map Laravel-style API validation errors to form field keys */
+/** Map API validation errors to form field keys */
 export function mapApiErrors(apiErrors) {
   if (!apiErrors || typeof apiErrors !== 'object') return {};
 
   const mapped = {};
   for (const [key, messages] of Object.entries(apiErrors)) {
-    const msg = Array.isArray(messages) ? messages[0] : String(messages);
-
-    const groupMatch = key.match(/^groupMembers\.(\d+)\.(\w+)$/);
-    if (groupMatch) {
-      mapped[`groupMember_${groupMatch[2]}_${groupMatch[1]}`] = msg;
-      continue;
-    }
-
-    mapped[key] = msg;
+    mapped[key] = Array.isArray(messages) ? messages[0] : String(messages);
   }
   return mapped;
 }

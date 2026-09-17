@@ -295,12 +295,38 @@
     padding: 0.875rem 1rem;
     background: $off-white;
     border-radius: $radius-md;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
 
     strong {
       color: $green;
       font-weight: 700;
     }
+  }
+
+  &__qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: $radius-md;
+      background: $white;
+      border: 1px solid $mid-gray;
+    }
+
+    p {
+      margin-bottom: 0 !important;
+      font-size: 0.8rem !important;
+      color: $text-muted;
+    }
+  }
+
+  &__boxSuccess {
+    max-width: 460px;
   }
 
   &__actions {
