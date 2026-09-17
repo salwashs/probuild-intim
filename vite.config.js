@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://admin.probuildintim.com',
         changeOrigin: true,
         secure: false,
       },
@@ -16,7 +16,7 @@ export default defineConfig({
   preview: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://admin.probuildintim.com',
         changeOrigin: true,
         secure: false,
       },
