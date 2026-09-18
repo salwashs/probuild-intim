@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import QRCode from 'qrcode';
+import { jsPDF } from 'jspdf';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../translations';
 import { eventInfo } from '../../data';
@@ -77,9 +78,11 @@ export default function VisitorRegistrationForm() {
     title: '',
     message: '',
     registrationId: '',
+    emailSent: false,
     detail: '',
   });
   const [showErrorDetail, setShowErrorDetail] = useState(false);
+  const [pdfLoading, setPdfLoading] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -114,11 +117,73 @@ export default function VisitorRegistrationForm() {
       title: '',
       message: '',
       registrationId: '',
+      emailSent: false,
       detail: '',
     });
     setShowErrorDetail(false);
     setQrDataUrl('');
+    setPdfLoading(false);
   }, []);
+
+  const downloadQrPdf = useCallback(async () => {
+    if (!modal.registrationId) return;
+    setPdfLoading(true);
+    try {
+      let dataUrl = qrDataUrl;
+      if (!dataUrl) {
+        dataUrl = await QRCode.toDataURL(modal.registrationId, {
+          width: 440,
+          margin: 2,
+          errorCorrectionLevel: 'M',
+        });
+      }
+
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const pageW = doc.internal.pageSize.getWidth();
+      let y = 28;
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(18);
+      doc.text(
+        `${eventInfo?.name || 'ProBuild INTIM'} ${eventInfo?.edition || ''}`.trim(),
+        pageW / 2,
+        y,
+        { align: 'center' },
+      );
+      y += 10;
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(12);
+      doc.text(t.successPdfSubtitle || t.successQrHint, pageW / 2, y, {
+        align: 'center',
+      });
+      y += 12;
+
+      doc.setFontSize(11);
+      doc.text(
+        `${t.successRegistrationId} ${modal.registrationId}`,
+        pageW / 2,
+        y,
+        { align: 'center' },
+      );
+      y += 8;
+
+      const qrSize = 70;
+      const qrX = (pageW - qrSize) / 2;
+      doc.addImage(dataUrl, 'PNG', qrX, y, qrSize, qrSize);
+      y += qrSize + 12;
+
+      doc.setFontSize(10);
+      doc.setTextColor(100);
+      doc.text(t.successQrHint, pageW / 2, y, { align: 'center' });
+
+      doc.save(`${modal.registrationId}.pdf`);
+    } catch {
+      // ignore — user can still use on-screen QR
+    } finally {
+      setPdfLoading(false);
+    }
+  }, [modal.registrationId, qrDataUrl, t]);
 
   const resetForm = useCallback(() => {
     setForm(initialForm);
@@ -181,8 +246,11 @@ export default function VisitorRegistrationForm() {
         open: true,
         type: 'success',
         title: t.successTitle,
-        message: data.message || t.successBody,
+        message: data.emailSent
+          ? t.successBodyEmail
+          : data.message || t.successBody,
         registrationId: data.registrationId || '',
+        emailSent: Boolean(data.emailSent),
         detail: '',
       });
     } catch (err) {
@@ -221,6 +289,7 @@ export default function VisitorRegistrationForm() {
         title: t.modalErrorTitle,
         message,
         registrationId: '',
+        emailSent: false,
         detail:
           err instanceof VisitorRsvpError
             ? err.detail || `HTTP ${err.status}\n${err.message}`
@@ -412,13 +481,30 @@ export default function VisitorRegistrationForm() {
                     <p>{t.successQrHint}</p>
                   </div>
                 )}
+                <p className={styles.modal__emailHint}>
+                  {modal.emailSent
+                    ? t.successEmailSpamHint
+                    : t.successEmailFallbackHint}
+                </p>
               </>
             )}
             <div className={styles.modal__actions}>
               {modal.type === 'success' ? (
-                <button type='button' className={styles.modal__ok} onClick={closeModal}>
-                  {t.modalSuccessBtn}
-                </button>
+                <>
+                  {modal.registrationId && (
+                    <button
+                      type='button'
+                      className={styles.modal__pdf}
+                      onClick={downloadQrPdf}
+                      disabled={pdfLoading}
+                    >
+                      {pdfLoading ? t.successPdfLoading : t.successPdfBtn}
+                    </button>
+                  )}
+                  <button type='button' className={styles.modal__ok} onClick={closeModal}>
+                    {t.modalSuccessBtn}
+                  </button>
+                </>
               ) : (
                 <>
                   <button type='button' className={styles.modal__retry} onClick={closeModal}>

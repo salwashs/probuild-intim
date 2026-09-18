@@ -436,8 +436,17 @@ export const translations = {
       successTitle: 'Pendaftaran Berhasil!',
       successBody:
         'Terima kasih! Data visitor Anda telah tercatat. Simpan QR code di bawah untuk check-in di pintu acara.',
+      successBodyEmail:
+        'Terima kasih! Data visitor Anda telah tercatat. QR check-in juga dikirim ke email Anda.',
       successRegistrationId: 'Nomor registrasi Anda:',
       successQrHint: 'Tunjukkan QR ini saat check-in di lokasi acara',
+      successEmailSpamHint:
+        'Tidak lihat email? Cek folder spam, atau unduh QR code di sini.',
+      successEmailFallbackHint:
+        'Simpan QR di bawah, atau unduh PDF untuk check-in di lokasi acara.',
+      successPdfSubtitle: 'QR check-in visitor',
+      successPdfBtn: 'Download QR (PDF)',
+      successPdfLoading: 'Menyiapkan PDF...',
       successBtn: 'Kembali ke Beranda',
       modalErrorTitle: 'Gagal Mendaftar',
       modalErrorMessage:
@@ -508,8 +517,17 @@ export const translations = {
       successTitle: 'Registration Successful!',
       successBody:
         'Thank you! Your visitor registration has been recorded. Save the QR code below for check-in at the venue.',
+      successBodyEmail:
+        'Thank you! Your visitor registration has been recorded. A check-in QR was also sent to your email.',
       successRegistrationId: 'Your registration number:',
       successQrHint: 'Show this QR at check-in on site',
+      successEmailSpamHint:
+        "Didn't see the email? Check your spam folder, or download the QR code here.",
+      successEmailFallbackHint:
+        'Save the QR below, or download a PDF for check-in at the venue.',
+      successPdfSubtitle: 'Visitor check-in QR',
+      successPdfBtn: 'Download QR (PDF)',
+      successPdfLoading: 'Preparing PDF...',
       successBtn: 'Back to Home',
       modalErrorTitle: 'Registration Failed',
       modalErrorMessage:
