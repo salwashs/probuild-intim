@@ -70,7 +70,9 @@ export default function VisitorRegistrationForm() {
     title: '',
     message: '',
     registrationId: '',
+    detail: '',
   });
+  const [showErrorDetail, setShowErrorDetail] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -99,7 +101,15 @@ export default function VisitorRegistrationForm() {
   }, [modal.open, modal.type, modal.registrationId]);
 
   const closeModal = useCallback(() => {
-    setModal({ open: false, type: 'error', title: '', message: '', registrationId: '' });
+    setModal({
+      open: false,
+      type: 'error',
+      title: '',
+      message: '',
+      registrationId: '',
+      detail: '',
+    });
+    setShowErrorDetail(false);
     setQrDataUrl('');
   }, []);
 
@@ -152,6 +162,7 @@ export default function VisitorRegistrationForm() {
         institution:
           form.institutionType === 'umum' ? 'umum' : form.institution.trim(),
         ...(form.position.trim() ? { position: form.position.trim() } : {}),
+        termsAccepted: true,
         language: lang,
         submittedAt: new Date().toISOString(),
       };
@@ -164,10 +175,26 @@ export default function VisitorRegistrationForm() {
         title: t.successTitle,
         message: data.message || t.successBody,
         registrationId: data.registrationId || '',
+        detail: '',
       });
     } catch (err) {
       if (err instanceof VisitorRsvpError && err.errors) {
-        setErrors((prev) => ({ ...prev, ...mapApiErrors(err.errors) }));
+        const mapped = mapApiErrors(err.errors);
+        // Jabatan opsional di form ini — jangan tampilkan error "wajib" jika dikosongkan
+        if (!form.position.trim() && mapped.position && /wajib/i.test(mapped.position)) {
+          delete mapped.position;
+        }
+        setErrors((prev) => ({ ...prev, ...mapped }));
+      }
+
+      // 409 unique: tampilkan error di field yang bentrok (email/WhatsApp)
+      if (err instanceof VisitorRsvpError && err.status === 409) {
+        const msg = err.message || t.errors.conflict;
+        if (/whatsapp|wa\b/i.test(msg)) {
+          setErrors((prev) => ({ ...prev, whatsapp: msg }));
+        } else {
+          setErrors((prev) => ({ ...prev, email: msg }));
+        }
       }
 
       const message =
@@ -179,12 +206,17 @@ export default function VisitorRegistrationForm() {
               ? t.errors.networkError
               : err.message || t.modalErrorMessage;
 
+      setShowErrorDetail(false);
       setModal({
         open: true,
         type: 'error',
         title: t.modalErrorTitle,
         message,
         registrationId: '',
+        detail:
+          err instanceof VisitorRsvpError
+            ? err.detail || `HTTP ${err.status}\n${err.message}`
+            : String(err?.message || err || ''),
       });
     } finally {
       setLoading(false);
@@ -338,6 +370,20 @@ export default function VisitorRegistrationForm() {
             </div>
             <h4>{modal.title}</h4>
             <p>{modal.message}</p>
+            {modal.type === 'error' && modal.detail && (
+              <div className={styles.modal__detailWrap}>
+                <button
+                  type='button'
+                  className={styles.modal__detailToggle}
+                  onClick={() => setShowErrorDetail((v) => !v)}
+                >
+                  {showErrorDetail ? t.modalHideDetails : t.modalShowDetails}
+                </button>
+                {showErrorDetail && (
+                  <pre className={styles.modal__detail}>{modal.detail}</pre>
+                )}
+              </div>
+            )}
             {modal.type === 'success' && modal.registrationId && (
               <>
                 <p className={styles.modal__registrationId}>

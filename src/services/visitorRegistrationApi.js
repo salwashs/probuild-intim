@@ -17,11 +17,12 @@ export function resolveApiUrl(path) {
 }
 
 export class VisitorRsvpError extends Error {
-  constructor(message, { status, errors } = {}) {
+  constructor(message, { status, errors, detail } = {}) {
     super(message);
     this.name = 'VisitorRsvpError';
     this.status = status;
     this.errors = errors;
+    this.detail = detail || '';
   }
 }
 
@@ -31,7 +32,9 @@ function parseApiErrorBody(data, httpStatus) {
   const message =
     data?.data?.message ||
     data?.message ||
-    `HTTP ${status}`;
+    (typeof data?.raw === 'string' && data.raw.trim()
+      ? data.raw.trim().slice(0, 180)
+      : `HTTP ${status}`);
   const errors = data?.data?.errors ?? data?.errors ?? null;
   return { status, message, errors };
 }
@@ -55,6 +58,23 @@ export function mapApiErrors(apiErrors) {
   return mapped;
 }
 
+function buildErrorDetail(url, httpStatus, data, rawText) {
+  const parts = [
+    `URL: ${url}`,
+    `HTTP: ${httpStatus}`,
+  ];
+  if (data && typeof data === 'object' && Object.keys(data).length > 0) {
+    try {
+      parts.push(`Body: ${JSON.stringify(data, null, 2)}`);
+    } catch {
+      parts.push(`Body: ${String(rawText || '').slice(0, 2000)}`);
+    }
+  } else if (rawText) {
+    parts.push(`Body: ${String(rawText).slice(0, 2000)}`);
+  }
+  return parts.join('\n');
+}
+
 async function postVisitorPayload(url, payload) {
   const res = await fetch(url, {
     method: 'POST',
@@ -65,11 +85,21 @@ async function postVisitorPayload(url, payload) {
     body: JSON.stringify(payload),
   });
 
-  const data = await res.json().catch(() => ({}));
+  const rawText = await res.text();
+  let data = {};
+  try {
+    data = rawText ? JSON.parse(rawText) : {};
+  } catch {
+    data = { raw: rawText };
+  }
 
   if (!res.ok) {
     const { status, message, errors } = parseApiErrorBody(data, res.status);
-    throw new VisitorRsvpError(message, { status, errors });
+    throw new VisitorRsvpError(message, {
+      status,
+      errors,
+      detail: buildErrorDetail(url, res.status, data, rawText),
+    });
   }
 
   return parseSuccessBody(data);
@@ -91,7 +121,10 @@ export async function submitVisitorRsvp(payload) {
       if (!(err instanceof VisitorRsvpError)) {
         throw new VisitorRsvpError(
           'Gagal terhubung ke server. Periksa koneksi internet Anda.',
-          { status: 0 }
+          {
+            status: 0,
+            detail: err instanceof Error ? err.message : String(err),
+          }
         );
       }
 

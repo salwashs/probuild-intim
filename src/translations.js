@@ -443,6 +443,8 @@ export const translations = {
       modalRetryBtn: 'Coba Lagi',
       modalWhatsappBtn: 'Hubungi Panitia',
       modalSuccessBtn: 'Tutup',
+      modalShowDetails: 'Lihat selengkapnya',
+      modalHideDetails: 'Sembunyikan detail',
       errors: {
         required: 'Field ini wajib diisi',
         emailInvalid: 'Format email tidak valid',
@@ -511,6 +513,8 @@ export const translations = {
       modalRetryBtn: 'Try Again',
       modalWhatsappBtn: 'Contact Committee',
       modalSuccessBtn: 'Close',
+      modalShowDetails: 'See details',
+      modalHideDetails: 'Hide details',
       errors: {
         required: 'This field is required',
         emailInvalid: 'Invalid email format',

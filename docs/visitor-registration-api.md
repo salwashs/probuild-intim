@@ -32,6 +32,10 @@ Accept: application/json
 | `whatsapp` | string | yes | 8–16 digits; unique per event | Nomor WhatsApp |
 | `institution` | string | yes | min 2 chars | Nama perusahaan/instansi. Kirim `"umum"` jika visitor umum. |
 | `position` | string | no | min 2 chars jika diisi | Jabatan (opsional) |
+| `termsAccepted` | boolean | yes | must be `true` | Persetujuan ketentuan |
+| `language` | enum | yes | `id` \| `en` | Bahasa form |
+
+Field lain di admin (rombongan, kehadiran, KTP, dll.) **opsional** — form expo tidak mengirimnya.
 
 ---
 
@@ -43,7 +47,9 @@ Accept: application/json
   "fullName": "Budi Santoso",
   "whatsapp": "085705852676",
   "institution": "PT Contoh Konstruksi",
-  "position": "Direktur Utama"
+  "position": "Direktur Utama",
+  "termsAccepted": true,
+  "language": "id"
 }
 ```
 
@@ -54,7 +60,9 @@ Accept: application/json
   "email": "ani@email.com",
   "fullName": "Ani Wijaya",
   "whatsapp": "081234567890",
-  "institution": "umum"
+  "institution": "umum",
+  "termsAccepted": true,
+  "language": "id"
 }
 ```
 
