@@ -12,6 +12,7 @@ const initialForm = {
   whatsapp: '',
   institutionType: '', // 'umum' | 'instansi'
   institution: '',
+  domisili: '',
   position: '',
   termsAccepted: false,
 };
@@ -45,6 +46,12 @@ function validate(form, t) {
     } else if (form.institution.trim().length < 2) {
       e.institution = t.errors.minLength.replace('{min}', '2');
     }
+  }
+
+  if (!form.domisili.trim()) {
+    e.domisili = t.errors.required;
+  } else if (form.domisili.trim().length < 2) {
+    e.domisili = t.errors.minLength.replace('{min}', '2');
   }
 
   if (form.position.trim() && form.position.trim().length < 2) {
@@ -161,6 +168,7 @@ export default function VisitorRegistrationForm() {
         whatsapp: form.whatsapp.trim(),
         institution:
           form.institutionType === 'umum' ? 'umum' : form.institution.trim(),
+        domisili: form.domisili.trim(),
         ...(form.position.trim() ? { position: form.position.trim() } : {}),
         termsAccepted: true,
         language: lang,
@@ -305,6 +313,15 @@ export default function VisitorRegistrationForm() {
                 />
               </Field>
             )}
+            <Field label={`${t.fields.domisili} *`} error={errors.domisili} full>
+              <input
+                type='text'
+                autoComplete='address-level2'
+                value={form.domisili}
+                placeholder={t.fields.domisiliPlaceholder}
+                onChange={(e) => setField('domisili', e.target.value)}
+              />
+            </Field>
             <Field
               label={`${t.fields.position} ${t.fields.optional}`}
               error={errors.position}

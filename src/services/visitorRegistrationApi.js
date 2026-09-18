@@ -95,9 +95,6 @@ async function postVisitorPayload(url, payload) {
 
   if (!res.ok) {
     const { status, message, errors } = parseApiErrorBody(data, res.status);
-    // #region agent log
-    fetch('http://127.0.0.1:7366/ingest/b4c9394e-995b-4ebb-be2d-e3f30facecf0',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a40deb'},body:JSON.stringify({sessionId:'a40deb',runId:'pre-fix',hypothesisId:'A',location:'visitorRegistrationApi.js:postVisitorPayload',message:'Visitor API error',data:{url,httpStatus:res.status,status,message,errorKeys:errors?Object.keys(errors):[],requiredLikeErrors:errors||null},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
     throw new VisitorRsvpError(message, {
       status,
       errors,
